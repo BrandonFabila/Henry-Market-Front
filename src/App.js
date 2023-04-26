@@ -1,9 +1,16 @@
+import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar'
 import './App.css';
 
 function App() {
+  const location = useLocation()
+
   return (
     <div className="App">
-      <h1>Henry Market</h1>
+      {location?.pathname == "/log-in" ? null : <NavBar />}
+      <Routes>
+        <Route exact path="/" component={NavBar} />
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 70px;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    color: white;
+    background-color: var(--blue-color);
+}
+
+.logo {
+    height: 60px;
+    width: 60px;  
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.logocompleto {
+    display: none;
+
+    height: 35px;
+    width: 190px;  
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.iniciar_sesion {
+    display: none;
+}
+
+.carrito:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    transform: scale(1.1);
+}
+
+.menu:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    transform: scale(1.1);
+}
+
+
+@media (min-width: 820px) {
+    .menu {
+        display: none;
+    }
+
+    .iniciar_sesion {
+        display: block;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logocompleto {
+        display: block;
+    }
+}
