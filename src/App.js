@@ -1,9 +1,13 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Products from './components/Products/Products';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Market</h1>
+      <Routes>
+        <Route path="/" element={<Products />} />
+      </Routes>
     </div>
   );
 }
