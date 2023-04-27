@@ -1,10 +1,10 @@
-import { Route } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Products from './components/Products/Products';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
-import NavBar from './components/NavBar/NavBar';
-import { useLocation } from 'react-router-dom'
+import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
+import NavBar from "./components/NavBar/NavBar"
 
 function App() {
   const location = useLocation()
@@ -12,11 +12,15 @@ function App() {
   return (
     <div className="App">
       {location.pathname === '/log-in' ? null : <NavBar />}
-      <Route exact path="/products" component={Products} />
-      <Route exact path="/registrar-usuario" component={Register} />
-      <Route exact path="/log-in" component={Login} />
+      <Routes>
+        <Route exact path="/" element={<HomePrincipal />} />
+        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/registrar-usuario" element={<Register />} />
+        <Route exact path="/log-in" element={<Login />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
+

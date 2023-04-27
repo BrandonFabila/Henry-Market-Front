@@ -20,8 +20,10 @@ export default function NavBar() {
 
 
     useEffect(() => {
-        setShowProfileMenu(false)
-    }, [location.pathname])
+        if (location && location.pathname) {
+            setShowProfileMenu(false);
+        }
+    }, [location]);
 
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);

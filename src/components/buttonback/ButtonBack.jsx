@@ -1,16 +1,15 @@
-import { useHistory } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function ButtonBack() {
-    const history = useHistory()
+const navigate = useNavigate();
 
-    function onClick() {
-        history.push('/')
-    }
+function onClick() {
+    navigate('/')
+}
 
-    return (
-        <button onClick={onClick} style={{ borderRadius: '0', boxShadow: '-3px 3px rgb(0, 128, 0)', position: 'absolute', left: '20px', top: '25px' }}>
-            Volver al inicio
-        </button>
-    )
+return (
+    <button onClick={onClick} style={{ borderRadius: '0', boxShadow: '-3px 3px rgb(0, 128, 0)', position: 'absolute', left: '20px', top: '25px' }}>
+        Volver al inicio
+    </button>
+)
 }

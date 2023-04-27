@@ -1,13 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
-import { useHistory } from 'react-router-dom';
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Google from "../../assets/images/IconGoogle.png"
 import { userLoggedIn } from "../../store/actions/index"
+import { useNavigate } from 'react-router';
+
 
 import Cookies from 'js-cookie';
 import styles from "./FormLogin.module.css"
@@ -42,9 +43,9 @@ export default function FormLogin() {
     const iconGoogle = Google;
 
     const BACK_HOST = 'http://localhost:3001'
-    const history = useHistory()
+    const navigate = useNavigate();
     const navigateTo = (url) => {
-        history.push(url)
+        navigate(url);
     }
 
     function login(user) {
