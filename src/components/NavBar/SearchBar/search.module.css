@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding-left: 5px;
+    background-color: white;
+    width: 150px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    margin-right: 5px;
+    width: 100%;
+}
+
+.input:focus {
+    border: none;
+    outline: none;
+}
+
+.button {
+    background-color: white;
+    border: none;
+    outline: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+@media (min-width: 820px) {
+    .container {
+        width: 300px;
+    }
+}
