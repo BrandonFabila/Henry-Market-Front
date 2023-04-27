@@ -7,8 +7,6 @@ export const GET_PRODUCT_BY_CATEGORY = "GET_PRODUCT_BY_CATEGORY"
 
 const api_host= "http://localhost:3001";
 
-const api_host = 'http://localhost:3001'
-
 export function getAllProducts() {
   return function (dispatch) {
     axios.get(`${api_host}/api/products/`).then((products) => {
