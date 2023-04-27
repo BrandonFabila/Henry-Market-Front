@@ -9,7 +9,7 @@ const api_host= "http://localhost:3001";
 
 export function getAllProducts() {
   return function (dispatch) {
-    axios.get(`${api_host}/api/products/`).then((products) => {
+    axios.get(`${api_host}/products`).then((products) => {
       dispatch({
         type: GET_ALL_PRODUCTS,
         payload: products.data,
