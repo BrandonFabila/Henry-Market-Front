@@ -5,7 +5,7 @@ export const USER_LOGIN = "USER_LOGIN"
 export const GET_CATEGORY = "GET_CATEGORY"
 export const GET_PRODUCT_BY_CATEGORY = "GET_PRODUCT_BY_CATEGORY"
 
-const api_host= "http://localhost:3001";
+const api_host= "https://henry-market-back-production.up.railway.app/";
 
 export function getAllProducts() {
   return function (dispatch) {
