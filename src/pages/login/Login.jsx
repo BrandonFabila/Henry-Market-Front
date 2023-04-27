@@ -7,13 +7,16 @@ const Login = () => {
 
   return (
     <div className={s.container}>
-      <ButtonBack />
 
+      <div className={s.buttonBack} >
+            <ButtonBack />
+      </div>
+      
       <div className={s.formulario}>
         <FormLogin />
       </div>
 
-      <p style={{ marginTop: '25px', color: 'gray' }}>Al continuar, aceptas las Condiciones de uso y el Aviso de privacidad de JustOffers.</p>
+      <p style={{ marginTop: '25px', color: 'gray' }}>Al continuar, aceptas las Condiciones de uso y el Aviso de privacidad de Henry Market.</p>
     </div>
   );
 };
