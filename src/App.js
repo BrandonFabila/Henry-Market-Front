@@ -1,16 +1,17 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Products from './components/Products/Products';
-import NavBar from './components/NavBar/NavBar'
-
+import Register from './pages/register/Register';
+import Login from './pages/login/Login';
 function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Products />} />
-      </Routes>
+        <Route exact path="/products" component={Products } />
+        <Route exact path="/registrar-usuario" component={Register} />
+        <Route exact path="/log-in" component={Login} />
+
+
     </div>
   );
 }
