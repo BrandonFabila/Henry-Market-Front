@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import validations from "./validations";
-import bcrypt from "bcryptjs"; // librería para encriptcar contraseñas
 import {  useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 
-import s from "./formRegister.module.css";
+import s from "./FormRegister.module.css"
 
 export default function FormRegister() {
   const dispatch = useDispatch();
@@ -64,9 +63,6 @@ export default function FormRegister() {
     } else {
       // Si no hay errores, continúa con el proceso de envío del formulario
       try {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(form.password, salt);
-        setForm({ ...form, password: hashedPassword });
 
         await axios
           .post("http://localhost:3001/usuario", form)

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
+export const USER_LOGIN = "USER_LOGIN"
 
 export function getAllProducts() {
   return function (dispatch) {
@@ -10,5 +11,12 @@ export function getAllProducts() {
         payload: products.data,
       });
     });
+  };
+}
+
+export function userLoggedIn(estado) {
+  return {
+    type: USER_LOGIN,
+    payload: estado,
   };
 }

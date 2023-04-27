@@ -1,6 +1,9 @@
-import { GET_ALL_PRODUCTS } from '../actions';
+import { GET_ALL_PRODUCTS, USER_LOGIN } from '../actions';
 
-const initialState = { products: [], filteredProducts: [] };
+const initialState = { products: [],
+   filteredProducts: [],
+   logIn: false
+  };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -10,6 +13,11 @@ export default function reducer(state = initialState, action) {
         products: action.payload,
         filteredProducts: action.payload,
       };
+      case USER_LOGIN:
+        return {
+          ...state,
+          logIn: action.payload,
+        };
     default:
       return state;
   }
