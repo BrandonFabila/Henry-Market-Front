@@ -14,6 +14,7 @@ button:hover {
 }
 
 body {
+  color: rgb(19, 19, 19);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

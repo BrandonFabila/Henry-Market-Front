@@ -3,17 +3,17 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    min-height: 70px;
+    min-height: 60px;
     position: fixed;
     top: 0;
-    z-index: 500;
+    z-index: 800;
     color: white;
     background-color: var(--blue-color);
 }
 
 .logo {
     height: 60px;
-    width: 60px;  
+    width: 60px;
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -23,7 +23,7 @@
     display: none;
 
     height: 35px;
-    width: 190px;  
+    width: 190px;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -45,6 +45,34 @@
     transform: scale(1.1);
 }
 
+.menuDesplegable {
+    display: none;
+}
+
+.link_menu {
+    text-decoration: none;
+    color: rgb(19, 19, 19);
+}
+
+.link_menu:hover {
+    background-color: var(--yellow-color);
+}
+
+.link_text {
+    padding: 0;
+    margin: 0;
+    transition: 0.1s;
+    width: 200px;
+}
+
+.link_text h4 {
+    margin: 8px 0px;
+}
+
+.link_text:hover {
+    background-color: var(--yellow-color);
+}
+
 
 @media (min-width: 820px) {
     .menu {
@@ -53,6 +81,16 @@
 
     .iniciar_sesion {
         display: block;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .iniciar_sesion:hover {
+        color: var(--yellow-color);
+    }
+
+    .hmarket:hover {
+        color: var(--yellow-color);
     }
 
     .logo {
@@ -62,4 +100,23 @@
     .logocompleto {
         display: block;
     }
+
+    .menuDesplegable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        width: 200px;
+        height: 150px;
+        z-index: 100;
+        top: 100%;
+        right: 8%;
+        background-color: rgba(255, 255, 255, 0.589);
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.712);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    
 }

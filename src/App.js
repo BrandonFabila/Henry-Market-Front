@@ -4,7 +4,6 @@ import Products from './components/Products/Products';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 function App() {
-  const location = useLocation()
 
   return (
     <div className="App">
