@@ -15,7 +15,6 @@ export default function FormRegister() {
   useEffect(() => {
   }, [dispatch]);
 
-  console.log(typeof ciudades.id_ciudad);
   const [form, setForm] = useState({
     primer_nombre: "",
     primer_apellido: "",
