@@ -5,6 +5,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
 function App() {
+
   return (
     <div className="App">     
         <Route exact path="/" component={HomePrincipal} />
