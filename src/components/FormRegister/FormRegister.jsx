@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 import validations from "./validations";
 import {  useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
@@ -153,7 +153,7 @@ export default function FormRegister() {
     <>
 
       {shouldRedirect ? (
-        <Redirect to="/log-in" />
+        <Navigate to="/log-in" replace={true} />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
