@@ -5,7 +5,9 @@ const initialState = { products: [],
   copyProducts:[],
    filteredProducts: [],
    logIn: false,
-   categorys:[]
+   categorys:[],
+   display: false,
+
   };
 
 export default function reducer(state = initialState, action) {

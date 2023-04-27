@@ -5,7 +5,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
 import NavBar from "./components/NavBar/NavBar"
-
+import Home from './pages/Home/Home';
 function App() {
   const location = useLocation()
 
@@ -14,6 +14,7 @@ function App() {
       {location.pathname === '/log-in' ? null : <NavBar />}
       <Routes>
         <Route exact path="/" element={<HomePrincipal />} />
+        <Route exact path="/home" element={<Home />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/registrar-usuario" element={<Register />} />
         <Route exact path="/log-in" element={<Login />} />
