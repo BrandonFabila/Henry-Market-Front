@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Products from './components/Products/Products';
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
-  const location = useLocation()
 
   return (
     <div className="App">
+      <NavBar />
       <Routes>
         <Route path="/" element={<Products />} />
       </Routes>

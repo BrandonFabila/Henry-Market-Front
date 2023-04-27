@@ -8,6 +8,7 @@
     width: 150px;
 }
 
+
 .input {
     border: none;
     outline: none;
@@ -31,6 +32,6 @@
 
 @media (min-width: 820px) {
     .container {
-        width: 300px;
+        width: 500px;
     }
 }
