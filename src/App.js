@@ -3,6 +3,8 @@ import './App.css';
 import Products from './components/Products/Products';
 
 function App() {
+  const location = useLocation()
+
   return (
     <div className="App">
       <Routes>
