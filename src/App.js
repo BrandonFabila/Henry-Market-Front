@@ -7,16 +7,19 @@ import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
 import NavBar from "./components/NavBar/NavBar"
 import Home from './pages/Home/Home';
 import Detail from './pages/Detail/Detail';
+import Footer from './components/Footer/Footer'
+import Pay from './pages/payment/Pay'
 import About from './pages/About/About';
-import Footer from './components/Footer/Footer';
 
 function App() {
   const location = useLocation()
 
   return (
     <div className="App">
-      {location.pathname === '/log-in' ? null : <NavBar />}
+      {/* {location.pathname === '/log-in' ? null : <NavBar />} */}
+      {location.pathname === '/pay' ? null : <NavBar />}
       <Routes>
+        <Route exact path='/pay' element={<Pay />} />
         <Route exact path="/" element={<HomePrincipal />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/products/:id_producto" element={<Detail />} />
