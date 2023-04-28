@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Detail from './pages/Detail/Detail';
 import Footer from './components/Footer/Footer'
 import Pay from './pages/payment/Pay'
+import About from './pages/About/About';
 
 function App() {
   const location = useLocation()
@@ -21,10 +22,12 @@ function App() {
         <Route exact path='/pay' element={<Pay />} />
         <Route exact path="/" element={<HomePrincipal />} />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/detail_Product/:id_producto" element={<Detail />} />
-        <Route exact path="/products" element={<Products />} />
-        <Route exact path="/registrar-usuario" element={<Register />} />
+        <Route exact path="/products/:id_producto" element={<Detail />} />
+        <Route exact path="/products/:categoria" element={<Products />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/log-in" element={<Login />} />
+       <Route exact path="/about" element={<About />} />
+        {/* <Route exact path="/producto" element={<CreateProduct/>} /> */}
       </Routes>
       <Footer />
     </div>

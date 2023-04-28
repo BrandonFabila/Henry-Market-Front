@@ -14,7 +14,7 @@ const henry = Henry
                 <div className={styles.nombres}>
                     <a
                     className= {styles.links}
-                    href="https://github.com/BrandonFabila/Henry-Market-Front"
+                    href="https://www.linkedin.com/in/DanielCastillo97/"
                     target="_blank"
                     rel="noreferrer">
                         Daniel Castillo
@@ -28,7 +28,7 @@ const henry = Henry
                     </a>
                     <a
                     className= {styles.links}
-                    href="https://github.com/BrandonFabila/Henry-Market-Front"
+                    href="https://www.linkedin.com/in/jhojan-alfredo-cruz-portillo-0b09661b8/"
                     target="_blank"
                     rel="noreferrer">
                         Jhojan Cruz
