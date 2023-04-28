@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY} from '../actions';
+=======
+import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
+>>>>>>> 1bf4f54ed3e6ad5d39b6c1c648ca875e3ece175d
 
 const initialState = { 
     products: [],
@@ -19,8 +23,16 @@ export default function reducer(state = initialState, action) {
         productsFitered: action.payload,
         copyProducts: action.payload,
       };
+<<<<<<< HEAD
       case GET_PRODUCT_BY_ID:
       return { ...state, product: action.payload };
+=======
+      case GET_PRODUCT_BY_NAME:
+        return {
+          ...state,
+          productsFitered: action.payload,
+        };
+>>>>>>> 1bf4f54ed3e6ad5d39b6c1c648ca875e3ece175d
       case USER_LOGIN:
         return {
           ...state,
@@ -30,6 +42,16 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         categorys: action.payload,
+      };
+      case READY:
+      return {
+        ...state,
+        display: false,
+      };
+      case LOADING:
+      return {
+        ...state,
+        display: true,
       };
       case GET_PRODUCT_BY_CATEGORY:
       return {

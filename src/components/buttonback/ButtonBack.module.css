@@ -1,0 +1,6 @@
+.button {
+    width: 350px;
+    height: 35px;
+    border-radius: 1.5rem; 
+    box-shadow: -3px 3px var(--blue-color);
+}

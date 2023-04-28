@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import styles from './ButtonBack.module.css'
 export default function ButtonBack() {
 const navigate = useNavigate();
 
@@ -8,7 +8,7 @@ function onClick() {
 }
 
 return (
-    <button onClick={onClick} style={{ borderRadius: '0', boxShadow: '-3px 3px rgb(0, 128, 0)', position: 'absolute', left: '20px', top: '25px' }}>
+    <button onClick={onClick} className={styles.button}>
         Volver al inicio
     </button>
 )
