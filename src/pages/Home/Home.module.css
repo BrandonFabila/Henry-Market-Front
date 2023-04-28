@@ -1,10 +1,4 @@
-.section {/*
-    display: flex;
-    height: 100%;
-    width: 100vw;
-    padding-bottom:2.5rem;
-    margin-top:0;
-    margin-bottom: 100px;*/
+.section {
     justify-content: center;
     justify-items: center;
     display: flex;
@@ -12,21 +6,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.content {
-    /*
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    margin-top:1rem;
-    margin-bottom:0;
-    */
-
-   
-}
-
-
-
 
 .cards {
     display: flex;
