@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Product from '../Product/Product';
 import styles from './Products.module.css';
-// import Loader from '../Loader/Loader';
+import Loader from '../loader/loader';
 
 export default function Products() {
 
@@ -33,8 +33,7 @@ export default function Products() {
     <div className={styles.container}>
       
       {display ? (
-        // <Loader />
-        ""
+        <Loader />
       ) : (
         <>
           <div className={styles.product}>

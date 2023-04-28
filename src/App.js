@@ -7,6 +7,7 @@ import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
 import NavBar from "./components/NavBar/NavBar"
 import Home from './pages/Home/Home';
 import Detail from './pages/Detail/Detail';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const location = useLocation()
@@ -21,7 +22,7 @@ function App() {
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/registrar-usuario" element={<Register />} />
         <Route exact path="/log-in" element={<Login />} />
-        <Route exact path="/producto" element={<CreateProduct/>} />
+        {/* <Route exact path="/producto" element={<CreateProduct/>} /> */}
       </Routes>
       <Footer />
     </div>
