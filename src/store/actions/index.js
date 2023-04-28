@@ -4,6 +4,9 @@ export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const USER_LOGIN = "USER_LOGIN"
 export const GET_CATEGORY = "GET_CATEGORY"
 export const GET_PRODUCT_BY_CATEGORY = "GET_PRODUCT_BY_CATEGORY"
+export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME"
+export const LOADING = "LOADING"
+export const READY = "READY"
 
 const api_host= "http://localhost:3001";
 
@@ -39,3 +42,31 @@ export const getProductByCategory = (category) => {
   return { type: GET_PRODUCT_BY_CATEGORY, payload: category };
 };
 
+export const getProductByName = (name) => async (dispatch) => {
+  // return { type: action.GET_PRODUCT_BY_NAME, payload: name };
+  try {
+    dispatch(loading());
+    const res = await axios.get(`${api_host}/products?name=${name}`);
+    const result = res.data;
+    console.log(result);
+     dispatch({
+      type: GET_PRODUCT_BY_NAME,
+      payload: result,
+    });
+    dispatch(ready());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export function loading() {
+  return {
+    type: LOADING,
+  };
+}
+
+export function ready() {
+  return {
+    type: READY,
+  };
+}
