@@ -9,10 +9,10 @@ const henry = Henry
         <div style={{minHeight: "100%", position: "relative", height:"100%"}}>
             <div className={styles.container}>
                 <div>
-                    <img className={styles.logo} src={logo} />
+                    <img className={styles.logo} src={logo} alt='HenryMarketLogo' />
                 </div>
                 <div className={styles.nombres}>
-                <a
+                    <a
                     className= {styles.links}
                     href="https://www.linkedin.com/in/DanielCastillo97/"
                     target="_blank"
@@ -51,7 +51,7 @@ const henry = Henry
                     
                 </div>
                 <div >
-                    <img className={styles.henry} src={henry} />
+                    <img className={styles.henry} src={henry} alt="HenryLogo" />
                 </div>
             </div>
         </div>

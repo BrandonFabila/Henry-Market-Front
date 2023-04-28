@@ -13,7 +13,6 @@ const Detail = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const imagen = load;
-    console.log(id_producto);
 
   useEffect(() => {
     setLoading(true);
@@ -28,10 +27,10 @@ const Detail = () => {
         ) : (
             <div className={styles.container}>
                 <div>
-                        <Link to={"/Home"}>
-                            <button>Back</button>
+                        <Link to={"/home"}>
+                            <button className={styles.button} >Back</button>
                         </Link>
-                    </div>
+                </div>
                 <div style={{ position: "relative" }}>
                     <div>
                     <img className={styles.image} src={product.imagen} alt={product.nombre} />
