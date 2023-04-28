@@ -1,20 +1,21 @@
 import React from "react";
-import styles from "./Home.module.css";
 import Products from "../../components/Products/Products";
+import SideBar from '../../components/SideBar/SideBar'
+import s from "./Home.module.css";
 
 
 function Home() {
 
   return (
-    <>
-      <section className={styles.section}>
-          <div className={styles.cards}>
-            <div className={styles.content_cards}>
-                <Products/>
-            </div>
-          </div>
-      </section>
-    </>
+    <div className={s.container}>
+      <div className={s.sidebar}>
+        <SideBar />
+      </div>
+      
+      <div className={s.products}>
+        <Products />
+      </div>
+    </div>
   );
 }
 
