@@ -1,14 +1,57 @@
 .container {
-    background-color: white;
-    height: auto;
+    /* background-color: white; */
+    justify-content: center;
+    align-content: center;
+    display: flex;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(116, 116, 116, 0.548);
 }
 
+.formContainer {
+    margin: 20px;
+    background-color: var(--blue-color);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 1.5rem;
+    width: 400px;
+}
+
+.formInput{
+    width: 320px;
+    height: 35px;
+    margin-top: 25px;
+    border-radius: 5rem;
+    letter-spacing: 0.05em;
+    color: black;
+}
+
 .botones {
     margin-top: 20px;
     margin-bottom: 0.20rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.botonLogin{
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.or{
+    margin: 30px;
+}
+
+.boton {
+    width: 150px;
+    border-radius: 5rem;
+    height: 30px;
 }
 
 .botonRedes {
@@ -21,8 +64,8 @@
 }
 
 .btnRedes {
-    width: 20px;
-    height: 20px;
+    width: 27.5px;
+    height: 27.5px;
     object-fit: cover;
     transition: 0.1s;
 }

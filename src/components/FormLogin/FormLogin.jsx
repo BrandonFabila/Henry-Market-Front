@@ -1,16 +1,17 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
-import { useHistory } from 'react-router-dom';
 import validation from './validation'
 import swal from 'sweetalert'
 import axios from 'axios'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Google from "../../assets/images/IconGoogle.png"
 import { userLoggedIn } from "../../store/actions/index"
+import { useNavigate } from 'react-router';
+import styles from "./FormLogin.module.css"
+
 
 import Cookies from 'js-cookie';
-import styles from "./FormLogin.module.css"
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -42,9 +43,9 @@ export default function FormLogin() {
     const iconGoogle = Google;
 
     const BACK_HOST = 'http://localhost:3001'
-    const history = useHistory()
+    const navigate = useNavigate();
     const navigateTo = (url) => {
-        history.push(url)
+        navigate(url);
     }
 
     function login(user) {
@@ -136,8 +137,7 @@ const handleLogin = async (values) => {
         }
     }
     return (
-        <div className={styles.container}
-        >
+        <div className={styles.container}>
             <Formik
                 initialValues={{
                     email: '',
@@ -148,32 +148,29 @@ const handleLogin = async (values) => {
                 validateOnBlur={false}
                 validateOnChange={false}
             >
-                <Form className='form-container'>
 
-                    <Field name='email' type='email' placeholder='Email' className='form-input' />
-                    <ErrorMessage name='email' />
+                <Form className={styles.formContainer}>
+                  <h1>Login</h1>
+                  <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
+                  <ErrorMessage name='email' />
+                  <Field name='password' type='password' placeholder='Password' className={styles.formInput} />
+                  <ErrorMessage name='password' />
 
-                    <Field name='password' type='password' placeholder='Password' className='form-input' />
-                    <ErrorMessage name='password' />
-
-                    <div className={styles.botones}
-                    >
-                        <button  className={styles.boton} type='submit' >Iniciar sesión</button>
-
-                        <div className='or'>
-                            <div style={{ border: '1px solid grey', width: '90px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '90px' }}></div>
-                        </div>
-
-                        <Link to={'/registrar-usuario'}>
-                            <button type="button" className={styles.boton}>Registrarse</button>
-                        </Link>
-                    </div>
-
+                  <div className={styles.botones}>
+                    <button  className={styles.botonLogin} type='submit' >Iniciar sesión</button>
                     <div>
-                            <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} /></button>
-                     </div>
+                        <div style={{ border: '1px solid grey', width: '150px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '150px' }}></div>
+                    </div>
+                    <Link to={'/registrar-usuario'}>
+                        <button type="button" className={styles.boton}>Registrarse</button>
+                    </Link>
+                  </div>
+                  <div className={styles.or} >
+                          <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} /></button>
+                  </div>
 
                 </Form>
+
             </Formik>
         </div>
     )
