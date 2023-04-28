@@ -1,7 +1,7 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import { Link, useLocation, NavLink } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
@@ -13,8 +13,8 @@ import { useState, useEffect } from "react";
 
 export default function NavBar() {
     const location = useLocation()
-    const dispatch = useDispatch()
-    const estaLogueado = window.localStorage.getItem("estaLogueado");
+    // const dispatch = useDispatch()
+    // const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 

@@ -9,12 +9,12 @@ const henry = Henry
         <div style={{minHeight: "100%", position: "relative", height:"100%"}}>
             <div className={styles.container}>
                 <div>
-                    <img className={styles.logo} src={logo} />
+                    <img className={styles.logo} src={logo} alt='HenryMarketLogo' />
                 </div>
                 <div className={styles.nombres}>
-                <a
+                    <a
                     className= {styles.links}
-                    href=""
+                    href="https://github.com/BrandonFabila/Henry-Market-Front"
                     target="_blank"
                     rel="noreferrer">
                         Daniel Castillo
@@ -28,7 +28,7 @@ const henry = Henry
                     </a>
                     <a
                     className= {styles.links}
-                    href=""
+                    href="https://github.com/BrandonFabila/Henry-Market-Front"
                     target="_blank"
                     rel="noreferrer">
                         Jhojan Cruz
@@ -51,7 +51,7 @@ const henry = Henry
                     
                 </div>
                 <div >
-                    <img className={styles.henry} src={henry} />
+                    <img className={styles.henry} src={henry} alt="HenryLogo" />
                 </div>
             </div>
         </div>
