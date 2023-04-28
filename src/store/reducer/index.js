@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY} from '../actions';
+import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
 
 const initialState = { products: [],
   productsFitered:[],
@@ -18,6 +18,11 @@ export default function reducer(state = initialState, action) {
         products: action.payload,
         filteredProducts: action.payload,
       };
+      case GET_PRODUCT_BY_NAME:
+        return {
+          ...state,
+          productsFitered: action.payload,
+        };
       case USER_LOGIN:
         return {
           ...state,
@@ -27,6 +32,16 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         categorys: action.payload,
+      };
+      case READY:
+      return {
+        ...state,
+        display: false,
+      };
+      case LOADING:
+      return {
+        ...state,
+        display: true,
       };
       case GET_PRODUCT_BY_CATEGORY:
       return {

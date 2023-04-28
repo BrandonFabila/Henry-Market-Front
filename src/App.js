@@ -6,6 +6,9 @@ import Login from './pages/login/Login';
 import HomePrincipal from './pages/HomePrincipal/HomePrincipal';
 import NavBar from "./components/NavBar/NavBar"
 import Home from './pages/Home/Home';
+import Footer from './components/Footer/Footer';
+import CreateProduct from './pages/CreateProduct/CreateProduct';
+
 function App() {
   const location = useLocation()
 
@@ -18,7 +21,9 @@ function App() {
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/registrar-usuario" element={<Register />} />
         <Route exact path="/log-in" element={<Login />} />
+        <Route exact path="/producto" element={<CreateProduct/>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
