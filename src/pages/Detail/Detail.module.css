@@ -15,6 +15,19 @@
     align-self: flex-start;
 }
 
+.button{
+    width: 100px;
+    border-radius: 5rem;
+    height: 25px;
+    background-color: var(--blue-color);
+    color: white;
+    font-size: large;
+}
+
+button:hover{
+    color: black;
+}
+
 div>.image {
     width: auto;
     height: auto;

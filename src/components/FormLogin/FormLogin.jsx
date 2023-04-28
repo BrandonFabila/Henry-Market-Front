@@ -36,7 +36,7 @@ export default function FormLogin() {
 
   const estado = true
 
-  const logOut = false
+  // const logOut = false
 
     const dispatch = useDispatch()
 
@@ -166,7 +166,7 @@ const handleLogin = async (values) => {
                     </Link>
                   </div>
                   <div className={styles.or} >
-                          <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} /></button>
+                          <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' /></button>
                   </div>
 
                 </Form>
