@@ -1,5 +1,5 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { Link, useLocation, NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 // import { useDispatch } from 'react-redux'
 
@@ -49,9 +49,9 @@ export default function NavBar() {
                 <div className={s.logocompleto} style={{ backgroundImage: `url(${logoCompleto})` }}></div>
             </Link>
 
-            <NavLink style={{ textDecoration: 'none', color: 'white', fontWeight: '500', fontSize: '17px' }} className={s.about}>
+            <Link to="/about" style={{textDecoration: 'none', color: 'white', fontWeight: '500', fontSize: '17px'}} className={s.hmarket}>
                 ¿Qué es hMarket?
-            </NavLink>
+            </Link>
 
             <div className={s.search}><SearchBar /></div>
 

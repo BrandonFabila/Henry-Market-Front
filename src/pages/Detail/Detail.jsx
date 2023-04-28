@@ -43,7 +43,7 @@ const Detail = () => {
                     <h1>{product.nombre}</h1>
 
                     <h4 className={styles.descripcion_producto}>{product.descripcion_producto}</h4>
-                    <h5>Stock:{product.stock}</h5>
+                    <h5>Stock: {product.stock > 1 ? 'Disponible ✔' : 'No hay Existencias ✘' }</h5>
                 </div>
 
                 <div className={styles.precios}>
