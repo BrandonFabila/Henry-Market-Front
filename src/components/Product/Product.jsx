@@ -3,7 +3,7 @@ import styles from './Product.module.css';
 
 export default function Product({ nombre, imagen, valor, id_producto, Categoria_producto }) {
   return (
-    <Link className={styles.link} to={`/detail_Product/${id_producto}`}>
+    <Link className={styles.link} to={`/products/${id_producto}`}>
       <div className={styles.container}>
         <div className={styles.img}>
           <img src={imagen} alt={nombre} />

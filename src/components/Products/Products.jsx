@@ -22,25 +22,20 @@ export default function Products() {
       
       
   const MAX_PAGES = 10;
-  // const paginas = [];
   const paginas = [];
-const numPaginas = Math.ceil(productsFitered.length / grupo);
-/*XX  */
-if (numPaginas > MAX_PAGES) {
-  let startPage = Math.max(1, numeroPagina - Math.floor(MAX_PAGES / 2));
-  let endPage = Math.min(numPaginas, startPage + MAX_PAGES - 1);
-  for (let i = startPage; i <= endPage; i++) {
-    paginas.push(i);
-  }
-} else {
-  for (let i = 1; i <= numPaginas; i++) {
-    paginas.push(i);
-  }
-}
-/*xx*/
+  const numPaginas = Math.ceil(productsFitered.length / grupo);
 
-  // const numPaginas = Math.ceil(productsFitered.length / grupo);
-
+  if (numPaginas > MAX_PAGES) {
+    let startPage = Math.max(1, numeroPagina - Math.floor(MAX_PAGES / 2));
+    let endPage = Math.min(numPaginas, startPage + MAX_PAGES - 1);
+    for (let i = startPage; i <= endPage; i++) {
+      paginas.push(i);
+    }
+  } else {
+    for (let i = 1; i <= numPaginas; i++) {
+      paginas.push(i);
+    }
+  }
   
   const allPages = Array.from({ length: numPaginas }, (_, index) => index + 1);
 
@@ -60,7 +55,6 @@ if (numPaginas > MAX_PAGES) {
     <div className={styles.container}>
       {display ? (
         <Loader />
-        
       ) : (
         <>
 
