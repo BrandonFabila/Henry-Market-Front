@@ -9,8 +9,8 @@ export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME"
 export const LOADING = "LOADING"
 export const READY = "READY"
 
-// const api_host= "http://localhost:3001";
-const api_host = 'https://henry-market-back-production.up.railway.app'
+const api_host= "http://localhost:3001";
+// const api_host = 'https://henry-market-back-production.up.railway.app'
 
 export function getAllProducts() {
   return function (dispatch) {
