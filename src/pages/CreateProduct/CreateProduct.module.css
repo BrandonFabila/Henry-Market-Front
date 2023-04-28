@@ -1,0 +1,32 @@
+    .contenedor{
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        margin-top: 30px;
+        background-color: yellow;
+    
+    }
+
+    .titulo{
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        margin-bottom: 50px;
+        
+    }
+
+    .texto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 50%;
+        padding: 40px;
+        font-size: 20px;
+    }
+
+    .aux{
+        display: flex;    
+        justify-content: space-around;
+    }
+

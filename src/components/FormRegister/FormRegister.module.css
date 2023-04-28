@@ -1,0 +1,97 @@
+.contenedor {
+    background-color: #fff; /* Fondo blanco para el contenedor */
+    padding: 20px;
+    background-color: yellow;
+    
+  }
+  
+  .form-container {
+    background-color: #fff; /* Fondo blanco para el contenedor del formulario */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  .imageFile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 180px;
+    height: 130px;
+    width: 130px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+  
+  .form-input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #f5f5f5; /* Fondo gris claro para los campos de entrada */
+  }
+  
+  .form-input:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px #ffca28; /* Resaltar el campo activo con un borde amarillo */
+  }
+  
+  .label {
+    color: #424242; /* Texto gris oscuro para las etiquetas */
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .errors {
+    color: #f44336; /* Texto rojo para los mensajes de error */
+    margin-top: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #2196f3; /* Fondo azul para el botón de enviar */
+    border: none;
+    border-radius: 5px;
+    color: #fff; /* Texto blanco para el botón de enviar */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ffca28; /* Cambiar el fondo del botón a amarillo al pasar el cursor */
+  }
+  
+  .contenedorForm{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    background-color: #97978D;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.nombres{
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.apellidos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.contenedorDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label{
+    font-size: 20px;
+    margin: 0;
+}
