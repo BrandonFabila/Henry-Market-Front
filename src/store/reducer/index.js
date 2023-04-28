@@ -1,13 +1,12 @@
 import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
 
-const initialState = { products: [],
-  productsFitered:[],
-  copyProducts:[],
-   filteredProducts: [],
-   logIn: false,
-   categorys:[],
-   display: false,
-
+const initialState = { 
+    products: [],
+    productsFitered:[],
+    copyProducts:[],
+    logIn: false,
+    categorys:[],
+    display: false,
   };
 
 export default function reducer(state = initialState, action) {
@@ -16,7 +15,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
-        filteredProducts: action.payload,
+        productsFitered: action.payload,
+        copyProducts: action.payload,
       };
       case GET_PRODUCT_BY_NAME:
         return {
