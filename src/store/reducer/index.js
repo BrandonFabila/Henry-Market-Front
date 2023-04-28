@@ -1,7 +1,8 @@
-import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY} from '../actions';
+import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY} from '../actions';
 
 const initialState = { 
     products: [],
+    product: {},
     productsFitered:[],
     copyProducts:[],
     logIn: false,
@@ -18,6 +19,8 @@ export default function reducer(state = initialState, action) {
         productsFitered: action.payload,
         copyProducts: action.payload,
       };
+      case GET_PRODUCT_BY_ID:
+      return { ...state, product: action.payload };
       case USER_LOGIN:
         return {
           ...state,
