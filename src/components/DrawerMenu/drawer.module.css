@@ -1,0 +1,109 @@
+li {
+    text-align: start;
+    font-weight: lighter;
+    padding: 0.5rem;
+    list-style: none;
+
+}
+
+.nav_contenedor {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    width: 200px;
+    height: 100%;
+    margin-top: 4.5rem;
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    padding-inline: 1rem;
+}
+
+.nav_link {
+    color: #303440;
+    display: inline-block;
+    padding: auto;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.list {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: center;
+    background-color: transparent;
+}
+
+.list_item {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+
+}
+
+
+.list_item_click {
+    cursor: pointer;
+}
+
+.list_button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding-inline: 1rem 0;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #303440;
+
+}
+
+.list_button img {
+    opacity: 0.5;
+}
+
+
+.list_show {
+    width: 80%;
+    list-style: none;
+    transition: height .4s;
+    height: auto;
+}
+
+.list_show>li {
+    border-radius: 6px;
+    padding-left: 10px;
+    display: block;
+}
+
+.list_button>span:hover {
+    color: rgb(47, 204, 7);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.list {
+    margin-left: 8px;
+    font-size: 0.9rem;
+
+}
+
+.list:hover,
+.list:active,
+.list:focus {
+    color: rgb(47, 204, 7);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav_link:hover,
+.nav_link:active,
+.nav_link:focus {
+    color: rgb(47, 204, 7);
+
+}
