@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
+export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 export const USER_LOGIN = "USER_LOGIN"
 export const GET_CATEGORY = "GET_CATEGORY"
 export const GET_PRODUCT_BY_CATEGORY = "GET_PRODUCT_BY_CATEGORY"
@@ -19,6 +20,13 @@ export function getAllProducts() {
         payload: products.data,
       });
     }).catch(err => console.log(err)) 
+  };
+};
+
+export const getProductById = (id_producto) => {
+  return async function (dispatch){
+      const {data} = await axios.get(`${api_host}/products/${id_producto}`);
+      dispatch({type: GET_PRODUCT_BY_ID, payload: data});
   };
 }
 
