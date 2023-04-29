@@ -1,7 +1,8 @@
-import { GET_ALL_PRODUCTS, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
+import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
 
 const initialState = { 
     products: [],
+    product: {},
     productsFitered:[],
     copyProducts:[],
     logIn: false,
@@ -18,6 +19,8 @@ export default function reducer(state = initialState, action) {
         productsFitered: action.payload,
         copyProducts: action.payload,
       };
+      case GET_PRODUCT_BY_ID:
+      return { ...state, product: action.payload };
       case GET_PRODUCT_BY_NAME:
         return {
           ...state,
@@ -43,22 +46,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         display: true,
       };
-      case GET_PRODUCT_BY_CATEGORY:
-      return {
+     case GET_PRODUCT_FILTERED:
+      return{
         ...state,
-        productsFitered: [...state.products].filter((product) => {
-          return (
-            product.Categoria_producto.nombre_categoria_producto ===
-            action.payload
-          );
-        }),
-        copyProducts: [...state.products].filter((product) => {
-          return (
-            product.Categoria_producto.nombre_categoria_producto ===
-            action.payload
-          );
-        }),
-      };
+        productsFitered:action.payload
+      }
     default:
       return state;
   }

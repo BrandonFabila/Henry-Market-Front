@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Product from '../Product/Product';
 import styles from './Products.module.css';
-import Loader from "../loader/loader"
+import Loader from '../loader/loader';
 
 export default function Products() {
 
@@ -20,23 +20,45 @@ export default function Products() {
       : [];
 
       
-
+      
+  const MAX_PAGES = 10;
   const paginas = [];
-
   const numPaginas = Math.ceil(productsFitered.length / grupo);
 
+  if (numPaginas > MAX_PAGES) {
+    let startPage = Math.max(1, numeroPagina - Math.floor(MAX_PAGES / 2));
+    let endPage = Math.min(numPaginas, startPage + MAX_PAGES - 1);
+    for (let i = startPage; i <= endPage; i++) {
+      paginas.push(i);
+    }
+  } else {
+    for (let i = 1; i <= numPaginas; i++) {
+      paginas.push(i);
+    }
+  }
+  
+  const allPages = Array.from({ length: numPaginas }, (_, index) => index + 1);
+
+  let pagesToShow = allPages;
+  
+  if (numPaginas > MAX_PAGES) {
+    const startPage = Math.max(numeroPagina - Math.floor(MAX_PAGES / 2), 1);
+    const endPage = Math.min(startPage + MAX_PAGES - 1, numPaginas);
+    pagesToShow = allPages.slice(startPage - 1, endPage);
+  }
+  
   for (let i = 1; i <= numPaginas; i++) {
     paginas.push(i);
   }
 
   return (
     <div className={styles.container}>
-      
       {display ? (
          <Loader />
 
       ) : (
         <>
+
           <div className={styles.product}>
             {aux.length ? aux.map((product, index) => (
              product.estado === false || product.existencia === 0 ? null 
@@ -52,39 +74,31 @@ export default function Products() {
             <p>No hay coincidencias</p> </div>}
           </div>
           {productsFitered.length >= 9 && (
-          
-          <div>
-            <div className={styles.paginadoAbj}>
-              <div>
-                <button
-                  onClick={() => setNumeroPagina(numeroPagina - 1)}
-                  disabled={numeroPagina === 1}
-                >
-                  ◄
-                </button>
-                {paginas.map((pagina) => (
-                  <button
-                    key={pagina}
-                    className={`btnPag ${
-                      pagina === numeroPagina ? "active" : ""
-                    }`}
-                    onClick={() => setNumeroPagina(pagina)}
-                  >
-                    {pagina}
-                  </button>
-                ))}
-                <button
-                  className="btnPag"
-                  onClick={() => setNumeroPagina(numeroPagina + 1)}
-                  disabled={
-                    numeroPagina === Math.ceil(productsFitered?.length / grupo)
-                  }
-                >
-                  ►
-                </button>
+            <div>
+              <div className={styles.paginadoAbj}>
+                <div>
+                  {numeroPagina > 1 && (
+                    <button class="prev-page" onClick={() => setNumeroPagina(numeroPagina - 1)}>◄</button>
+                  )}
+
+                  {pagesToShow.map((pagina) => (
+                    <button
+                      key={pagina}
+                      class="current"
+                      className={`btnPag ${pagina === numeroPagina ? styles.activePage : ""}`}
+                      onClick={() => setNumeroPagina(pagina)}
+                    >
+                      {pagina}
+                    </button>
+                  ))}
+
+                  {numeroPagina < numPaginas && (
+                    <button class="next-page" onClick={() => setNumeroPagina(numeroPagina + 1)}>►</button>
+                  )}
+                </div>
+
               </div>
             </div>
-          </div>
           )}
         </>
       )}

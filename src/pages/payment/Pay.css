@@ -1,0 +1,26 @@
+.container {
+    max-width: 370px;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    border-color: #000000;
+      border-width: 5rem;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0px;
+    margin-left: -0px;
+  }
+  
+  .col-md-4 {
+    flex: 100% 100% 100%;
+    max-width: 95%;
+  }
+  
+  
+  .offset-md-4 {
+    margin-left: 0%;
+  }
+  
