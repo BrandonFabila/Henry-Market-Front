@@ -1,87 +1,60 @@
-.container {
-    height: 300px;
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #fdff00;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
-    transition: 0.3s;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-}
 
-.container:hover {
-    transform: scale(1.05);
-    z-index: 1;
-    border-radius: 50%;
+.img{
+  height: 75%;
+  width: 100%;
 }
 
 .nombre {
-    font-size: 16px;
-    margin: 10px 0;
-    color: #000000;
-    text-transform: uppercase;
+  font-size: 16px;
+  margin: 10px 0;
+  color: #000000;
+  /* text-transform: uppercase; */
 }
 
-.box {
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+.card {
+  height: 350px;
+  width: 350px;
+  margin: 10px;
+  cursor: pointer;
 }
 
-.imagen {
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    transition: 0.3s;
-    border-radius: 75%;
-    overflow: hidden;
-    object-fit: cover;
+.conttainer {
+  border-radius: 1rem;
+  height: 300px;
+  width: 370px;
+  text-align: center;
+  position: relative;
+  transition: all 1.75s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.466);
+  transform-style: preserve-3d;
 }
 
-.imagen:before {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    opacity: 0;
-    transition: 0.3s;
-    border-radius: 50%;
-}
-.imagen:hover:before {
-    opacity: 1;
+.card:hover .conttainer {
+  transform: rotateY(0.5turn);
 }
 
-.link {
-    text-decoration: none;
-    color: black;
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 2em;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
-.link:hover{
-    color: #0000ff;
+.back {
+  justify-content: center;
+  border-radius: 1rem;
+  align-items: center;
+  display: flex;
+  transform: rotateY(0.5turn);
+  color: white;
+  background-color: #009bff;
 }
 
-.vermas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #000000;
+.description {
+  transform: translateZ(3rem);
 }
