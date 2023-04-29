@@ -27,6 +27,7 @@
 
 .paginadoAbj button {
   padding: 10px 15px;
+  width: 50px;
   margin: 5px;
   border-radius: 1rem;
 }
