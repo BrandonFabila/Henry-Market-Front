@@ -12,13 +12,17 @@ function CardCategory({ id_categoria_producto, nombre_categoria_producto, imagen
   }
 
   return (
-    <Link className={s.link} to={`/products/categoria/${id_categoria_producto}`} onClick={handlerCategory} >
-      <div className={s.container}>
-        <h4 className={s.nombre}>{nombre_categoria_producto}</h4>
-        <div className={s.box}>
-          <div style={{ backgroundImage: `url(${imagen_categoria_producto})` }} className={s.imagen}></div>
+    <Link className={s.card} to={`/products/categoria/${id_categoria_producto}`} onClick={handlerCategory} >
+      <div className={s.conttainer}>
+        <div className={s.front}>
+          <h4 className={s.nombre}>{nombre_categoria_producto}</h4>
+          <img src={imagen_categoria_producto} alt={nombre_categoria_producto} className={s.img} />
         </div>
-        <span className={s.vermas}>Explorar más...</span>
+        <div className={s.back}>
+          <div>
+            <h3>Explorar más {nombre_categoria_producto} ...</h3>
+          </div>
+        </div>
       </div>
     </Link>
   )

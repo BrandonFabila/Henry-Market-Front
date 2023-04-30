@@ -10,6 +10,7 @@ import Detail from './pages/Detail/Detail';
 import Footer from './components/Footer/Footer'
 import Pay from './pages/payment/Pay'
 import About from './pages/About/About';
+import FormCreateProduct from './components/admin/formCreateProduct/FormCreateProduct';
 function App() {
   const location = useLocation()
 
@@ -27,7 +28,7 @@ function App() {
        <Route exact path="/about" element={<About />} />
        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
 
-        {/* <Route exact path="/producto" element={<CreateProduct/>} /> */}
+         <Route exact path="/producto" element={<FormCreateProduct/>} /> 
       </Routes>
       <Footer />
     </div>

@@ -15,9 +15,9 @@ export default function FormCreateProduct() {
 
   const dispatch = useDispatch();
 
-  /*const session = Cookies.get("commerce_session");
+  const session = Cookies.get("user_session");
   let values = JSON.parse(session)
-  let commerce = values.dataValues*/
+  let user = values.dataValues
 
   useEffect(() => {
     dispatch(getCategorys());
@@ -139,6 +139,7 @@ export default function FormCreateProduct() {
     stock: "",
     id_categoria_producto: "",
     imagen: "",
+    admin: user.admin
   });
 
   return (
