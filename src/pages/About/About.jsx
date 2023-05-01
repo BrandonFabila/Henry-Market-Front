@@ -43,6 +43,51 @@ const About = () => {
           <br/>
           Si estás buscando expandir tu negocio y llegar a nuevos mercados, ¡no dudes en unirte a HENRY MARKET!
         </p>
+        <p>
+          <br />
+          <br />
+          <br />
+          Nuestro equipo:
+          <div className={styles.nombres}>
+                    <a
+                    className= {styles.links}
+                    href="https://www.linkedin.com/in/DanielCastillo97/"
+                    target="_blank"
+                    rel="noreferrer">
+                        <div>Daniel Castillo</div>
+                    </a>
+                    <a
+                    className= {styles.links}
+                    href="https://www.linkedin.com/in/BrandonFabila/"
+                    target="_blank"
+                    rel="noreferrer">
+                        Brandon Fabila
+                    </a>
+                    <a
+                    className= {styles.links}
+                    href="https://www.linkedin.com/in/jhojan-alfredo-cruz-portillo-0b09661b8/"
+                    target="_blank"
+                    rel="noreferrer">
+                        Jhojan Cruz
+                    </a>
+                    
+                    <a
+                    className= {styles.links}
+                    href="https://www.linkedin.com/in/lautacorva/"
+                    target="_blank"
+                    rel="noreferrer">
+                        Lautaro Corva
+                    </a>
+                    <a
+                    className= {styles.links}
+                    href="https://www.linkedin.com/in/christian-ringler-139581235/"
+                    target="_blank"
+                    rel="noreferrer">
+                        Chris Ringler
+                    </a>
+                    
+                </div>
+        </p>
       </div>
     </div>
   );

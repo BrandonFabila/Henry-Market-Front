@@ -95,9 +95,7 @@
         color: var(--yellow-color);
     }
 
-    .hmarket:hover {
-        color: var(--yellow-color);
-    }
+
 
     .logo {
         display: none;
