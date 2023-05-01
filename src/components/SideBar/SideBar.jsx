@@ -2,14 +2,17 @@ import "react-modern-drawer/dist/index.css";
  import { useDispatch } from 'react-redux'
 import { useState } from "react";
 import styles from './sidebar.module.css'
-import {getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
+import {getProductFilteredDescuento,getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
+import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
     const [showCategories, setShowCategories] = useState(false);
     const [showOrdenar, setShowOrdenar] = useState(false);
     const [showPrecio, setShowPrecio] = useState(false);
     const dispatch = useDispatch();
-
+    const {id_categoria_producto} = useParams()
+    console.log("Esteeeeeeeee",id_categoria_producto)
     
 
     const handleClick = () => {
@@ -21,6 +24,7 @@ export default function SideBar() {
     const handleClick3 = () => {
         setShowPrecio(!showPrecio);
     };
+    const navigate = useNavigate();
 
     return (
         <div className={styles.nav_contenedor}>
@@ -35,6 +39,18 @@ export default function SideBar() {
                              onClick={() => dispatch(getAllProducts())}
                             >
                                 Ver Todo
+                            </span>
+                        </div>
+                    </li>
+                    <li className={styles.list_item}>
+                        <div className={styles.list_button}>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" alt="ver-todo" />
+                            <span
+                                tabindex="0"
+                                className={styles.nav_link}
+                             onClick={() => dispatch(getProductFilteredDescuento(id_categoria_producto))}
+                            >
+                                Productos con descuento
                             </span>
                         </div>
                     </li>
@@ -62,99 +78,110 @@ export default function SideBar() {
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(1))
-                             }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(1));
+                                        navigate('/products/categoria/1');
+                                      }}
                                 >
                                     Indumentaria
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(2))
-                                }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(2));
+                                        navigate('/products/categoria/2');
+                                      }}
                                 >
                                     Electrodomesticos
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(3))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(3));
+                                        navigate('/products/categoria/3');
+                                      }}
                                 >
                                     Informatica
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(4))
-                                }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(4));
+                                        navigate('/products/categoria/4');
+                                      }}
                                 >
                                     Cosmética
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(5))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(5));
+                                        navigate('/products/categoria/5');
+                                      }}
                                 >
                                     Alimentos
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(6))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(6));
+                                        navigate('/products/categoria/6');
+                                      }}
                                 >
                                     Juguetes
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(7))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(7));
+                                        navigate('/products/categoria/7');
+                                      }}
                                 >
                                     Muebles
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(8))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(8));
+                                        navigate('/products/categoria/8');
+                                      }}
                                 >
                                     Jardinería
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(9))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(9));
+                                        navigate('/products/categoria/9');
+                                      }}
                                 >
                                     Deportes
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(10))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(10));
+                                        navigate('/products/categoria/10');
+                                      }}
                                 >
                                     Joyería
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                 onClick={() =>
-                                    dispatch(getProductFiltered(11))
-                                 }
+                                    onClick={() => {
+                                        dispatch(getProductFiltered(11));
+                                        navigate('/products/categoria/11');
+                                      }}
                                 >
                                     Herramientas
                                 </li>
@@ -230,7 +257,9 @@ export default function SideBar() {
                             </span>
                         </div>
                     </li>
+                    
                 </ul>
+                
             </nav>
         </div>
     )
