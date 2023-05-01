@@ -76,7 +76,7 @@ export default function FormLogin() {
 
 const handleLogin = async (values) => {
   try {
-    const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+    const user = await axios.post(`${BACK_HOST}usuario/login`, values);
 
     console.log("USER:  ",user)
     const session = user.data.session;
