@@ -31,9 +31,9 @@ export default function NavBar() {
 
     const handleLogOut = () => {
         setShowProfileMenu(!showProfileMenu);
-        // window.localStorage.removeItem("estaLogueado");
-        // window.localStorage.removeItem('carrito');
-        // window.localStorage.removeItem('count');
+         window.localStorage.removeItem("estaLogueado");
+         window.localStorage.removeItem('carrito');
+         window.localStorage.removeItem('count');
         // dispatch(userLoggedIn(logOut));
     }
 

@@ -54,7 +54,8 @@ export default function Products() {
   return (
     <div className={styles.container}>
       {display ? (
-        <Loader />
+         <Loader />
+
       ) : (
         <>
 

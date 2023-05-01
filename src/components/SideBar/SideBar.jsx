@@ -1,13 +1,16 @@
 import "react-modern-drawer/dist/index.css";
-// import { useDispatch } from 'react-redux'
+ import { useDispatch } from 'react-redux'
 import { useState } from "react";
 import styles from './sidebar.module.css'
+import {getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
 
 export default function SideBar() {
     const [showCategories, setShowCategories] = useState(false);
     const [showOrdenar, setShowOrdenar] = useState(false);
     const [showPrecio, setShowPrecio] = useState(false);
+    const dispatch = useDispatch();
 
+    
 
     const handleClick = () => {
         setShowCategories(!showCategories);
@@ -29,7 +32,7 @@ export default function SideBar() {
                             <span
                                 tabindex="0"
                                 className={styles.nav_link}
-                            // onClick={() => dispatch(action.getAllProducts())}
+                             onClick={() => dispatch(getAllProducts())}
                             >
                                 Ver Todo
                             </span>
@@ -59,99 +62,99 @@ export default function SideBar() {
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Indumentaria"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(1))
+                             }
                                 >
                                     Indumentaria
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Electrodomesticos"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(2))
+                                }
                                 >
                                     Electrodomesticos
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Informatica"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(3))
+                                 }
                                 >
                                     Informatica
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Cosmética"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(4))
+                                }
                                 >
                                     Cosmética
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Alimentos"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(5))
+                                 }
                                 >
                                     Alimentos
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Juguetes"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(6))
+                                 }
                                 >
                                     Juguetes
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Muebles"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(7))
+                                 }
                                 >
                                     Muebles
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Jardinería"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(8))
+                                 }
                                 >
                                     Jardinería
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Deportes"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(9))
+                                 }
                                 >
                                     Deportes
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Joyería"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(10))
+                                 }
                                 >
                                     Joyería
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() =>
-                                //     dispatch(action.getProductByCategory("Herramientas"))
-                                // }
+                                 onClick={() =>
+                                    dispatch(getProductFiltered(11))
+                                 }
                                 >
                                     Herramientas
                                 </li>
@@ -170,14 +173,14 @@ export default function SideBar() {
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() => dispatch(action.orderedByNameASC())}
+                                onClick={() => dispatch(orderedByNameASC())}
                                 >
                                     Por nombre a-z
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() => dispatch(action.orderedByNameDESC())}
+                                 onClick={() => dispatch(orderedByNameDESC())}
                                 >
                                     Por nombre z-a
                                 </li>
@@ -200,64 +203,28 @@ export default function SideBar() {
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() => dispatch(action.orderedByHighestPrice())}
+                                 onClick={() => dispatch(orderedByHighestPrice())}
                                 >
                                     Mayor precio
                                 </li>
                                 <li
                                     tabindex="0"
                                     className={styles.list}
-                                // onClick={() => dispatch(action.orderedByLowestPrice())}
+                              onClick={() => dispatch(orderedByLowestPrice())}
                                 >
                                     Menor precio
                                 </li>
                             </ul>
                         )}
                     </li>
-                    {/* <li className={styles.list_item}>
-                                <div className={styles.list_button}>
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKZJREFUSEvtldENgzAQQx+bwCZlE5iso9BNyiYgIxVFSaqYVpFA4n7jOye2T2moXE3l+dwERYVDiSbgUezwADPQCRoSLF6vjdpmuwQf3JFLnIvA1iUAJi/QWQs8/zD7BYyATN4qt2gieUdXdj3oAZHs9W2TYzNdAkVzv33uBVUlOhJBx/RzxdT1IPHX3WRHkhiTSKT8D79MyvQoqors/eGUBb3+n7wCgGQcGaIC4qAAAAAASUVORK5CYII=" alt="icono" />
-                                    <span
-                                        tabindex="0"
-                                        className={styles.nav_link}
-                                        onClick={handleClick4}
-                                    >
-                                        Condición
-                                    </span>
-                                </div>
-                                {showCondicion && (
-                                    <ul className={styles.list_show}>
-                                        <li
-                                            tabindex="0"
-                                            className={styles.list}
-                                            // onClick={() => dispatch(action.filterByNewProducts())}
-                                        >
-                                            Nuevos
-                                        </li>
-                                        <li
-                                            tabindex="0"
-                                            className={styles.list}
-                                            // onClick={() => dispatch(action.filterByUsedProducts())}
-                                        >
-                                            Usados
-                                        </li>
-                                        <li
-                                            tabindex="0"
-                                            className={styles.list}
-                                            // onClick={() => dispatch(action.filterByRefurbishedProducts())}
-                                        >
-                                            Reacondicionado
-                                        </li>
-                                    </ul>
-                                )}
-                            </li> */}
+               
                     <li className={styles.list_item}>
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANhJREFUSEvtldENgzAMRI9N2k3KJmWSqpO0m5RNyiZUR+MoorbjCPFRCT7D5Z4526LDzk+3sz8OQDXhMqIXgEv1RkwwAThTWgLm2N2wavHeAngCuDq4TYAewAjg4UDCAJox03eqlsY84+P17QfAC6dUVdnsIQFolptnmBMu+qUCbdEIkWrXEUs0LIBA630+tzZZmygx9wrgaPIrTYAWEcVa7uveiM6MyNoDK/eyN9q0hqeI804zK3drFcIAGtwB3MI7/BU2ARq9dYC3la2APBTHD6ca3f9H9AET9TAZjvnCQgAAAABJRU5ErkJggg==" alt="más recientes" />
                             <span
                                 tabindex="0"
                                 className={styles.nav_link}
-                            // onClick={() => dispatch(action.orderedByRecientes())}
+                             onClick={() => dispatch(orderedByRecientes())}
                             >
                                 Más recientes
                             </span>

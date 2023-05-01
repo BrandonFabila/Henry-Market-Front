@@ -27,7 +27,7 @@ const Detail = () => {
         ) : (
             <div className={styles.container}>
                 <div>
-                        <Link to={"/home"}>
+                <Link to={`/products/categoria/${product.id_categoria_producto}`}>
                             <button className={styles.button} >Back</button>
                         </Link>
                 </div>
