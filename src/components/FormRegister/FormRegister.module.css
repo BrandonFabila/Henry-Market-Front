@@ -1,15 +1,21 @@
 .contenedor {
     background-color: #fff; /* Fondo blanco para el contenedor */
-    padding: 20px;
-    background-color: yellow;
-    
+    padding: 0px;
+    margin: 35px;
+    border-radius: 1.25rem;
+    background-color: var(--blue-color);
+
   }
   
-  .form-container {
-    background-color: #fff; /* Fondo blanco para el contenedor del formulario */
+  .formcontainer {
     border-radius: 10px;
+        display: flex;
+      align-items: center;
+  flex-wrap: wrap;
+  justify-content:center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
+
   }
   .imageFile {
     margin-top: 5px;
@@ -21,32 +27,51 @@
     object-fit: cover;
 }
   
-  .form-input {
+  .forminput {
     border: none;
-    border-radius: 5px;
+    box-shadow: 0px 0px 5px #000000; /* Resaltar el campo activo con un borde amarillo */
+    margin-left: 70px;
+    margin-right: 70px;
+    justify-content: center;
     padding: 10px;
-    margin-bottom: 20px;
-    width: 100%;
+    margin-bottom: 15px;
+    width: 325px;
+    border-radius: 5rem;
+
     background-color: #f5f5f5; /* Fondo gris claro para los campos de entrada */
   }
   
-  .form-input:focus {
+  .forminput:focus {
     outline: none;
     box-shadow: 0px 0px 5px #ffca28; /* Resaltar el campo activo con un borde amarillo */
   }
   
   .label {
-    color: #424242; /* Texto gris oscuro para las etiquetas */
+    color: #ffffff; /* Texto gris oscuro para las etiquetas */
     display: block;
     margin-bottom: 10px;
   }
   
   .errors {
-    color: #f44336; /* Texto rojo para los mensajes de error */
-    margin-top: 5px;
+    color: #000000; /* Texto rojo para los mensajes de error */
+    margin-bottom: 20px;
+    width: 320px;
+    background-color: #ff0000;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0); /* Resaltar el campo activo con un borde amarillo */
+
+  }
+
+  .ok {
+    color: green;
+    margin-bottom: 20px;
+    width: 25px;
+    border-radius: 1em;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px greenyellow; /* Resaltar el campo activo con un borde amarillo */
+
   }
   
-  button[type="submit"] {
+  .button[type="submit"] {
     background-color: #2196f3; /* Fondo azul para el botón de enviar */
     border: none;
     border-radius: 5px;
@@ -58,8 +83,9 @@
     transition: background-color 0.3s ease-in-out;
   }
   
-  button[type="submit"]:hover {
+  .button[type="submit"]:hover {
     background-color: #ffca28; /* Cambiar el fondo del botón a amarillo al pasar el cursor */
+    color: #000000;
   }
   
   .contenedorForm{
@@ -76,7 +102,8 @@
 .nombres{
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: center;
+    color: black;
 }
 
 .apellidos{
