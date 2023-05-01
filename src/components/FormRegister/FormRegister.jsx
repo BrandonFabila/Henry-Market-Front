@@ -10,6 +10,8 @@ import s from "./FormRegister.module.css"
 
 export default function FormRegister() {
   const dispatch = useDispatch();
+  const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+  //const BACK_HOST = "http://localhost:3001/"
 
   useEffect(() => {
   }, [dispatch]);
@@ -65,7 +67,7 @@ export default function FormRegister() {
       try {
 
         await axios
-          .post("http://localhost:3001/usuario", form)
+          .post(`${BACK_HOST}usuario`, form)
           .then(res => {
             swal({
               title: 'Registro exitoso',
