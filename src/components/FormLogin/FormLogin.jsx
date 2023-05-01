@@ -42,7 +42,9 @@ export default function FormLogin() {
 
     const iconGoogle = Google;
 
-    const BACK_HOST = 'http://localhost:3001'
+//     const BACK_HOST = 'http://localhost:3001'
+    const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+
     const navigate = useNavigate();
     const navigateTo = (url) => {
         navigate(url);
