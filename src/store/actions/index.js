@@ -15,8 +15,8 @@ export const ORDERED_BY_LOWEST_PRICE ="ORDERED_BY_LOWEST_PRICE"
 export const ORDERED_BY_HIGHEST_PRICE = "ORDERED_BY_HIGHEST_PRICE"
 export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
 
- const api_host= "http://localhost:3001/";
-// const api_host = 'https://henry-market-back-production.up.railway.app/'
+// const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
   return function (dispatch) {
