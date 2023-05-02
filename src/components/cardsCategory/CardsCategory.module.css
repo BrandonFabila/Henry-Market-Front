@@ -7,3 +7,10 @@
     margin: 20px;
     margin-bottom: 150px;
 }
+@media (max-width: 767px) {
+    .container {
+        justify-content: center;
+        width: 95%;
+        margin: 0;
+    }
+}

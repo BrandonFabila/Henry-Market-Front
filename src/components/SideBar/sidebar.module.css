@@ -86,7 +86,7 @@ li {
 
 .list_button>span:hover {
     font-weight: bold;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 
@@ -108,6 +108,7 @@ li {
     translate: 4px -4px;
     left: 5px;
     top: 5px;
+    border-radius: 20px;
 }
 
 
