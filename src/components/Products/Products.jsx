@@ -78,13 +78,12 @@ export default function Products() {
               <div className={styles.paginadoAbj}>
                 <div>
                   {numeroPagina > 1 && (
-                    <button class="prev-page" onClick={() => setNumeroPagina(numeroPagina - 1)}>◄</button>
+                    <button className={styles.prevPage} onClick={() => setNumeroPagina(numeroPagina - 1)}>◄</button>
                   )}
 
                   {pagesToShow.map((pagina) => (
                     <button
                       key={pagina}
-                      class="current"
                       className={`btnPag ${pagina === numeroPagina ? styles.activePage : ""}`}
                       onClick={() => setNumeroPagina(pagina)}
                     >
@@ -93,7 +92,7 @@ export default function Products() {
                   ))}
 
                   {numeroPagina < numPaginas && (
-                    <button class="next-page" onClick={() => setNumeroPagina(numeroPagina + 1)}>►</button>
+                    <button className={styles.nextPage} onClick={() => setNumeroPagina(numeroPagina + 1)}>►</button>
                   )}
                 </div>
 
