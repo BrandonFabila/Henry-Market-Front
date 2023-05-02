@@ -34,7 +34,7 @@ export default function SideBar() {
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" alt="ver-todo" />
                             <span
-                                tabindex="0"
+                                tabIndex="0"
                                 className={styles.nav_link}
                              onClick={() => dispatch(getAllProducts())}
                             >
@@ -43,10 +43,10 @@ export default function SideBar() {
                         </div>
                     </li>
                     <li className={styles.list_item}>
-                        <div className={styles.list_button}>
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" alt="ver-todo" />
-                            <span
+                        <div>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEu1lY1NwzAQhV8noWwCk1AmASaBTgKbAJOAvsgvul58iUuppaqtcrl378f2Tldeuyv31wjAnaRXSUdJb22gg6QHSY+SPtaGHAF4lwQI60vSPjTk/+25ADRgwpvWzM2rPmbF85c2xFzbY4AcAPxlAfAcXzwXwPU/BTps8GWVQdTchRjJdDYUhk/JD2p5fl8BOC3RROt6Qrs1oO6zwwTjAeH7JKYVbVJCsb3ht+PZY+u0TemKHlTmZoAR82cvIkBFOSeDOj5Iig+95aEWO7knE5KwizEw71rMhnlcpQej+Z/Mazu4Yt2ViETkBLkRTUkSkpiRk1WxXphMc1KRQRabJ+hh0CzRfAjmnUxzpMrnDyD2gWZV3epG8xRrXvzLUdGjPZJ9aobOonhc89LWyYosGP/dAJyyaaitCydrnS+cheaZ6haADSVdmIx8ZkhkOdQuvjJH9e/WjTC4COAXAcVVGWZcFaYAAAAASUVORK5CYII=" alt="precio" />                            <span
                                 tabindex="0"
+
                                 className={styles.nav_link}
                              onClick={() => dispatch(getProductFilteredDescuento(id_categoria_producto))}
                             >
@@ -58,7 +58,7 @@ export default function SideBar() {
                                 <div className={styles.list_button}>
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAO9JREFUSEu9ld0NwjAMhK+wCGwC0yDEPog3RoFRWASBDiWouLbPQpS+WE0Ufz7/JANm/oaZ/ePvgAuATUHVDcAWAG36WQUPdWC0X4JEgCx1KwBUSishFcASwN0oK0MU4ARgB4B2/w0kAyxM5F7apBKl4Ngipz0EDZBCFKDaVCHkVwAGYiFrLkYAbsohcop+boN6bYM4AfRJlv2dOOfZV/SeAtkVTlF4pkf+4dwDeLnM7pzUeQSoQqTzDKAgJecKEEG4Hubc1qjy4NjCs5B8MyYF9aayArBK+F9yXknROKied9p3n6u7pKpA+Qn3Zwc8AW5bTxlAMFd1AAAAAElFTkSuQmCC" alt="Ofertas"/>
                                     <span
-                                        tabindex="0"
+                                        tabIndex="0"
                                         className={styles.nav_link}
                                     // onClick={() => dispatch(action.filterByOffers())}
                                     >
@@ -76,7 +76,7 @@ export default function SideBar() {
                         {showCategories && (
                             <ul className={styles.list_show}>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(1));
@@ -86,7 +86,7 @@ export default function SideBar() {
                                     Indumentaria
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(2));
@@ -96,7 +96,7 @@ export default function SideBar() {
                                     Electrodomesticos
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(3));
@@ -106,7 +106,7 @@ export default function SideBar() {
                                     Informatica
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(4));
@@ -116,7 +116,7 @@ export default function SideBar() {
                                     Cosmética
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(5));
@@ -126,7 +126,7 @@ export default function SideBar() {
                                     Alimentos
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(6));
@@ -136,7 +136,7 @@ export default function SideBar() {
                                     Juguetes
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(7));
@@ -146,7 +146,7 @@ export default function SideBar() {
                                     Muebles
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(8));
@@ -156,7 +156,7 @@ export default function SideBar() {
                                     Jardinería
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(9));
@@ -166,7 +166,7 @@ export default function SideBar() {
                                     Deportes
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(10));
@@ -176,7 +176,7 @@ export default function SideBar() {
                                     Joyería
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                     onClick={() => {
                                         dispatch(getProductFiltered(11));
@@ -198,14 +198,14 @@ export default function SideBar() {
                         {showOrdenar && (
                             <ul className={styles.list_show}>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                 onClick={() => dispatch(orderedByNameASC())}
                                 >
                                     Por nombre a-z
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                  onClick={() => dispatch(orderedByNameDESC())}
                                 >
@@ -218,7 +218,7 @@ export default function SideBar() {
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEu1lY1NwzAQhV8noWwCk1AmASaBTgKbAJOAvsgvul58iUuppaqtcrl378f2Tldeuyv31wjAnaRXSUdJb22gg6QHSY+SPtaGHAF4lwQI60vSPjTk/+25ADRgwpvWzM2rPmbF85c2xFzbY4AcAPxlAfAcXzwXwPU/BTps8GWVQdTchRjJdDYUhk/JD2p5fl8BOC3RROt6Qrs1oO6zwwTjAeH7JKYVbVJCsb3ht+PZY+u0TemKHlTmZoAR82cvIkBFOSeDOj5Iig+95aEWO7knE5KwizEw71rMhnlcpQej+Z/Mazu4Yt2ViETkBLkRTUkSkpiRk1WxXphMc1KRQRabJ+hh0CzRfAjmnUxzpMrnDyD2gWZV3epG8xRrXvzLUdGjPZJ9aobOonhc89LWyYosGP/dAJyyaaitCydrnS+cheaZ6haADSVdmIx8ZkhkOdQuvjJH9e/WjTC4COAXAcVVGWZcFaYAAAAASUVORK5CYII=" alt="precio" />
                             <span
-                                tabindex="0"
+                                tabIndex="0"
                                 className={styles.nav_link}
                                 onClick={handleClick3}
                             >
@@ -228,14 +228,14 @@ export default function SideBar() {
                         {showPrecio && (
                             <ul className={styles.list_show}>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                                  onClick={() => dispatch(orderedByHighestPrice())}
                                 >
                                     Mayor precio
                                 </li>
                                 <li
-                                    tabindex="0"
+                                    tabIndex="0"
                                     className={styles.list}
                               onClick={() => dispatch(orderedByLowestPrice())}
                                 >
@@ -249,7 +249,7 @@ export default function SideBar() {
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANhJREFUSEvtldENgzAMRI9N2k3KJmWSqpO0m5RNyiZUR+MoorbjCPFRCT7D5Z4526LDzk+3sz8OQDXhMqIXgEv1RkwwAThTWgLm2N2wavHeAngCuDq4TYAewAjg4UDCAJox03eqlsY84+P17QfAC6dUVdnsIQFolptnmBMu+qUCbdEIkWrXEUs0LIBA630+tzZZmygx9wrgaPIrTYAWEcVa7uveiM6MyNoDK/eyN9q0hqeI804zK3drFcIAGtwB3MI7/BU2ARq9dYC3la2APBTHD6ca3f9H9AET9TAZjvnCQgAAAABJRU5ErkJggg==" alt="más recientes" />
                             <span
-                                tabindex="0"
+                                tabIndex="0"
                                 className={styles.nav_link}
                              onClick={() => dispatch(orderedByRecientes())}
                             >

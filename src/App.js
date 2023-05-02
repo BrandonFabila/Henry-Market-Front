@@ -11,13 +11,15 @@ import Footer from './components/Footer/Footer'
 import Pay from './pages/payment/Pay'
 import About from './pages/About/About';
 import FormCreateProduct from './components/admin/formCreateProduct/FormCreateProduct';
+import Account from './pages/account/Account';
+
 function App() {
   const location = useLocation()
 
   return (
     <div className="App">
-      {/* {location.pathname === '/log-in' ? null : <NavBar />} */}
-      {location.pathname === '/pay' ? null : <NavBar />}
+      {location.pathname === '/log-in' ? null : <NavBar />}
+      {/* {location.pathname === '/pay' ? null : <NavBar />} */}
       <Routes>
         <Route exact path='/pay' element={<Pay />} />
         <Route exact path="/" element={<HomePrincipal />} />
@@ -27,6 +29,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
        <Route exact path="/about" element={<About />} />
        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
+       <Route exact path="/account" element={<Account/>} />
 
          <Route exact path="/producto" element={<FormCreateProduct/>} /> 
       </Routes>

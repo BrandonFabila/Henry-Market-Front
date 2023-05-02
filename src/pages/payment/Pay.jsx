@@ -25,9 +25,9 @@ const Pay = () => {
     return (
             <Elements  stripe={stripePromise} >
                 <h1>Inserta una tarjeta</h1>
-                <div class='container p-4'>
-                    <div class='row'>
-                        <div class='col-md-4 offset-md-4'>
+                <div className='container p-4'>
+                    <div className='row'>
+                        <div className='col-md-4 offset-md-4'>
                             <CheckoutForm />
                         </div>
                     </div>
