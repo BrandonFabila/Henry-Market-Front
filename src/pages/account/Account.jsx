@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsuarioByEmail } from "../../store/actions/index";
 import Cookies from "js-cookie";
@@ -8,26 +8,26 @@ import FormUpdatePassword from "../../components/formUpdate/FormUpdatePassword"
 import s from "./Account.module.css";
 
 const Account = () => {
-  /* ------------------- ESTADOS ------------------- */
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
-  const usuario = useSelector(state => state.usuario) ?? [];
 
   const token = Cookies.get("user_token");
   const decodedToken = jwt_decode(token);
 
   const email = decodedToken.email;
 
+  const usuario = useSelector(state => state.usuario);
+  const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
+
   useEffect(() => {
     dispatch(getUsuarioByEmail(email));
   }, [dispatch, email]);
 
-  // Actualizar el estado local con los datos del usuario
   useEffect(() => {
-    if (usuario.length > 0) {
-      setUserData(usuario[0]);
+    if (usuarioMemo.length > 0) {
+      setUserData(usuarioMemo[0]);
     }
-  }, [usuario]);
+  }, [usuarioMemo.length, usuarioMemo]);
 
   /* ------------- MENU HAMBURGUESA ------------- */
 
