@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = () => {
     const importe = 1550
+    const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+//   const BACK_HOST = "http://localhost:3001/"
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ const CheckoutForm = () => {
             const date = new Date()
            
             try {
-                const { data } = await axios.post('http://localhost:3001/venta/test', {
+                const { data } = await axios.post(`${BACK_HOST}venta/test`, {
                     fecha: date,
                     //aqui va el valor multiplicado por 100 centavos
                     valor_total_venta: importe * 100,
