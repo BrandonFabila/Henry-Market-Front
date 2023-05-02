@@ -7,12 +7,17 @@ import style from "./UpPassword.module.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function FormUpdatePassword(props) {
+
+  const api_host= "http://localhost:3001/";
+// const api_host = 'https://henry-market-back-production.up.railway.app/'
+
+
   const { idUsuario } = props; 
-  const usuarioId = idUsuario;
+  // const usuarioId = idUsuario;
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
-  const estaLogueado = window.localStorage.getItem("estaLogueado");
+  // const estaLogueado = window.localStorage.getItem("estaLogueado");
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -21,9 +26,9 @@ export default function FormUpdatePassword(props) {
     window.localStorage.removeItem('count');
     // Obtiene los valores del formulario
     const {
-      id_usuario: id_usuario,
-      password: password,
-      confirmPassword: confirmPassword
+      // id_usuario,
+      password,
+      confirmPassword,
     } = form;
 
     const data = {
@@ -51,7 +56,7 @@ export default function FormUpdatePassword(props) {
         const hashedPassword = bcrypt.hashSync(data.password, salt);
         setForm({ ...form, password: hashedPassword });
         await axios
-          .put("http://localhost:3001/usuario", { ...data, password: hashedPassword }) // Actualiza el valor de 'password' en el objeto de datos enviado
+          .put(`${api_host}usuario`, { ...data, password: hashedPassword }) // Actualiza el valor de 'password' en el objeto de datos enviado
           .then(res =>
             swal({
               title: "Cambio exitoso",
@@ -62,7 +67,6 @@ export default function FormUpdatePassword(props) {
           )
           .catch(err =>
             swal({
-              text: "Error",
               text: "intente nuevamente",
               icon: "error",
               timer: "2000",
@@ -125,7 +129,7 @@ export default function FormUpdatePassword(props) {
     <>
 
       {shouldRedirect ? (
-         navigate('/log-in')
+         navigate('/login')
       ) : (
         <div className={ style.container }>
           <button className={style.cerrar} onClick={handleMostrar}>Cancelar</button>

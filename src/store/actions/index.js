@@ -126,7 +126,7 @@ export const getProductFilteredDescuento = (id_categoria_producto) => {
 export function getUsuarioByEmail(email) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${api_host}/email?email=${email}`);
+      const response = await axios.get(`${api_host}email?email=${email}`);
       console.log(response);
       dispatch({
         type: GET_USER_BY_EMAIL,
@@ -141,6 +141,6 @@ export function getUsuarioByEmail(email) {
     }
   };
 
-  }
+  
  };
 

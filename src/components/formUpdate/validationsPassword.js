@@ -1,4 +1,4 @@
-const regexPassword = /^(?=.*?[a-z0-9])(?=.*?[a-z0-9]).{6,10}$/ // Password al menos un número
+// const regexPassword = /^(?=.*?[a-z0-9])(?=.*?[a-z0-9]).{6,10}$/ // Password al menos un número
 const blankSpace = /^\s+$/ // Espacio en blanco
 
 export default function validations(values) {

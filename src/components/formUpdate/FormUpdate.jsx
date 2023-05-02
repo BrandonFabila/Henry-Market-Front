@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert";
 import validations from "./validations";
 import style from "./FormUpdate.module.css";
 
 export default function FormUpdate({ idUsuario, updateUserData }) {
-  const { ciudades } = useSelector(state => state);
-  const dispatch = useDispatch();
   const [form, setForm] = useState({
     id_usuario: null,
     primer_nombre: "", 
@@ -84,7 +81,6 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
       //dispatch(getUserById(usuarioId))
       window.location.reload() // Actualiza la página     
         .catch(err => swal({
-          text: 'Error',
           text: 'intente nuevamente',
           icon: 'error',
           timer: '2000',
@@ -280,6 +276,7 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
                 {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
                 {form.imagen && (
                   <img
+                    alt="user"
                     className={style.imageFile}
                     src={form.imagen}
                     id="imagen"

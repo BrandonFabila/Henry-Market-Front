@@ -1,9 +1,9 @@
 const blankSpace = /^\s+$/ // Espacio en blanco
 const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i // Email válido
-const regexPassword = /^(?=.*?[a-z0-9])(?=.*?[a-z0-9]).{6,10}$/ // Password al menos un número
+// const regexPassword = /^(?=.*?[a-z0-9])(?=.*?[a-z0-9]).{6,10}$/ // Password al menos un número
 const regexLetters = /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/ // Solo letras
 const regexAddress = /^\d+\s[A-z]+\s[A-z]+/; // valida la dirección
-const regexTelefono = /^[0-9]+$/;
+// const regexTelefono = /^[0-9]+$/;
 
 export default function validations(values) {
     const errors = {}

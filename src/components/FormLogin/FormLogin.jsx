@@ -42,8 +42,8 @@ export default function FormLogin() {
 
     const iconGoogle = Google;
 
-//     const BACK_HOST = 'http://localhost:3001'
-    const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+    const BACK_HOST = 'http://localhost:3001/'
+    // const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
 
     const navigate = useNavigate();
     const navigateTo = (url) => {
@@ -96,13 +96,14 @@ const handleLogin = async (values) => {
       console.log('Login failed');
     }
   } catch (error) {
-    const err = error.response.data;
+    // const err = error.response.data;
+    console.log(error)
     swal({
       text: 'Invalid email or password',
       icon: 'error',
       timer: '2000'
     });
-    console.log(err)
+    // console.log(err)
   }
 };
 
