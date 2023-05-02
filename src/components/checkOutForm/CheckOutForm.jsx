@@ -32,7 +32,7 @@ const CheckoutForm = () => {
                     fecha: date,
                     //aqui va el valor multiplicado por 100 centavos
                     valor_total_venta: importe * 100,
-                    id_usuario: 15,
+                    id_usuario: 1,
                     detalle_venta: 111,
                     id_pago: id.toString(),
                 })
