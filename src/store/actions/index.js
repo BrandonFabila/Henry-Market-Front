@@ -117,4 +117,5 @@ export const getProductFilteredDescuento = (id_categoria_producto) => {
   return async function (dispatch){
       const {data} = await axios.get(`${api_host}products/filter/descuento/${id_categoria_producto}`);
       dispatch({type: GET_PRODUCT_FILTERED, payload: data});
+  }
  };
