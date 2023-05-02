@@ -14,6 +14,7 @@ export const ORDERED_BY_NAME_DESC ="ORDERED_BY_NAME_DESC"
 export const ORDERED_BY_LOWEST_PRICE ="ORDERED_BY_LOWEST_PRICE"
 export const ORDERED_BY_HIGHEST_PRICE = "ORDERED_BY_HIGHEST_PRICE"
 export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
+export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL"
 
 const api_host= "http://localhost:3001/";
 // const api_host = 'https://henry-market-back-production.up.railway.app/'
@@ -117,5 +118,29 @@ export const getProductFilteredDescuento = (id_categoria_producto) => {
   return async function (dispatch){
       const {data} = await axios.get(`${api_host}products/filter/descuento/${id_categoria_producto}`);
       dispatch({type: GET_PRODUCT_FILTERED, payload: data});
+
+      console.log("estteee", data)
+  };
+}
+
+export function getUsuarioByEmail(email) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${api_host}/email?email=${email}`);
+      console.log(response);
+      dispatch({
+        type: GET_USER_BY_EMAIL,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error, "No se encontro usuario con ese email");
+      dispatch({
+        type: GET_USER_BY_EMAIL,
+        payload: error,
+      });
+    }
+  };
+
   }
  };
+
