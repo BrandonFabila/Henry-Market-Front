@@ -1,13 +1,19 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckOutForm.css'
 import axios from 'axios'
+import swal from 'sweetalert'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = () => {
-    const importe = 98
+    const importe = 1550
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const navigateTo = (url) => {
+        navigate(url);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,6 +22,7 @@ const CheckoutForm = () => {
             type: 'card',
             card: elements.getElement(CardElement),
         });
+        console.log(paymentMethod)
         if(!error) {
             const { id, card } = paymentMethod
             const date = new Date()
@@ -25,18 +32,27 @@ const CheckoutForm = () => {
                     fecha: date,
                     //aqui va el valor multiplicado por 100 centavos
                     valor_total_venta: importe * 100,
-                    id_usuario: 1,
+                    id_usuario: 15,
                     detalle_venta: 111,
                     id_pago: id.toString(),
                 })
-                console.log(data)
-                console.log(id)
-                console.log(card.brand)
-                elements.getElement(CardElement).clear()
-                window.alert('GRACIAS POR TU COMPRA')
                 window.location.replace('/');
+                elements.getElement(CardElement).clear()
+                console.log(card.brand)
+                console.log(id)
+                console.log(data)
+                swal({
+                    title: 'Completo',
+                    text: 'Gracias por tu compra!',
+                    icon: 'success',
+                    timer: '2000',
+                    button: 'Accept'
+                });
+                navigateTo('/');
+
             } catch (error) {
-                
+
+                console.log(error.message)
             }
             setLoading(false)
         }

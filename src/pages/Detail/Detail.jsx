@@ -21,18 +21,17 @@ const Detail = () => {
   return (
       <div>
         {loading ? (
-            <Loader />
+            <Loader/>
         ) : (
-          <div className={styles.mainContainer}>
-            <div className={styles.back}>
-              <Link to={`/products/categoria/${product.id_categoria_producto}`}>
-                  <button className={styles.button} >atrás</button>
-              </Link>
-              </div>
-              <div className={styles.title}>
+            <div className={styles.mainContainer}>
+                <div className={styles.back}>
+                  <Link to={`/products/categoria/${product.id_categoria_producto}`}>
+                      <button className={styles.button} >atrás</button>
+                  </Link>
+                </div>
+                <div className={styles.title}>
                     <h1>{product.nombre}</h1>
                 </div>
-
                 <div className={styles.container}>
                   <div className={styles.imgContainer}>
                       <img className={styles.image} src={product.imagen} alt={product.nombre} />
@@ -40,7 +39,14 @@ const Detail = () => {
                   <div className={styles.information}>
                       <h4 className={styles.descripcion_producto}>{product.descripcion_producto}</h4>
                       <h5>Stock: {product.stock > 1 ? 'Disponible ✔' : 'No hay Existencias ✘' }</h5>
-                      <h2 className={styles.valor}>${product.valor}</h2>
+                      {product.valor_descuento 
+                        ? <div>
+                            <h3 className={styles.valord}>${product.valor}</h3>
+                            <h2 className={styles.valor}>${product.valor_descuento}</h2>
+                          </div> 
+                        : <div>
+                            <h2 className={styles.valor}>${product.valor}</h2>
+                          </div> }
                   </div>
                 </div>
             </div>
