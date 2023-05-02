@@ -16,8 +16,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* {location.pathname === '/log-in' ? null : <NavBar />} */}
-      {location.pathname === '/pay' ? null : <NavBar />}
+      {location.pathname === '/log-in' ? null : <NavBar />}
+      {/* {location.pathname === '/pay' ? null : <NavBar />} */}
       <Routes>
         <Route exact path='/pay' element={<Pay />} />
         <Route exact path="/" element={<HomePrincipal />} />

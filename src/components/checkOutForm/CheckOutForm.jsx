@@ -44,20 +44,20 @@ const CheckoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className='card card-body'>
-            <div class='formgroup' >
+            <div className='formgroup' >
                 <h2>Importe a pagar: ${importe} MXN</h2>
             </div>
             
-            <div class='formgroup' >
-                <CardElement class='formcontrol' />
+            <div className='formgroup' >
+                <CardElement className='formcontrol' />
             </div>
             {/* { data !== null ? <p>{data}</p> : null } */}
-            <button class='but' disabled={!stripe} >
+            <button className='but' disabled={!stripe} >
                 {loading ? (
-                    <div class="wrapper">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
+                    <div className="wrapper">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
                     </div>
                 ) : 'Pagar'}
             </button>
