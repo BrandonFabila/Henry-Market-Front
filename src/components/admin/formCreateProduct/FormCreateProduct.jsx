@@ -27,20 +27,20 @@ export default function FormCreateProduct() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    let {
-      nombre,
-      stock,
-      descripcion_producto,
-      imagen,
-      id_categoria_producto,
-      valor,
-      valor_descuento,
-    } = form;
+    // let {
+      // nombre,
+      // stock,
+      // descripcion_producto,
+      // imagen,
+      // id_categoria_producto,
+      // valor,
+      // valor_descuento,
+    // } = form;
 
 
-    stock = parseInt(stock);
-    valor = parseFloat(valor);
-    valor_descuento = parseFloat(valor_descuento);
+    // stock = parseInt(stock);
+    // valor = parseFloat(valor);
+    // valor_descuento = parseFloat(valor_descuento);
 
 
 

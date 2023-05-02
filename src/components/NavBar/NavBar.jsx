@@ -49,9 +49,7 @@ export default function NavBar() {
                 <div className={s.logocompleto} style={{ backgroundImage: `url(${logoCompleto})` }}></div>
             </Link>
 
-            <Link to="/about" style={{textDecoration: 'none', color: 'white', fontWeight: '500', fontSize: '17px'}} className={s.hmarket}>
-                ¿Qué es hMarket?
-            </Link>
+            
 
             <div className={s.search}><SearchBar /></div>
 
@@ -60,7 +58,7 @@ export default function NavBar() {
                 {showProfileMenu && (
                     <div className={s.menuDesplegable}>
 
-                        <Link to="/log-in" className={s.link_menu} onClick={handleMenuClick}>
+                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
                         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>

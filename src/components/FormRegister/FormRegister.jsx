@@ -10,6 +10,8 @@ import s from "./FormRegister.module.css"
 
 export default function FormRegister() {
   const dispatch = useDispatch();
+  const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+  //const BACK_HOST = "http://localhost:3001/"
 
   useEffect(() => {
   }, [dispatch]);
@@ -65,7 +67,7 @@ export default function FormRegister() {
       try {
 
         await axios
-          .post("http://localhost:3001/usuario", form)
+          .post(`${BACK_HOST}usuario`, form)
           .then(res => {
             swal({
               title: 'Registro exitoso',
@@ -153,19 +155,19 @@ export default function FormRegister() {
     <>
 
       {shouldRedirect ? (
-        <Navigate to="/log-in" replace={true} />
+        <Navigate to="/login" replace={true} />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={s.contenedor}>
           {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
-          <div className='form-container' style={{ padding: '15px' }}>
+          <div className={s.formcontainer} style={{ padding: '15px' }}>
             <CloudinaryContext cloudName="dcel6k4l6">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className={s.formcontainer}>
                 {/* ----------------------- PRIMER NOMBRE -----------------------*/}
                 <div className={s.nombres}>
                   <div className={s.contenedorDiv}>
-                    <label for="" className={s.label}>
+                    <label  className={s.label}>
                       Nombre
                     </label>
                     <input
@@ -173,12 +175,20 @@ export default function FormRegister() {
                       name="primer_nombre"
                       value={form.primer_nombre}
                       onChange={handleInputChange}
-                      className='form-input'
+                      className={s.forminput}
+                      placeholder='Nombre'
                     />
 
-                    {errors.primer_nombre && (
+                    {/*errors.primer_nombre && (
+                      // <div className={s.errors}>{errors.primer_nombre}</div>
+                      <div className={s.ok}>✔</div>
+                    )*/}
+                    {errors.primer_nombre ? (
                       <div className={s.errors}>{errors.primer_nombre}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
                     )}
+
                   </div>
 
                 
@@ -188,7 +198,7 @@ export default function FormRegister() {
                 <div className={s.apellidos}>
                   <div className={s.contenedorDiv}>
 
-                    <label for="" className={s.label}>
+                    <label  className={s.label}>
                       Apellido
                     </label>
                     <input
@@ -196,10 +206,13 @@ export default function FormRegister() {
                       name="primer_apellido"
                       value={form.primer_apellido}
                       onChange={handleInputChange}
-                      className='form-input'
+                      className={s.forminput}
+                      placeholder='Apellido'
                     />
-                    {errors.primer_apellido && (
+                    {errors.primer_apellido ? (
                       <div className={s.errors}>{errors.primer_apellido}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
                     )}
                   </div>
 
@@ -209,7 +222,7 @@ export default function FormRegister() {
 
                 {/* ----------------------- DIRECCION -----------------------*/}
                 <div className={s.contenedorDiv}>
-                  <label for="" className={s.label}>
+                  <label  className={s.label}>
                     Dirección
                   </label>
                   <input
@@ -217,16 +230,19 @@ export default function FormRegister() {
                     name="direccion"
                     value={form.direccion}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={s.forminput}
+                      placeholder='Direccion'
                   />
-                  {errors.direccion && (
-                    <div className={s.errors}>{errors.direccion}</div>
-                  )}
+                  {errors.direccion ? (
+                      <div className={s.errors}>{errors.direccion}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
+                    )}
                 </div>
 
                 {/* ----------------------- TELEFONO -----------------------*/}
                 <div className={s.contenedorDiv}>
-                  <label for="" className={s.label}>
+                  <label  className={s.label}>
                     Teléfono
                   </label>
                   <input
@@ -234,16 +250,19 @@ export default function FormRegister() {
                     name="telefono"
                     value={form.telefono}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={s.forminput}
+                      placeholder='Telefono'
                   />
-                  {errors.telefono && (
-                    <div className={s.errors}>{errors.telefono}</div>
-                  )}
+                  {errors.telefono ? (
+                      <div className={s.errors}>{errors.telefono}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
+                    )}
                 </div>
 
                 {/* ----------------------- EMAIL -----------------------*/}
                 <div className={s.contenedorDiv}>
-                  <label for="" className={s.label}>
+                  <label  className={s.label}>
                     Email
                   </label>
                   <input
@@ -251,16 +270,19 @@ export default function FormRegister() {
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={s.forminput}
+                      placeholder='Email'
                   />
-                  {errors.email && (
-                    <div className={s.errors}>{errors.email}</div>
-                  )}
+                  {errors.email ? (
+                      <div className={s.errors}>{errors.email}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
+                    )}
                 </div>
 
                 {/* ----------------------- CONTRASEÑA -----------------------*/}
                 <div className={s.contenedorDiv}>
-                  <label for="" className={s.label}>
+                  <label  className={s.label}>
                     Contraseña
                   </label>
                   <input
@@ -268,11 +290,14 @@ export default function FormRegister() {
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={s.forminput}
+                    placeholder='Contraseña'
                   />
-                  {errors.password && (
-                    <div className={s.errors}>{errors.password}</div>
-                  )}
+                  {errors.password ? (
+                      <div className={s.errors}>{errors.password}</div>
+                    ) : (
+                      <div className={s.ok}>✔</div>
+                    )}
                 </div>
 
 
@@ -286,7 +311,8 @@ export default function FormRegister() {
                     id="imagen"
                     name="imagen"
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={s.forminput}
+                      placeholder=''
                   />
 
                   {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
@@ -300,7 +326,7 @@ export default function FormRegister() {
                   )}
                 </div>
 
-                <button type="submit">Registrase</button>
+                <button className={s.button} type="submit">Registrase</button>
               </form>
             </CloudinaryContext>
           </div>

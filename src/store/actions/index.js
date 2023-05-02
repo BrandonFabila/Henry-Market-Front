@@ -15,12 +15,12 @@ export const ORDERED_BY_LOWEST_PRICE ="ORDERED_BY_LOWEST_PRICE"
 export const ORDERED_BY_HIGHEST_PRICE = "ORDERED_BY_HIGHEST_PRICE"
 export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
 
- const api_host= "http://localhost:3001";
-//const api_host = 'https://henry-market-back-production.up.railway.app/'
+// const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
   return function (dispatch) {
-    axios.get(`${api_host}/products`).then((products) => {
+    axios.get(`${api_host}products`).then((products) => {
       dispatch({
         type: GET_ALL_PRODUCTS,
         payload: products.data,
@@ -31,7 +31,7 @@ export function getAllProducts() {
 
 export const getProductById = (id_producto) => {
   return async function (dispatch){
-      const {data} = await axios.get(`${api_host}/products/${id_producto}`);
+      const {data} = await axios.get(`${api_host}products/${id_producto}`);
       dispatch({type: GET_PRODUCT_BY_ID, payload: data});
   };
 }
@@ -45,7 +45,7 @@ export function userLoggedIn(estado) {
 
 export function getCategorys() {
   return async function (dispatch) {
-    const resp = await axios.get(`${api_host}/categorias`);
+    const resp = await axios.get(`${api_host}categorias`);
     dispatch({
       type: GET_CATEGORY,
       payload: resp.data,
@@ -61,7 +61,7 @@ export const getProductByName = (name) => async (dispatch) => {
   // return { type: action.GET_PRODUCT_BY_NAME, payload: name };
   try {
     dispatch(loading());
-    const res = await axios.get(`${api_host}/products?name=${name}`);
+    const res = await axios.get(`${api_host}products?name=${name}`);
     const result = res.data;
     console.log(result);
      dispatch({
@@ -88,9 +88,8 @@ export function ready() {
 
 export const getProductFiltered = (id_categoria_producto) => {
   return async function (dispatch){
-      const {data} = await axios.get(`${api_host}/products/categoria/${id_categoria_producto}`);
+      const {data} = await axios.get(`${api_host}products/categoria/${id_categoria_producto}`);
       dispatch({type: GET_PRODUCT_FILTERED, payload: data});
-      console.log("estteee", data)
   };
 }
 
@@ -113,10 +112,10 @@ export const orderedByHighestPrice = () => {
 export const orderedByRecientes = () => {
   return { type: ORDERED_BY_RECIENTES };
 };
+
 export const getProductFilteredDescuento = (id_categoria_producto) => {
   return async function (dispatch){
-      const {data} = await axios.get(`${api_host}/products/filter/descuento/${id_categoria_producto}`);
+      const {data} = await axios.get(`${api_host}products/filter/descuento/${id_categoria_producto}`);
       dispatch({type: GET_PRODUCT_FILTERED, payload: data});
-      console.log("estteee", data)
-  };
-}
+  }
+ };
