@@ -13,7 +13,7 @@ export default function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getProductByName(input));
-    navigate("/home");
+    navigate('/products/categoria/:id_categoria_producto');
   }
 
     return (

@@ -1,4 +1,6 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,GET_CATEGORY, GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING} from '../actions';
+import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,
+  GET_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING,ORDERED_BY_NAME_ASC,ORDERED_BY_NAME_DESC 
+,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES} from '../actions';
 
 const initialState = { 
     products: [],
@@ -46,20 +48,72 @@ export default function reducer(state = initialState, action) {
         ...state,
         display: true,
       };
-      case GET_PRODUCT_BY_CATEGORY:
+     case GET_PRODUCT_FILTERED:
+      return{
+        ...state,
+        productsFitered:action.payload
+      }
+      case ORDERED_BY_NAME_ASC:
       return {
         ...state,
-        productsFitered: [...state.products].filter((product) => {
-          return (
-            product.Categoria_producto.nombre_categoria_producto ===
-            action.payload
-          );
+        productsFitered: [...state.productsFitered].sort((a, b) =>
+          a.nombre.localeCompare(b.nombre)
+        ),
+      };
+      case ORDERED_BY_NAME_DESC:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) =>
+          b.nombre.localeCompare(a.nombre)
+        ),
+      };
+      case ORDERED_BY_LOWEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valo > b.valor) {
+            return 1;
+          }
+          if (b.valor > a.valor) {
+            return -1;
+          }
+          return 0;
         }),
-        copyProducts: [...state.products].filter((product) => {
-          return (
-            product.Categoria_producto.nombre_categoria_producto ===
-            action.payload
-          );
+      };
+
+    case ORDERED_BY_HIGHEST_PRICE:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.valor > b.valor) {
+            return -1;
+          }
+          if (b.valor > a.valor) {
+            return 1;
+          }
+          return 0;
+        }),
+      };
+      case ORDERED_BY_RECIENTES:
+      return {
+        ...state,
+        productsFitered: [...state.productsFitered].sort((a, b) => {
+          if (a.createdAt > b.createdAt) {
+            return 1;
+          }
+          if (b.createdAt > a.createdAt) {
+            return -1;
+          }
+          return 0;
+        }),
+        Copyproducts: [...state.productsFitered].sort((a, b) => {
+          if (a.createdAt > b.createdAt) {
+            return 1;
+          }
+          if (b.createdAt > a.createdAt) {
+            return -1;
+          }
+          return 0;
         }),
       };
     default:
