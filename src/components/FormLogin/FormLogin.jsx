@@ -164,7 +164,7 @@ const handleLogin = async (values) => {
                     <div>
                         <div style={{ border: '1px solid grey', width: '150px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '150px' }}></div>
                     </div>
-                    <Link to={'/registrar-usuario'}>
+                    <Link to={'/register'}>
                         <button type="button" className={styles.boton}>Registrarse</button>
                     </Link>
                   </div>

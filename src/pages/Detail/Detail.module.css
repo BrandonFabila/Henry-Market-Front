@@ -70,3 +70,20 @@ div>.image {
         border-radius: 8px;
     }
 }
+
+@media (max-width: 820px) {
+    .mainContainer {
+      margin-left: auto;
+    }
+  
+    .container {
+      flex-direction: column;
+    }
+    .imgContainer {
+        height: auto;
+      }
+
+      .information {
+        margin-top: 20px;
+      }
+}

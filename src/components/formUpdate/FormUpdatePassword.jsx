@@ -56,13 +56,14 @@ export default function FormUpdatePassword(props) {
         const hashedPassword = bcrypt.hashSync(data.password, salt);
         setForm({ ...form, password: hashedPassword });
         await axios
-          .put(`${api_host}usuario`, { ...data, password: hashedPassword }) // Actualiza el valor de 'password' en el objeto de datos enviado
+          .put(`${api_host}usuario`, { ...data }) // Actualiza el valor de 'password' en el objeto de datos enviado
           .then(res =>
             swal({
               title: "Cambio exitoso",
               text: "Debes loguearte nuevamente!",
               icon: "success",
               timer: "2000"
+
             })
           )
           .catch(err =>
