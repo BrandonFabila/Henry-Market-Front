@@ -5,7 +5,7 @@ export default function Register() {
 
     return (
         <div className={s.container}>
-            <p style={{padding: '15px', marginBottom: '20px', color: 'gray'}}>Por favor completa la información sobre ti para registrar tu cuenta, <br /> y comenzar a aprovechar nuestras ofertas exclusivas!</p>
+            <p style={{marginBottom: '20px', color: 'gray'}}>Por favor completa la información sobre ti para registrar tu cuenta, <br /> y comenzar a aprovechar nuestras ofertas exclusivas!</p>
             <FormRegister/>
         </div>
     )

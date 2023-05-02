@@ -13,7 +13,7 @@ function CardsCategory() {
   }, [dispatch])
 
   const { categorys } = useSelector(state => state);
-  
+   
   return (
     <div className={styles.container}>
       {categorys?.map((category, index) => {

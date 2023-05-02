@@ -36,13 +36,15 @@ export default function FormLogin() {
 
   const estado = true
 
-  const logOut = false
+  // const logOut = false
 
     const dispatch = useDispatch()
 
     const iconGoogle = Google;
 
-    const BACK_HOST = 'http://localhost:3001'
+//     const BACK_HOST = 'http://localhost:3001'
+    const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+
     const navigate = useNavigate();
     const navigateTo = (url) => {
         navigate(url);
@@ -74,7 +76,7 @@ export default function FormLogin() {
 
 const handleLogin = async (values) => {
   try {
-    const user = await axios.post(`${BACK_HOST}/usuario/login`, values);
+    const user = await axios.post(`${BACK_HOST}usuario/login`, values);
 
     console.log("USER:  ",user)
     const session = user.data.session;
@@ -166,7 +168,7 @@ const handleLogin = async (values) => {
                     </Link>
                   </div>
                   <div className={styles.or} >
-                          <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} /></button>
+                          <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' /></button>
                   </div>
 
                 </Form>
