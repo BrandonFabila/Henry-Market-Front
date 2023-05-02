@@ -5,6 +5,7 @@
 }
 
 
+
 .but{
     border-radius: 1rem;
     height: 35px;
@@ -20,10 +21,11 @@
 
 .formgroup {
     margin-bottom: 1rem;
+    font-size: xx-large;
+
 }
 
 .formcontrol {
-      
     display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
@@ -31,7 +33,7 @@
     font-size: 5rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: #000000;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;

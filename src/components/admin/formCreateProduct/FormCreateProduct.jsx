@@ -27,20 +27,20 @@ export default function FormCreateProduct() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    let {
-      nombre,
-      stock,
-      descripcion_producto,
-      imagen,
-      id_categoria_producto,
-      valor,
-      valor_descuento,
-    } = form;
+    // let {
+      // nombre,
+      // stock,
+      // descripcion_producto,
+      // imagen,
+      // id_categoria_producto,
+      // valor,
+      // valor_descuento,
+    // } = form;
 
 
-    stock = parseInt(stock);
-    valor = parseFloat(valor);
-    valor_descuento = parseFloat(valor_descuento);
+    // stock = parseInt(stock);
+    // valor = parseFloat(valor);
+    // valor_descuento = parseFloat(valor_descuento);
 
 
 
@@ -153,7 +153,7 @@ export default function FormCreateProduct() {
               {/* ----------------------- nombre -----------------------*/}
               
                 <div className={style.contenedorDiv}>
-                  <label for="" className='form-label'>
+                  <label  className='form-label'>
                     Nombre del producto
                   </label>
                   <input
@@ -172,7 +172,7 @@ export default function FormCreateProduct() {
                 <div className={style.fechas}>
                   {/* ----------------------- fecha_inicial -----------------------*/}
                   <div className={style.contenedorDiv}>
-                    <label for="" className='form-label'>
+                    <label  className='form-label'>
                       Stock
                     </label>
                     <input
@@ -193,7 +193,7 @@ export default function FormCreateProduct() {
   {/* ----------------------- descripcion de producto -----------------------*/}
 
               <div className={style.contenedorDiv}>
-                  <label for="" className='form-label'>
+                  <label  className='form-label'>
                     Descripción del producto
                   </label>
                   <textarea
@@ -211,7 +211,7 @@ export default function FormCreateProduct() {
                 
               {/* ----------------------- VALOR NORMAL -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label for="" className='form-label'>
+                <label  className='form-label'>
                   Valor 
                 </label>
                 <input
@@ -229,7 +229,7 @@ export default function FormCreateProduct() {
 
               {/* ----------------------- VALOR CON DESCUENTO  -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label for="" className='form-label'>
+                <label  className='form-label'>
                   Valor con descuento aplicado
                 </label>
                 <input
@@ -246,7 +246,7 @@ export default function FormCreateProduct() {
 
               {/* ----------------------- Categoria -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label for="" className='form-label'>
+                <label  className='form-label'>
                   Categoria
                 </label>
 

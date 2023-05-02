@@ -18,15 +18,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* {location.pathname === '/log-in' ? null : <NavBar />} */}
-      {location.pathname === '/pay' ? null : <NavBar />}
+      {location.pathname === '/log-in' ? null : <NavBar />}
+      {/* {location.pathname === '/pay' ? null : <NavBar />} */}
       <Routes>
         <Route exact path='/pay' element={<Pay />} />
         <Route exact path="/" element={<HomePrincipal />} />
         <Route exact path="/products/:id_producto" element={<Detail />} />
         <Route exact path="/products/:categoria" element={<Products />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/log-in" element={<Login />} />
+        <Route exact path="/login" element={<Login />} />
        <Route exact path="/about" element={<About />} />
        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
        <Route exact path="/account" element={<Account/>} />
