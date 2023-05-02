@@ -87,7 +87,9 @@ export default function NavBar() {
                     </div>
                 )}
 
-                <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                <Link to='/carrito' onClick={handleMenuClick}>
+                    <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                </Link>
             </div>
         </div>
     )

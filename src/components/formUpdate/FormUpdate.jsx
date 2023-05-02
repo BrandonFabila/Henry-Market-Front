@@ -6,6 +6,8 @@ import validations from "./validations";
 import style from "./FormUpdate.module.css";
 
 export default function FormUpdate({ idUsuario, updateUserData }) {
+  const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+  // const BACK_HOST = "http://localhost:3001/"
   const [form, setForm] = useState({
     id_usuario: null,
     primer_nombre: "", 
@@ -70,7 +72,7 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
       );
 
       await axios
-        .put(`http://localhost:3001/usuario`, filteredData)
+        .put(`${BACK_HOST}usuario`, filteredData)
         .then(res => swal({
           title: 'Actualización Exitosa',
           text: 'Ya puedes ver tus cambios reflejados',

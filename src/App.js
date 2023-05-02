@@ -12,6 +12,8 @@ import Pay from './pages/payment/Pay'
 import About from './pages/About/About';
 import FormCreateProduct from './components/admin/formCreateProduct/FormCreateProduct';
 import Account from './pages/account/Account';
+import HistorialCompra from './pages/HistorialCompra/HistorialCompra'
+import Carrito from './pages/Carrito/Carrito';
 
 function App() {
   const location = useLocation()
@@ -27,10 +29,11 @@ function App() {
         <Route exact path="/products/:categoria" element={<Products />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
-       <Route exact path="/about" element={<About />} />
-       <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
-       <Route exact path="/account" element={<Account/>} />
-
+        <Route exact path="/about" element={<About />} />
+        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
+        <Route exact path="/account" element={<Account/>} />
+        <Route exact path='/historial-de-compra' element={<HistorialCompra />} />;
+        <Route exact path='/carrito' element={<Carrito />} />;
          <Route exact path="/producto" element={<FormCreateProduct/>} /> 
       </Routes>
       <Footer />

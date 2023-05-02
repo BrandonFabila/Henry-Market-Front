@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import validations from "./validationsPassword";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import swal from "sweetalert";
 import style from "./UpPassword.module.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function FormUpdatePassword(props) {
 
-  const api_host= "http://localhost:3001/";
-// const api_host = 'https://henry-market-back-production.up.railway.app/'
+  // const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 
   const { idUsuario } = props; 
@@ -48,21 +48,19 @@ export default function FormUpdatePassword(props) {
       setErrors(errors); // Actualiza el estado de los errores
     } else {
       // Si no hay errores, continúa con el proceso de envío del formulario
-      // ...
-
-      // Si no hay errores, continúa con el proceso de envío del formulario
       try {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(data.password, salt);
+        // const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = data.password;
         setForm({ ...form, password: hashedPassword });
         await axios
-          .put(`${api_host}usuario`, { ...data, password: hashedPassword }) // Actualiza el valor de 'password' en el objeto de datos enviado
+          .put(`${api_host}usuario`, { ...data }) // Actualiza el valor de 'password' en el objeto de datos enviado
           .then(res =>
             swal({
               title: "Cambio exitoso",
               text: "Debes loguearte nuevamente!",
               icon: "success",
               timer: "2000"
+
             })
           )
           .catch(err =>

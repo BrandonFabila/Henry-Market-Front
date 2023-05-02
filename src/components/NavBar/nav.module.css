@@ -33,6 +33,10 @@
     display: none;
 }
 
+.carrito{
+    color: white;
+}
+
 .carrito:hover {
     cursor: pointer;
     transition: 0.1s;
