@@ -1,7 +1,6 @@
 import axios from 'axios';
 import DEPLOY_BACK from '../../apikey'
 
-
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
 export const USER_LOGIN = "USER_LOGIN"
