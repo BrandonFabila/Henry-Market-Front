@@ -1,4 +1,5 @@
 import axios from 'axios';
+import DEPLOY_BACK from '../../apikey'
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
@@ -17,7 +18,7 @@ export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL"
 
 // const api_host= "http://localhost:3001/";
-const api_host = 'https://henry-market-back-production.up.railway.app/'
+const api_host = DEPLOY_BACK;
 
 export function getAllProducts() {
   return function (dispatch) {
