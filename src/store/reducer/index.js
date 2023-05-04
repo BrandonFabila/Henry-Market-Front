@@ -1,6 +1,8 @@
 import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,
   GET_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING,ORDERED_BY_NAME_ASC,ORDERED_BY_NAME_DESC 
-,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL, GET_SHOPPING} from '../actions';
+,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL,GET_USER_BY_ID,
+COUNT_DELETE ,BORRAR_DEL_CARRITO, RESTAR_CANTIDAD_CARRITO, SUMAR_CANTIDAD_CARRITO, COUNT_RESTAR,COUNT_SUMAR,AGREGAR_AL_CARRITO 
+,CLEAN_PRODUCT, COUNT_AGREGAR,REVIEWS,CLEAN_REVIEWS, GET_SHOPPING} from '../actions';
 
 const initialState = { 
     products: [],
@@ -11,11 +13,101 @@ const initialState = {
     categorys:[],
     display: false,
     usuario: [],
+    countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
+    carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
+    reviews:[]
     compras: []
   };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAN_REVIEWS:
+      return {
+        ...state,
+        reviews: [],
+      };
+    case REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case COUNT_AGREGAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + action.payload,
+      };
+    case CLEAN_PRODUCT:
+      return {
+        ...state,
+        product: [],
+      };
+    case AGREGAR_AL_CARRITO:
+      const itemExistente = state.carrito.find(
+        (item) => item.id_producto === action.payload.id.id_producto
+      );
+
+      if (itemExistente) {
+        return {
+          ...state,
+          carrito: state.carrito.map((item) =>
+            item.id_producto === action.payload.id.id_producto
+              ? { ...item, cantidad: item.cantidad + 1 }
+              : item
+          ),
+        };
+      } else {
+        //No esta en el carrito
+        return {
+          ...state,
+          carrito: [
+            ...state.carrito,
+            { ...action.payload.id, cantidad: action.payload.quantity },
+          ],
+        };
+      }
+    case COUNT_SUMAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito + 1,
+      };
+    case COUNT_RESTAR:
+      return {
+        ...state,
+        countCarrito: state.countCarrito - 1,
+      };
+    case SUMAR_CANTIDAD_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.map((product) =>
+          product.id_producto === action.payload.id_producto
+            ? { ...product, cantidad: product.cantidad + 1 }
+            : product
+        ),
+      };
+    case RESTAR_CANTIDAD_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.map((product) =>
+          product.id_producto === action.payload.id_producto
+            ? { ...product, cantidad: product.cantidad - 1 }
+            : product
+        ),
+      };
+    case BORRAR_DEL_CARRITO:
+      const filter = state.carrito.filter(
+        (p) => p.id_producto !== action.payload.id_producto
+      );
+      console.log("filter   ", filter);
+
+      return {
+        ...state,
+        carrito: filter,
+      };
+    case COUNT_DELETE:
+      return {
+        ...state,
+        countCarrito: state.countCarrito - action.payload,
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -123,11 +215,19 @@ export default function reducer(state = initialState, action) {
           ...state,
           usuario: action.payload,
         };
+
+        case GET_USER_BY_ID:
+      return {
+        ...state,
+        usuario: action.payload,
+      };
+
       case GET_SHOPPING:
         return{
           ...state,
           compras: action.payload,
         }
+
     default:
       return state;
   }

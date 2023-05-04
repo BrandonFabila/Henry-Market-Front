@@ -85,3 +85,34 @@ button:hover{
     margin-top: 20px;
   }
 }
+.input {
+  border: solid 1px #ccc; 
+  border-radius: 5px;
+  padding: 10px; 
+  font-size: 16px; 
+  margin-bottom: 20px; 
+}
+
+.select {
+  border: solid 1px #ccc; 
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px; 
+  margin-bottom: 20px; 
+}
+
+.btn {
+  background-color: #f3f725; 
+  border: none; 
+  color:black; 
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 15px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+.btn:hover {
+  background-color: #a39302; 
+}
