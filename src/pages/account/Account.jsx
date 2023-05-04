@@ -50,17 +50,24 @@ const Account = () => {
           <div style={{ backgroundImage: `url(${userData.imagen})` }} className={s.imagen}></div>
           
           <span className={s.label}>Nombre</span>
-          <h3 className={s.dato_nombre}>{nombreUsuario}</h3>
+          <div>
+            <input className={s.inputs} type="text" placeholder={nombreUsuario} disabled={true} />
+          </div>
 
           <span className={s.label}>Email</span>
-          <h3 className={s.dato}>{userData.email}</h3>
-
+          <div>
+            <input className={s.inputs} type="text" placeholder={userData.email} disabled={true} />
+          </div>
 
           <span className={s.label}>Dirección</span>
-          <h3 className={s.dato}>{userData.direccion}</h3>
+          <div>
+            <input className={s.inputs} type="text" placeholder={userData.direccion} disabled={false} />
+          </div>
 
           <span className={s.label}>Teléfono</span>
-          <h3 className={s.dato}>{userData.telefono}</h3>
+          <div>
+            <input className={s.inputs} type="text" placeholder={userData.telefono} disabled={false} />
+          </div>
         </div>
 
       </div>
