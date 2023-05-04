@@ -15,6 +15,19 @@ export const ORDERED_BY_LOWEST_PRICE ="ORDERED_BY_LOWEST_PRICE"
 export const ORDERED_BY_HIGHEST_PRICE = "ORDERED_BY_HIGHEST_PRICE"
 export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL"
+export const GET_USER_BY_ID = "GET_USER_BY_ID"
+export const COUNT_DELETE = "COUNT_DELETE"
+export const BORRAR_DEL_CARRITO = "BORRAR_DEL_CARRITO"
+export const RESTAR_CANTIDAD_CARRITO = "RESTAR_CANTIDAD_CARRITO"
+export const SUMAR_CANTIDAD_CARRITO = "SUMAR_CANTIDAD_CARRITO"
+export const COUNT_RESTAR = "COUNT_RESTAR"
+export const COUNT_SUMAR = "COUNT_SUMAR"
+export const AGREGAR_AL_CARRITO = "AGREGAR_AL_CARRITO"
+export const CLEAN_PRODUCT = "CLEAN_PRODUCT"
+export const COUNT_AGREGAR = "COUNT_AGREGAR"
+export const  REVIEWS = "REVIEWS"
+export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
+
 
 const api_host= "http://localhost:3001/";
 // const api_host = 'https://henry-market-back-production.up.railway.app/'
@@ -144,3 +157,101 @@ export function getUsuarioByEmail(email) {
   
  };
 
+ export const getUserById = (id) => async (dispatch) => {
+  try {
+    dispatch(loading());
+    const res = await axios.get(`${api_host}usuario/${id}`);
+    dispatch({
+      type: GET_USER_BY_ID,
+      payload: res.data,
+    });
+    dispatch(ready());
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: GET_USER_BY_ID,
+      payload: error,
+    });
+    dispatch(ready());
+  }
+};
+
+export function deleteCount(quantity) {
+  return {
+    type: COUNT_DELETE,
+    payload: quantity
+  }
+}
+
+export function eliminarDelCarrito(id) {
+  return {
+    type: BORRAR_DEL_CARRITO,
+    payload: id,
+  };
+}
+
+export function restarCantidad(id) {
+  return {
+    type: RESTAR_CANTIDAD_CARRITO,
+    payload: id,
+  };
+}
+
+export function restarCount() {
+  return {
+    type: COUNT_RESTAR,
+  }
+}
+
+export function sumarCantidad(id) {
+  return {
+    type: SUMAR_CANTIDAD_CARRITO,
+    payload: id,
+  };
+}
+
+
+export function sumarCount() {
+  return {
+    type: COUNT_SUMAR,
+  }
+}
+
+export function agregarAlCarrito(id, quantity) {
+  console.log(id);
+  return {
+    type: AGREGAR_AL_CARRITO,
+    payload: { id, quantity },
+  };
+}
+
+export function cleanProduct() {
+  return {
+    type: CLEAN_PRODUCT,
+  };
+}
+
+export function agregarCount(quantity) {
+  return {
+    type: COUNT_AGREGAR,
+    payload: quantity
+  }
+}
+
+export function getReviews(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${api_host}products/${id}/calificaciones`);
+      console.log(response.data);
+      dispatch({ type: REVIEWS, payload: response.data });
+    } catch (error) {
+      dispatch({ type: REVIEWS, payload: error });
+    }
+  };
+}
+
+export function cleanReviews() {
+  return {
+    type: CLEAN_REVIEWS,
+  };
+}
