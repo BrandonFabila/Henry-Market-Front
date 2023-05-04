@@ -65,14 +65,6 @@ const About = () => {
                     </a>
                     <a
                     className= {styles.links}
-                    href="https://www.linkedin.com/in/jhojan-alfredo-cruz-portillo-0b09661b8/"
-                    target="_blank"
-                    rel="noreferrer">
-                        Jhojan Cruz
-                    </a>
-                    
-                    <a
-                    className= {styles.links}
                     href="https://www.linkedin.com/in/lautacorva/"
                     target="_blank"
                     rel="noreferrer">
