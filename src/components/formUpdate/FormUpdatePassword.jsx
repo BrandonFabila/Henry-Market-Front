@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function FormUpdatePassword(props) {
 
-  const api_host= "http://localhost:3001/";
-// const api_host = 'https://henry-market-back-production.up.railway.app/'
+  // const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 
   const { idUsuario } = props; 
