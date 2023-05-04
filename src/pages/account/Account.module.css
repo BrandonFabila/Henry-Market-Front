@@ -68,8 +68,11 @@
   flex-direction: column;
 }
  
-  
-  
-
+.inputs{
+  width: 320px;
+  font-size: large;
+  border-radius: 5rem;
+  color: black;
+}
   
 
