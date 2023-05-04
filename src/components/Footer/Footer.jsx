@@ -9,9 +9,11 @@ const henry = Henry
     return(
         <div style={{minHeight: "100%", position: "relative", height:"100%"}}>
             <div className={styles.container}>
-                <div>
-                    <img className={styles.logo} src={logo} alt='HenryMarketLogo' />
-                </div>
+                <Link to='/'>
+                    <div>
+                        <img className={styles.logo} src={logo} alt='HenryMarketLogo' />
+                    </div>
+                </Link>
                 <div className={styles.hm} >
 
                 <Link to="/about" style={{textDecoration: 'none', color: 'white', fontWeight: '500', fontSize: '17px'}} >
