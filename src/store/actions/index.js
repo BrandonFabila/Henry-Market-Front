@@ -162,8 +162,7 @@ export function getShopping() {
         const response = await axios.get(`${api_host}/venta`);
         // console.log(response);
         dispatch({
-          type: 
-          ,
+          type: GET_SHOPPING,
           payload: response.data,
         });
       } catch (error) {
