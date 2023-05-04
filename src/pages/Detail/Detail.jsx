@@ -166,7 +166,7 @@ const Detail = () => {
 
                 <div style={{ margin: '15px' }}>
                   <Link to='/carrito'>
-                  <button className={styles.button} style={{ width: 'auto' }} onClick={handlerComprar}>Comprar</button>
+                  <button className={styles.button} style={{ width: 'auto', marginRight: '10px' }} onClick={handlerComprar}>Comprar</button>
                   </Link>
                   <button className={styles.button} style={{ width: 'auto' }} onClick={handlerCarrito}>Agregar al carrito</button>
                 </div>
