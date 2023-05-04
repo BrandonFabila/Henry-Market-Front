@@ -17,7 +17,7 @@ const About = () => {
       <img className={styles.img} src={logo} alt="logo"/>
       <div className={styles.parrafos}>
         <p>
-        Bienvenido/a, HENRY MARKET es una plataforma de e-commerce que está aquí para ayudarte a llevar tu negocio al siguiente nivel.
+        Es una plataforma de e-commerce que está aquí para ayudarte a llevar tu negocio al siguiente nivel.
         Ofrecemos una plantilla personalizable y fácil de usar que permite a las empresas vender sus productos y servicios en línea
         y llegar a nuevos mercados.
           <br/>

@@ -15,7 +15,7 @@ const initialState = {
     usuario: [],
     countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
     carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
-    reviews:[]
+    reviews:[],
     compras: []
   };
 
