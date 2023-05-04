@@ -1,6 +1,6 @@
 import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,
   GET_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING,ORDERED_BY_NAME_ASC,ORDERED_BY_NAME_DESC 
-,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL} from '../actions';
+,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL, GET_SHOPPING} from '../actions';
 
 const initialState = { 
     products: [],
@@ -10,7 +10,8 @@ const initialState = {
     logIn: false,
     categorys:[],
     display: false,
-    usuario: []
+    usuario: [],
+    compras: []
   };
 
 export default function reducer(state = initialState, action) {
@@ -122,6 +123,11 @@ export default function reducer(state = initialState, action) {
           ...state,
           usuario: action.payload,
         };
+      case GET_SHOPPING:
+        return{
+          ...state,
+          compras: action.payload,
+        }
     default:
       return state;
   }
