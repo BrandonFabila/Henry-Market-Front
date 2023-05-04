@@ -27,6 +27,7 @@ export const CLEAN_PRODUCT = "CLEAN_PRODUCT"
 export const COUNT_AGREGAR = "COUNT_AGREGAR"
 export const  REVIEWS = "REVIEWS"
 export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
+export const GET_SHOPPING = "GET_SHOPPING"
 
 
 // const api_host= "http://localhost:3001/";
@@ -153,9 +154,26 @@ export function getUsuarioByEmail(email) {
       });
     }
   };
+};
 
-  
- };
+export function getShopping() {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${api_host}/venta`);
+        // console.log(response);
+        dispatch({
+          type: 
+          ,
+          payload: response.data,
+        });
+      } catch (error) {
+        dispatch({
+          type: GET_SHOPPING,
+          payload: error,
+        });
+      }
+    };
+  }
 
  export const getUserById = (id) => async (dispatch) => {
   try {
