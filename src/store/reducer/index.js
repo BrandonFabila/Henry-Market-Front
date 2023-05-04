@@ -16,7 +16,6 @@ const initialState = {
     countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
     carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
     reviews:[]
-    compras: []
   };
 
 export default function reducer(state = initialState, action) {

@@ -29,8 +29,6 @@ const Account = () => {
     }
   }, [usuarioMemo.length, usuarioMemo]);
 
-  /* ------------- MENU HAMBURGUESA ------------- */
-
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const handleLogInClick = () => {
@@ -45,38 +43,26 @@ const Account = () => {
     <div className={s.container}>
 
       <div className={s.usuario}>
-        <h2 style={{ marginBottom: '15px', textAlign: 'left', fontSize: '30px' }}>Mi cuenta</h2>
+        <div className={s.datos} >
+          <h2 style={{textAlign: 'center', fontSize: '30px', marginBottom: '-10px' }}>{nombreUsuario}</h2>
+          <h3 style={{ marginBottom: '20px', textAlign: 'center', fontSize: '20px' }}>{userData.email}</h3>
+        </div>
+
         <div className={s.datos}>
-          <div style={{ backgroundImage: `url(${userData.imagen})` }} className={s.imagen}></div>
-          
-          <span className={s.label}>Nombre</span>
           <div>
-            <input className={s.inputs} type="text" placeholder={nombreUsuario} disabled={true} />
-          </div>
-
-          <span className={s.label}>Email</span>
-          <div>
-            <input className={s.inputs} type="text" placeholder={userData.email} disabled={true} />
-          </div>
-
-          <span className={s.label}>Dirección</span>
-          <div>
-            <input className={s.inputs} type="text" placeholder={userData.direccion} disabled={false} />
-          </div>
-
-          <span className={s.label}>Teléfono</span>
-          <div>
-            <input className={s.inputs} type="text" placeholder={userData.telefono} disabled={false} />
+            <div style={{ backgroundImage: `url(${userData.imagen})` }} className={s.imagen}></div>
           </div>
         </div>
 
-      </div>
+        <FormUpdate userData={userData}  idUsuario={idUsuario} />
 
-      <div className={s.update}>
-        <FormUpdate idUsuario={idUsuario} />
-        <button onClick={handleLogInClick}>Quiero cambiar mi contraseña</button>
-        {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} mostrarProp={true} />}
+        <div className={s.update}>
+          <button className={s.contraseña} onClick={handleLogInClick}>Cambiar contraseña</button>
+          {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} mostrarProp={true} />}
+        </div>
+
       </div>
+      
     </div>
   );
 };

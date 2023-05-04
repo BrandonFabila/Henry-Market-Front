@@ -33,6 +33,7 @@ export const GET_SHOPPING = "GET_SHOPPING"
 const api_host= "http://localhost:3001/";
 // const api_host = 'https://henry-market-back-production.up.railway.app/'
 
+
 export function getAllProducts() {
   return function (dispatch) {
     axios.get(`${api_host}products`).then((products) => {
@@ -162,8 +163,7 @@ export function getShopping() {
         const response = await axios.get(`${api_host}/venta`);
         // console.log(response);
         dispatch({
-          type: 
-          ,
+          type: GET_SHOPPING,
           payload: response.data,
         });
       } catch (error) {
