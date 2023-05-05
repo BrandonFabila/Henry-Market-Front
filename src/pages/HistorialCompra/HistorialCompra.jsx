@@ -37,9 +37,10 @@ const HistorialDeCompra = () => {
                     <img className={styles.img} src={detalle.Producto.imagen} alt={detalle.Producto.nombre}/>
                     <label className={styles.aux}>{detalle.Producto.nombre}</label>
                     <label className={styles.aux}>
-                      $: {detalle.Producto.valor_descuento || detalle.Producto.valor}
+                      ${detalle.Producto.valor_descuento || detalle.Producto.valor} x unidad
                     </label>
                     <label className={styles.aux}>Cant: {detalle.cantidad}</label>
+                    <label className={styles.aux}>Total: ${detalle.valor_total_cantidad}</label>
                   </div>
                 ))}
               </div>
