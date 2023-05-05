@@ -3,11 +3,51 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     margin-top: 90px;
-    width: 100%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
+    border-color: black;
+    background-color: var(--blue-color);
+    box-shadow: 0px 0px 15px black;
+    
+}
+
+.labels {
+    font-size: large;
+    margin-top: 15px;
+}
+
+.inputs {
+    margin-top: 5px;
+    font-size: larger;
+    width: 350px ;
+    border-radius: 1rem;
+    height: 2.5rem;
+}
+
+.descripcion {
+    font-size: large;
+    width: 350px;
+    height: 4rem;
+    border-radius: 5px;
+}
+
+.publicar{
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: large;
+    border-radius: 1rem;
+    width: 200px;
+    height: 2.5rem;
+    background-color: rgb(43, 224, 230);
+    color: #000000;
+    text-decoration:double;
+}
+
+.imbutton{
+    width: 150px;
 }
 
 .fechas {
@@ -38,9 +78,8 @@
 .imageFile {
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 180px;
-    height: 130px;
-    width: 130px;
+    height: 300px;
+    width: 300px;
     margin-top: 10px;
     object-fit: cover;
 }

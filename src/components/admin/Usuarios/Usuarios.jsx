@@ -123,7 +123,7 @@ function Usuarios() {
                         </tr>
                       );
                     } else {
-                      return (<h1>no hay nada</h1>);
+                      return null;
                     }
                   })}
             </tbody>
