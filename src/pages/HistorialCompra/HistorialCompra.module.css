@@ -37,7 +37,8 @@
 .detalle{
     display: flex;
     border: 3px black solid;
-    width: 1300px;
+    border-radius: 20px;
+    width: 1100px;
     margin-top: 10px;
     justify-content: space-between;
     align-items: center;
