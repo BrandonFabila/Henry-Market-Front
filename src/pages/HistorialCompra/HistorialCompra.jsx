@@ -1,40 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
+import { Navigate } from "react-router-dom";
+import { mail } from "../Carrito/user"
+
 
 // ACTIONS
-import { getShopping, getUsuarioByEmail } from "../../store/actions/index";
+import { getUserById } from "../../store/actions/index";
 
 // ESTILOS
 import styles from "./HistorialCompra.module.css";
 
 const HistorialDeCompra = () => {
   const dispatch = useDispatch();
-
-  const {compras} = useSelector(state => state)
-  const token = Cookies.get("user_token");
-  const decodedToken = jwt_decode(token);
-
-  const email = decodedToken.email;
+  const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
+  const {compras} = useSelector(state => state);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   useEffect(() => {
-    dispatch(getUsuarioByEmail(email))
-    dispatch(getShopping());
-  }, [dispatch, email]);
-
-  // Filtrar las compras del usuario logueado
-  const comprasUsuario = compras.length ? compras.filter((compras) => compras.Usuario.email === email) : ""
+    const email = mail()
+    window.localStorage.setItem("carrito", JSON.stringify(compras));
+    dispatch(getUserById(email));
+    return () => {
+      if(setShouldRedirect){
+        window.localStorage.setItem("carrito", JSON.stringify([]));
+        window.localStorage.setItem("count", JSON.stringify(0));
+      }
+      setShouldRedirect(false);
+    }
+  }, [dispatch, compras]);
 
   return (
     <div className={styles.contenedor}>
-      <div className={styles.tabla}>
+      {shouldRedirect ? (
+        <Navigate to="/" />
+      ) : (
+
+        <div className={styles.tabla}>
         <div className={styles.titulo}>
           <h1>Historial de compras:</h1>
         </div>
-        {comprasUsuario.length ? (
+        {compras.length ? (
           <div>
-            {comprasUsuario.map((compra) => (
+            {compras.map((compra) => (
               <div key={compra._id}>
                 <h3>Compra realizada el {compra.fecha}</h3>
                 {compra.Detalle_venta.map((detalle) => (
@@ -52,8 +60,10 @@ const HistorialDeCompra = () => {
           </div>
         ) : (
           <p>No se encontraron compras realizadas</p>
-        )}
+          )}
       </div>
+      )
+      }
     </div>
   );
 };
