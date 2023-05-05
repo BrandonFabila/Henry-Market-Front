@@ -6,8 +6,8 @@ import validations from "./validations";
 import style from "./FormUpdate.module.css";
 
 export default function FormUpdate({ idUsuario, userData }) {
-  // const api_host = 'https://henry-market-back-production.up.railway.app/'
-  const api_host = "http://localhost:3001/"
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  // const api_host = "http://localhost:3001/"
 
   const [form, setForm] = useState({
     id_usuario: null,

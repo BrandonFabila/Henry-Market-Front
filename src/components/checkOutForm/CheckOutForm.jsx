@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = (props) => {
-    // const api_host = 'https://henry-market-back-production.up.railway.app/'
-  const api_host = "http://localhost:3001/"
+    const api_host = 'https://henry-market-back-production.up.railway.app/'
+//   const api_host = "http://localhost:3001/"
     
     const { total, id_user, carrito } = props;
     const stripe = useStripe();
