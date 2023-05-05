@@ -1,30 +1,25 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
 
 // ACTIONS
-import { getShopping, getUsuarioByEmail } from "../../store/actions/index";
+import { getShopping } from "../../store/actions/index";
 
 // ESTILOS
 import styles from "./HistorialCompra.module.css";
 
 const HistorialDeCompra = () => {
   const dispatch = useDispatch();
-
+  const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
   const {compras} = useSelector(state => state)
-  const token = Cookies.get("user_token");
-  const decodedToken = jwt_decode(token);
-
-  const email = decodedToken.email;
 
   useEffect(() => {
-    dispatch(getUsuarioByEmail(email))
+    // window.localStorage.setItem("compras", JSON.stringify(compras))
     dispatch(getShopping());
-  }, [dispatch, email]);
+  }, [dispatch]);
 
   // Filtrar las compras del usuario logueado
-  const comprasUsuario = compras.length ? compras.filter((compras) => compras.Usuario.email === email) : ""
+  const comprasUsuario = compras.length ? compras.filter((compras) => compras.Usuario.id_usuario === id_user) : ""
 
   return (
     <div className={styles.contenedor}>
@@ -38,13 +33,14 @@ const HistorialDeCompra = () => {
               <div key={compra._id}>
                 <h3>Compra realizada el {compra.fecha}</h3>
                 {compra.Detalle_venta.map((detalle) => (
-                  <div className={styles.detalle} key={detalle.Producto._id}>
+                  <div className={styles.detalle} key={detalle.Producto.id_producto}>
                     <img className={styles.img} src={detalle.Producto.imagen} alt={detalle.Producto.nombre}/>
                     <label className={styles.aux}>{detalle.Producto.nombre}</label>
                     <label className={styles.aux}>
-                      $: {detalle.Producto.valor_con_descuento}
+                      ${detalle.Producto.valor_descuento || detalle.Producto.valor} x unidad
                     </label>
                     <label className={styles.aux}>Cant: {detalle.cantidad}</label>
+                    <label className={styles.aux}>Total: ${detalle.valor_total_cantidad}</label>
                   </div>
                 ))}
               </div>

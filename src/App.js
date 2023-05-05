@@ -18,6 +18,7 @@ import FormUpdateProduct from "./components/admin/formUpdateProduct/FormUpdatePr
 import ProductListAdmin from './components/admin/ProductListAdmin/ProductListAdmin';
 import HomeAdmin from "./components/admin/HomeAdmin/HomeAdmin"
 import Usuarios from './components/admin/Usuarios/Usuarios';
+import HistorialVentas from './components/admin/HistorialVentas/HistorialVentas';
 
 function App() {
   const location = useLocation()
@@ -46,7 +47,8 @@ function App() {
          <Route exact path="/producto" element={<FormCreateProduct/>} /> 
          <Route exact path="/product/:id_producto" element={<FormUpdateProduct/>}/>
          <Route exact path="/admin/usuarios"element={<Usuarios/>} />
-    
+         <Route exact path="/historialVentas" element={<HistorialVentas/>} />
+
       </Routes>
       <Footer />
     </div>
