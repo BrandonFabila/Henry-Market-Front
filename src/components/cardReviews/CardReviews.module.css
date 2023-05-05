@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.texto{
+    text-align: justify;
+}
+
+.star{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    color: #FFD700;
+}
