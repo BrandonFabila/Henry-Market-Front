@@ -115,7 +115,7 @@ const Detail = () => {
       descripcion_motivo,
       valor_calificacion
     }
-    await axios.post(`${api_host}products/${id_producto}/calificacion`, data)
+    await axios.post(`${api_host}/products/${id_producto}/calificacion`, data)
     setDescripcion_motivo()
     setValor_calificacion()
   }
