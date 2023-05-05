@@ -177,7 +177,7 @@ export function getUsuarioByEmail(email) {
 export function getShopping() {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${api_host}/venta`);
+        const response = await axios.get(`${api_host}venta`);
         // console.log(response);
         dispatch({
           type: GET_SHOPPING,
