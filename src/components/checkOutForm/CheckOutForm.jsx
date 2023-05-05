@@ -44,6 +44,7 @@ const CheckoutForm = (props) => {
                 console.log(card.brand)
                 console.log(id)
                 console.log(data)
+                navigateTo('/');
                 swal({
                     title: 'Completo',
                     text: 'Gracias por tu compra!',
@@ -51,7 +52,6 @@ const CheckoutForm = (props) => {
                     timer: '2000',
                     button: 'Accept'
                 });
-                navigateTo('/');
 
             } catch (error) {
 
