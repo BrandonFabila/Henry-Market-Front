@@ -14,6 +14,7 @@ import styles from "./HistorialCompra.module.css";
 const HistorialDeCompra = () => {
   const dispatch = useDispatch();
   const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
+  console.log(id_user);
   const {compras} = useSelector(state => state);
   const [shouldRedirect, setShouldRedirect] = useState(false);
 

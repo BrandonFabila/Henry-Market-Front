@@ -37,7 +37,7 @@ const CheckoutForm = (props) => {
                     valor_total_venta: total * 100,
                     id_usuario: id_user,
                     detalle_venta: carrito,
-                    id_pago: id.toString(),
+                    id_pago: paymentMethod.id.toString(),
                 
                 })
                 elements.getElement(CardElement).clear()
