@@ -64,7 +64,7 @@ export default function FormCreateProduct() {
         await axios.post(`${api_host}products`, formData).then(res => {
           swal({
             title: "producto creado correctamente",
-            text: "asd",
+            text: "Good",
             icon: "success",
             timer: "2000",
           });
@@ -147,7 +147,7 @@ export default function FormCreateProduct() {
   return (
     <>
       {shouldRedirect ? (
-        <Navigate to="/" replace={true}/>
+        <Navigate to="/adminHome" replace={true}/>
       ) : (
         <div className={style.contenedor} style={{padding: '15px'}}>
           <CloudinaryContext cloudName="dfmkjxjsf">

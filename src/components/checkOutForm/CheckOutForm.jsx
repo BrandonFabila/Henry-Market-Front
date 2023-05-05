@@ -29,7 +29,7 @@ const CheckoutForm = (props) => {
         if(!error) {
             const { id, card } = paymentMethod
             const date = new Date()
-           
+            const idString = id.toString()
             try {
                 const { data } = await axios.post(`${api_host}venta`, {
                     fecha: date,
@@ -37,14 +37,13 @@ const CheckoutForm = (props) => {
                     valor_total_venta: total * 100,
                     id_usuario: id_user,
                     detalle_venta: carrito,
-                    id_pago: id.toString(),
+                    id_pago: idString,
                 
                 })
                 elements.getElement(CardElement).clear()
                 console.log(card.brand)
                 console.log(id)
                 console.log(data)
-                navigateTo('/');
                 swal({
                     title: 'Completo',
                     text: 'Gracias por tu compra!',
@@ -52,6 +51,7 @@ const CheckoutForm = (props) => {
                     timer: '2000',
                     button: 'Accept'
                 });
+                navigateTo('/');
 
             } catch (error) {
 
