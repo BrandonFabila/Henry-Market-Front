@@ -11,13 +11,15 @@ import CardsReviews from '../../components/cardsReview/CardsReview';
 import s from "./Detail.module.css"
 
 const Detail = () => {
+  const api_host = 'http://localhost:3001'
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
+
 
     const { id_producto } = useParams();
     const { product, carrito } = useSelector(state => state);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const estaLogueado = localStorage.getItem("estaLogueado");
-    const api_host = 'http://localhost:3001'
 
   useEffect(() => {
     setLoading(true);
@@ -86,7 +88,7 @@ const Detail = () => {
     const exists = carrito?.find(e => {
       return e.id_producto === product.id_producto
     })
-
+    console.log(shouldRedirect)
     if(estaLogueado === "database" || estaLogueado === "google"){
       if(!exists){
         dispatch(agregarAlCarrito(product, quantity))
@@ -113,7 +115,7 @@ const Detail = () => {
       descripcion_motivo,
       valor_calificacion
     }
-    await axios.post(`${api_host}/products/${id_producto}/calificacion`, data)
+    await axios.post(`${api_host}products/${id_producto}/calificacion`, data)
     setDescripcion_motivo()
     setValor_calificacion()
   }

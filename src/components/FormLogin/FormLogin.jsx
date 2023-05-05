@@ -9,9 +9,6 @@ import Google from "../../assets/images/IconGoogle.png"
 import { userLoggedIn } from "../../store/actions/index"
 import { useNavigate } from 'react-router';
 import styles from "./FormLogin.module.css"
-
-
-
 import Cookies from 'js-cookie';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -31,10 +28,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+const auth = getAuth(app);
 
 export default function FormLogin() {
-
+  const api_host = 'http://localhost:3001/'
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
   
 
   const estado = true
@@ -45,8 +43,7 @@ export default function FormLogin() {
 
     const iconGoogle = Google;
 
-    const BACK_HOST = 'http://localhost:3001/'
-    // const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+
 
     const navigate = useNavigate();
     const navigateTo = (url) => {
@@ -79,7 +76,7 @@ export default function FormLogin() {
 
 const handleLogin = async (values) => {
   try {
-    const user = await axios.post(`${BACK_HOST}usuario/login`, values);
+    const user = await axios.post(`${api_host}usuario/login`, values);
 
     console.log("USER:  ",user)
     const session = user.data.session;

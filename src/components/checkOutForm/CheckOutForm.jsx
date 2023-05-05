@@ -5,10 +5,11 @@ import swal from 'sweetalert'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CheckoutForm = () => {
-    const importe = 1550
-    const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
-//   const BACK_HOST = "http://localhost:3001/"
+const CheckoutForm = (props) => {
+    // const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host = "http://localhost:3001/"
+    
+    const { total, id_user, carrito } = props;
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ const CheckoutForm = () => {
     const navigateTo = (url) => {
         navigate(url);
     }
-
+    console.log(carrito)
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
@@ -30,15 +31,15 @@ const CheckoutForm = () => {
             const date = new Date()
            
             try {
-                const { data } = await axios.post(`${BACK_HOST}venta/test`, {
+                const { data } = await axios.post(`${api_host}venta`, {
                     fecha: date,
                     //aqui va el valor multiplicado por 100 centavos
-                    valor_total_venta: importe * 100,
-                    id_usuario: 1,
-                    detalle_venta: 111,
+                    valor_total_venta: total * 100,
+                    id_usuario: id_user,
+                    detalle_venta: carrito,
                     id_pago: id.toString(),
+                
                 })
-                window.location.replace('/');
                 elements.getElement(CardElement).clear()
                 console.log(card.brand)
                 console.log(id)
@@ -59,11 +60,10 @@ const CheckoutForm = () => {
             setLoading(false)
         }
     }
-
     return (
         <form onSubmit={handleSubmit} className='card card-body'>
             <div className='formgroup' >
-                <h2>Importe a pagar: ${importe} MXN</h2>
+                <h2>Pagar {total} USD</h2>
             </div>
             
             <div className='formgroup' >

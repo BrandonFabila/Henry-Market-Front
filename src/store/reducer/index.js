@@ -17,6 +17,7 @@ const initialState = {
     carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
     reviews:[],
     compras: []
+
   };
 
 export default function reducer(state = initialState, action) {
