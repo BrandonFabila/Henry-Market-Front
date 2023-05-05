@@ -1,7 +1,12 @@
 .contenedor{
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;   
+}
+
+.formcontainer{
+    margin-top: 20px;
+    margin-bottom: 20px
 }
 
 .contenedorForm{
@@ -15,99 +20,53 @@
     margin-bottom: 20px;
 }
 
-.nombres{
-    display: flex;
-    flex-direction: row;
-    justify-content: center
-}
-
-.apellidos{
-    display: flex;
-    flex-direction: row;
-    justify-content: center
-}
-
 .contenedorDiv{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.input{
-    width: 405px;
+.inputs{
+    width: 410px;
+    font-size: large;
     padding: .3rem;
-    border-radius: 8px;
-    border: 3px black solid;
-    margin-top: -20px;
-
+    border-radius: 7.5px;
 }
 
-.input2{
-    width: 200px;
-    padding: .3rem;
-    border-radius: 8px;
-    border: 3px black solid;
-    margin: 5px;
-    margin-top: -20px;
+.inputs::placeholder{
+    font-size: large;
+    color: black;
 }
 
-.button{
-    border-radius: 100px;
-    padding: 8px;
-    margin-right: 20px;
+
+.actualizar{
+    margin-top: 20px;
+    border-radius: 15rem;
     border: none; 
-    background-color: black;
+    padding: 5px;
+    background-color: var(--blue-color);
     color: aliceblue;  
-    font-size: 20px;  
+    font-size: 17.5px;  
+    width: 250px;
 }
 
 
 .label{
     font-size: 20px;
 }
-.label2{
-    font-size: 20px;
-}
 
 .imageFile {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 180px;
+    margin-top: 10px;
+    border-radius: 50%;
     height: 130px;
     width: 130px;
-    margin-top: 10px;
     object-fit: cover;
 }
 
 .errors {
     font-family: sans-serif;    
     color: #ff0000;
-    font-size: 14px;
+    font-size: 15px;
 }
-
-.select{
-    width: 405px;
-    padding: .5rem;
-    border-radius: 8px;
-    border: 3px black solid;
-}
-
-
-.input {
-    font-size: 17px;
-    
-  }
-
-  .input::placeholder {
-    font-size: 20px; 
-  }
-
-  
-  .select {
-    font-size: 20px;  
-  }
-  .select option{
-    font-size: 15px;  
-  }
 
 
  

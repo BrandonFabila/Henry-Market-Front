@@ -55,7 +55,7 @@
     color: rgb(0, 0, 0); /* Texto rojo para los mensajes de error */
     margin-bottom: 20px;
     background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,202,40,1) 25%, rgba(255,202,40,1) 75%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,202,40,1) 25%, rgba(255,202,40,1) 75%, rgba(0,0,0,0) 100%);
     width: 365px;
     /* box-shadow: 0px 0px 5px rgb(0, 0, 0); Resaltar el campo activo con un borde amarillo */
 

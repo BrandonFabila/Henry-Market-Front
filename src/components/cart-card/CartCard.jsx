@@ -39,7 +39,7 @@ export default function CartCard(product) {
   };
 
   return (
-    <div >
+    <div key={product.id} >
           <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
             <div className={s.container}>
               <div className={s.image}>
@@ -48,7 +48,20 @@ export default function CartCard(product) {
               <div className={s.text}>
                 <h3 className={s.name}>{product.nombre}</h3>
               </div>
-              <div className={s.precio}>${product.valor_con_descuento} x unidad</div>
+              {product.valor_descuento ? 
+                (
+                  <div>
+                    <div className={s.preciodesc} >${product.valor}</div>
+                    <div className={s.precio}>${product.valor_descuento} x unidad</div>
+                  </div>
+                )
+                :
+                (
+                  <div>
+                    <div className={s.precio}>${product.valor} x unidad</div>
+                  </div>
+                )
+              }
               <div className={s.quantity}>
               <QuantityDisplay
                 quantity={product.cantidad}
@@ -57,7 +70,7 @@ export default function CartCard(product) {
               />
               </div>
               <div>
-                <h3 style={{fontSize: "25px"}}>Subtotal ${product.valor_descuento*product.cantidad}</h3>
+                <h3 style={{fontSize: "25px"}}>Subtotal ${product.valor_descuento ? product.valor_descuento*product.cantidad : product.valor*product.cantidad}</h3>
               </div>
               <div className={s.eliminar} onClick={handleEliminarProducto}>
                 <IoTrashBinOutline size={20} />

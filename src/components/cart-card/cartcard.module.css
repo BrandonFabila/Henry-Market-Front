@@ -26,3 +26,12 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+.preciodesc{
+    color: red;
+    text-decoration: line-through;
+}
+
+.precio{
+    color:black
+}
