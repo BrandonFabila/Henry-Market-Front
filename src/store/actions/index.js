@@ -27,10 +27,11 @@ export const CLEAN_PRODUCT = "CLEAN_PRODUCT"
 export const COUNT_AGREGAR = "COUNT_AGREGAR"
 export const  REVIEWS = "REVIEWS"
 export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
+export const GET_ALL_USERS = "GET_ALL_USERS"
 
-
-// const api_host= "http://localhost:3001/";
-const api_host = 'https://henry-market-back-production.up.railway.app/'
+ const api_host= "http://localhost:3001/";
+//const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
   return function (dispatch) {
@@ -48,6 +49,23 @@ export const getProductById = (id_producto) => {
       const {data} = await axios.get(`${api_host}products/${id_producto}`);
       dispatch({type: GET_PRODUCT_BY_ID, payload: data});
   };
+}
+
+export function updateProduct(producto) {
+  return async (dispatch) =>{
+    try {
+      const response = await axios.put(`${api_host}products/${producto.id_producto}/editProduct`, producto)
+      dispatch({
+        type: UPDATE_PRODUCT,
+        payload: response.data
+      })
+    } catch (error) {
+      dispatch({
+        type: UPDATE_PRODUCT,
+        payload: error
+      })
+    }
+  }
 }
 
 export function userLoggedIn(estado) {
@@ -255,3 +273,20 @@ export function cleanReviews() {
     type: CLEAN_REVIEWS,
   };
 }
+ 
+
+export const getAllUsers = () => {
+  return async (dispatch) => {
+    try {
+
+      const response = await axios.get(`${api_host}usuario`);
+      // console.log(response.data);
+      dispatch({ type: GET_ALL_USERS, payload: response.data });
+
+    } catch (error) {
+      console.log(error);
+      dispatch({ type:GET_ALL_USERS, payload: error });
+
+    }
+  };
+};

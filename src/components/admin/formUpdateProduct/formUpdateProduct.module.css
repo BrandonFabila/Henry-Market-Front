@@ -5,7 +5,7 @@
     justify-content: center;
     margin-bottom: 100px;
     margin-top: 90px;
-    width: 100%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -18,8 +18,7 @@
 .nombres{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    
+    justify-content: center
 }
 
 .apellidos{
@@ -28,11 +27,10 @@
     justify-content: center
 }
 
-.contenedorDiv{ 
+.contenedorDiv{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .imageFile {
@@ -49,4 +47,12 @@
     font-family: sans-serif;    
     color: #ff0000;
     font-size: 14px;
+}
+
+.eliminar {
+    background-color: rgb(209, 5, 5);
+}
+
+.eliminar:hover {
+    background-color: red;
 }

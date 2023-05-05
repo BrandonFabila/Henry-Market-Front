@@ -2,7 +2,7 @@ import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,
   GET_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING,ORDERED_BY_NAME_ASC,ORDERED_BY_NAME_DESC 
 ,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL,GET_USER_BY_ID,
 COUNT_DELETE ,BORRAR_DEL_CARRITO, RESTAR_CANTIDAD_CARRITO, SUMAR_CANTIDAD_CARRITO, COUNT_RESTAR,COUNT_SUMAR,AGREGAR_AL_CARRITO 
-,CLEAN_PRODUCT, COUNT_AGREGAR,REVIEWS,CLEAN_REVIEWS} from '../actions';
+,CLEAN_PRODUCT, COUNT_AGREGAR,REVIEWS,CLEAN_REVIEWS, UPDATE_PRODUCT, GET_ALL_USERS} from '../actions';
 
 const initialState = { 
     products: [],
@@ -15,11 +15,17 @@ const initialState = {
     usuario: [],
     countCarrito: JSON.parse(window.localStorage.getItem("count")) || 0,
     carrito: JSON.parse(window.localStorage.getItem("carrito")) || [],
-    reviews:[]
+    reviews:[],
+    allUsers:[]
   };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload
+      }
     case CLEAN_REVIEWS:
       return {
         ...state,
@@ -219,6 +225,20 @@ export default function reducer(state = initialState, action) {
         ...state,
         usuario: action.payload,
       };
+      case UPDATE_PRODUCT:
+        const exist = state.products.find(
+          (item) => item.id_producto === action.payload.id_producto
+        );
+        if (exist) {
+          return {
+            ...state,
+            products: state.products.map((item) =>
+              item.id_producto === action.payload.id_producto
+                ? action.payload
+                : item
+            ),
+          };
+        }
     default:
       return state;
   }

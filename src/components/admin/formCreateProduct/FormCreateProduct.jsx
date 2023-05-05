@@ -7,7 +7,7 @@ import swal from "sweetalert"
 import { getCategorys } from "../../../store/actions/index"
 import Cookies from "js-cookie";
 
-import style from "../formCreateProduct/FormCreateProduct.module.css"
+import style from "./FormCreateProduct.module.css"
 
 
 export default function FormCreateProduct() {
@@ -62,7 +62,7 @@ export default function FormCreateProduct() {
         await axios.post("http://localhost:3001/products", formData).then(res => {
           swal({
             title: "producto creado correctamente",
-            text: "asd",
+            text: "Good",
             icon: "success",
             timer: "2000",
           });
@@ -147,13 +147,13 @@ export default function FormCreateProduct() {
       {shouldRedirect ? (
         <Navigate to="/" replace={true}/>
       ) : (
-        <div className='form-container' style={{padding: '15px'}}>
+        <div className={style.contenedor} style={{padding: '15px'}}>
           <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
               {/* ----------------------- nombre -----------------------*/}
               
                 <div className={style.contenedorDiv}>
-                  <label  className='form-label'>
+                  <label  className={style.nombres}>
                     Nombre del producto
                   </label>
                   <input

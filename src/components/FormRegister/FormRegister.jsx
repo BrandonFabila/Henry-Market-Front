@@ -10,8 +10,8 @@ import s from "./FormRegister.module.css"
 export default function FormRegister() {
   const [showPwd, setShowPwd] = useState(false)
   const dispatch = useDispatch();
-  const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
-  // const BACK_HOST = "http://localhost:3001/"
+  //const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
+   const BACK_HOST = "http://localhost:3001/"
 
   useEffect(() => {
   }, [dispatch]);
