@@ -5,16 +5,14 @@ import swal from "sweetalert";
 import validations from "./validations";
 import style from "./FormUpdate.module.css";
 
-export default function FormUpdate({ idUsuario, updateUserData }) {
-  const BACK_HOST = 'https://henry-market-back-production.up.railway.app/'
-  // const BACK_HOST = "http://localhost:3001/"
+export default function FormUpdate({ idUsuario, userData }) {
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  // const api_host = "http://localhost:3001/"
+
   const [form, setForm] = useState({
     id_usuario: null,
-    primer_nombre: "", 
-    primer_apellido: "",
     direccion: "",
     telefono: "",
-    email: "",
     imagen: "",
   });
   const [errors, setErrors] = useState({});
@@ -24,42 +22,27 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
     setErrors(currentErrors);
   }, [form]);
 
-  const updatedUserData = updateUserData;
-  console.log(updatedUserData);
-  const usuarioId = idUsuario;
-  console.log(usuarioId);
-
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // captura de datos del estado form
     const data = {
       id_usuario: form.id_usuario,
-      primer_nombre: form.primer_nombre,
-      primer_apellido: form.primer_apellido,
       direccion: form.direccion,
       telefono: form.telefono,
-      email: form.email,
       estado: form.estado,
       imagen: form.imagen
     };
 
-    const { primer_nombre,
-      primer_apellido,
+    const { 
       direccion,
       telefono,
-      email,
       password,
     } = form;
 
     const errors = validations({
-      primer_nombre,
-      primer_apellido,
       direccion,
       telefono,
-      email,
       password,
     });
 
@@ -72,7 +55,7 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
       );
 
       await axios
-        .put(`${BACK_HOST}usuario`, filteredData)
+        .put(`${api_host}usuario`, filteredData)
         .then(res => swal({
           title: 'Actualización Exitosa',
           text: 'Ya puedes ver tus cambios reflejados',
@@ -112,7 +95,6 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
         );
 
         // Obtener la URL de la imagen subida desde la respuesta de Cloudinary
-        console.log(response.data.secure_url);
         const imageUrl = response.data.secure_url;
 
         // Actualizar el estado del formulario con la URL de la imagen subida
@@ -143,156 +125,79 @@ export default function FormUpdate({ idUsuario, updateUserData }) {
     }));
   }, [idUsuario]);
 
-
-
   return (
-    <>
-      <div className={style.contenedor}>
-        <div className='form-container' style={{ padding: '15px', marginTop: '70px', marginBottom: '15px' }}>
-          <CloudinaryContext cloudName="dfmkjxjsf">
-            <form onSubmit={handleSubmit}>
-              <label for="" style={{ fontWeight: '600' }}>
-                Actualizar datos de Perfil
+    <div className={style.contenedor}>
+      <div className={style.formcontainer}>
+        <CloudinaryContext cloudName="dfmkjxjsf">
+          <form onSubmit={handleSubmit}>
+            <label  style={{ fontWeight: '600' }}>
+              Actualizar datos
+            </label>
+            {/* ----------------------- DIRECCION -----------------------*/}
+            <div className={style.contenedorDiv}>
+              <label  className={style.label}>
+                Dirección
               </label>
-
-              <div className={style.nombres}>
-                <div className={style.contenedorDiv}>
-                  <label for="" className='form-update-label'>
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    name="primer_nombre"
-                    value={form.primer_nombre}
-                    onChange={handleInputChange}
-                    className='form-input'
-                    style={{ fontSize: '15px', margin: '5px' }}
-
-                  />
-
-                  {errors.primer_nombre && (
-                    <div className={style.errors}>{errors.primer_nombre}</div>
-                  )}
-
-                </div>
-
+              <input
+                placeholder={userData.direccion}
+                type="text"
+                name="direccion"
+                value={form.direccion}
+                onChange={handleInputChange}
+                className={style.inputs}
+                style={{ fontSize: '15px', margin: '5px' }}
+              />
+              {errors.direccion && (
+                <div className={style.errors}>{errors.direccion}</div>
+              )}
+            </div>
+            {/* ----------------------- TELEFONO -----------------------*/}
+            <div className={style.contenedorDiv}>
+              <label  className={style.label}>
+                Teléfono
+              </label>
+              <input
+                placeholder={userData.telefono}
+                type="text"
+                name="telefono"
+                value={form.telefono}
+                onChange={handleInputChange}
+                className={style.inputs}
+                style={{ fontSize: '15px', margin: '5px' }}
+              />
+              {errors.telefono && (
+                <div className={style.errors}>{errors.telefono}</div>
+              )}
+            </div>
+            {/* ----------------------- IMAGEN -----------------------*/}
+            <div className={style.contenedorDiv} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <label  className={style.label}>
+                Imagen
+              </label>
+              <input
+                type="file"
+                id="imagen"
+                name="imagen"
+                onChange={handleInputChange}
+                className={style.inputs}
+                style={{ fontSize: '20px', margin: '5px', display: 'flex', flexDirection: 'column'}}
+              />
+              <div>
               </div>
-
-              {/* ----------------------- PRIMER APELLIDO -----------------------*/}
-              <div className={style.apellidos}>
-                <div className={style.contenedorDiv}>
-
-                  <label for="" className='form-update-label'>
-                    Apellido
-                  </label>
-                  <input
-                    type="text"
-                    name="primer_apellido"
-                    value={form.primer_apellido}
-                    onChange={handleInputChange}
-                    className='form-input'
-                    style={{ fontSize: '15px', margin: '5px' }}
-                  />
-                  {errors.primer_apellido && (
-                    <div className={style.errors}>{errors.primer_apellido}</div>
-                  )}
-                </div>
-
-    
-              </div>
-
-
-              {/* ----------------------- DIRECCION -----------------------*/}
-              <div className={style.contenedorDiv}>
-                <label for="" className='form-update-label'>
-                  Dirección
-                </label>
-                <input
-                  type="text"
-                  name="direccion"
-                  value={form.direccion}
-                  onChange={handleInputChange}
-                  className='form-input'
-                  style={{ fontSize: '15px', margin: '5px' }}
-                />
-                {errors.direccion && (
-                  <div className={style.errors}>{errors.direccion}</div>
-                )}
-              </div>
-
-              {/* ----------------------- TELEFONO -----------------------*/}
-              <div className={style.contenedorDiv}>
-                <label for="" className='form-update-label'>
-                  Teléfono
-                </label>
-                <input
-                  type="text"
-                  name="telefono"
-                  value={form.telefono}
-                  onChange={handleInputChange}
-                  className='form-input'
-                  style={{ fontSize: '15px', margin: '5px' }}
-                />
-                {errors.telefono && (
-                  <div className={style.errors}>{errors.telefono}</div>
-                )}
-              </div>
-
-              {/* ----------------------- EMAIL -----------------------*/}
-              <div className={style.contenedorDiv}>
-                <label for="" className='form-update-label'>
-                  Email
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  value={form.email}
-                  onChange={handleInputChange}
-                  className='form-input'
-                  style={{ fontSize: '15px', margin: '5px' }}
-                />
-                {errors.email && (
-                  <div className={style.errors}>{errors.email}</div>
-                )}
-              </div>
-
-
-             
-
-              {/* ----------------------- IMAGEN -----------------------*/}
-              <div className={style.contenedorDiv} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <label htmlFor="" className='form-update-label'>
-                  Imagen
-                </label>
-                <input
-                  type="file"
+              {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
+              {form.imagen && (
+                <img
+                  alt="user"
+                  className={style.imageFile}
+                  src={form.imagen}
                   id="imagen"
-                  name="imagen"
-                  onChange={handleInputChange}
-                  className='form-input'
-                  style={{ fontSize: '13px', margin: '5px' }}
                 />
-                <div>
-                </div>
-
-                {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
-                {form.imagen && (
-                  <img
-                    alt="user"
-                    className={style.imageFile}
-                    src={form.imagen}
-                    id="imagen"
-                  />
-                )}
-              </div>
-
-              <button type="submit" style={{ fontSize: '15px', margin: '5px' }}>Actualizar</button>
-            </form>
-          </CloudinaryContext>
-        </div>
-
-
+              )}
+            </div>
+            <button type="submit" className={style.actualizar} disabled={form.telefono || form.direccion ? false : true}>Actualizar</button>
+          </form>
+        </CloudinaryContext>
       </div>
-    </>
+    </div>
   );
 }

@@ -7,10 +7,12 @@ import swal from "sweetalert"
 import { getCategorys } from "../../../store/actions/index"
 import Cookies from "js-cookie";
 
-import style from "../formCreateProduct/FormCreateProduct.module.css"
+import style from "./FormCreateProduct.module.css"
 
 
 export default function FormCreateProduct() {
+  // const api_host= "http://localhost:3001/";
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
   const { categorys} = useSelector(state => state);
 
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ export default function FormCreateProduct() {
 
         console.log(formData);
 
-        await axios.post("http://localhost:3001/products", formData).then(res => {
+        await axios.post(`${api_host}products`, formData).then(res => {
           swal({
             title: "producto creado correctamente",
             text: "asd",
@@ -147,13 +149,13 @@ export default function FormCreateProduct() {
       {shouldRedirect ? (
         <Navigate to="/" replace={true}/>
       ) : (
-        <div className='form-container' style={{padding: '15px'}}>
+        <div className={style.contenedor} style={{padding: '15px'}}>
           <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
               {/* ----------------------- nombre -----------------------*/}
               
                 <div className={style.contenedorDiv}>
-                  <label  className='form-label'>
+                  <label  className={style.labels}>
                     Nombre del producto
                   </label>
                   <input
@@ -161,7 +163,7 @@ export default function FormCreateProduct() {
                     name="nombre"
                     value={form.nombre}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.inputs}
                   />
 
                   {errors.nombre && (
@@ -170,9 +172,9 @@ export default function FormCreateProduct() {
                 </div>
 
                 <div className={style.fechas}>
-                  {/* ----------------------- fecha_inicial -----------------------*/}
+                  {/* ----------------------- STOCK -----------------------*/}
                   <div className={style.contenedorDiv}>
-                    <label  className='form-label'>
+                    <label  className={style.labels}>
                       Stock
                     </label>
                     <input
@@ -180,7 +182,7 @@ export default function FormCreateProduct() {
                       name="stock"
                       value={form.stock}
                       onChange={handleInputChange}
-                      className='form-input'
+                      className={style.inputs}
                     />
                     {errors.stock && (
                       <div className={style.errors}>{errors.stock}</div>
@@ -193,16 +195,15 @@ export default function FormCreateProduct() {
   {/* ----------------------- descripcion de producto -----------------------*/}
 
               <div className={style.contenedorDiv}>
-                  <label  className='form-label'>
+                  <label  className={style.labels}>
                     Descripción del producto
                   </label>
                   <textarea
                     name="descripcion_producto"
                     value={form.descripcion_producto}
                     onChange={handleInputChange}
-
-                    className='form-textarea'
-
+                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolor deserunt inventore sit tempora, quia dolore magnam corporis atque beatae at ipsum quisquam quidem eaque ad deleniti, libero vitae reprehenderit."
+                    className={style.descripcion}
                   />
                   {errors.descripcion_producto && (
                     <div className={style.errors}>{errors.descripcion_producto}</div>
@@ -211,7 +212,7 @@ export default function FormCreateProduct() {
                 
               {/* ----------------------- VALOR NORMAL -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label  className='form-label'>
+                <label  className={style.labels}>
                   Valor 
                 </label>
                 <input
@@ -219,7 +220,7 @@ export default function FormCreateProduct() {
                   name="valor"
                   value={form.valor}
                   onChange={handleInputChange}
-                  className='form-input'
+                  className={style.inputs}
                 />
                 {errors.valor_normal && (
                   <div className={style.errors}>{errors.valor_normal}</div>
@@ -229,7 +230,7 @@ export default function FormCreateProduct() {
 
               {/* ----------------------- VALOR CON DESCUENTO  -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label  className='form-label'>
+                <label  className={style.labels}>
                   Valor con descuento aplicado
                 </label>
                 <input
@@ -237,7 +238,7 @@ export default function FormCreateProduct() {
                   name="valor_descuento"
                   value={form.valor_descuento}
                   onChange={handleInputChange}
-                  className='form-input'
+                  className={style.inputs}
                 />
                 {errors.valor_con_descuento && (
                   <div className={style.errors}>{errors.valor_con_descuento}</div>
@@ -246,7 +247,7 @@ export default function FormCreateProduct() {
 
               {/* ----------------------- Categoria -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label  className='form-label'>
+                <label  className={style.labels}>
                   Categoria
                 </label>
 
@@ -260,7 +261,7 @@ export default function FormCreateProduct() {
                     <select
                       name="id_categoria_producto"
                       onChange={e => handleInputChange(e)}
-                      className='form-input'
+                      className={style.inputs}
                     >
                       <option>Selecciona categoria</option>
                       {categorys &&
@@ -277,7 +278,7 @@ export default function FormCreateProduct() {
 
               {/* ----------------------- IMAGEN -----------------------*/}
               <div className={style.contenedorDiv}>
-                <label htmlFor="" className='form-label'>
+                <label className={style.labels}>
                   Imagen
                 </label>
                 <input
@@ -285,7 +286,7 @@ export default function FormCreateProduct() {
                   id="imagen"
                   name="imagen"
                   onChange={handleInputChange}
-                  className='form-input'
+                  className={style.inputs}
                 />                
 
                 {/* ----------------------- VISTA PREVIA IMAGEN -----------------------*/}
@@ -299,7 +300,7 @@ export default function FormCreateProduct() {
                 )}
               </div>
 
-              <button type="submit" style={{fontSize: '25px'}}>Publicar oferta</button>
+              <button type="submit" className={style.publicar}>Publicar oferta</button>
             </form>
 
           </CloudinaryContext>

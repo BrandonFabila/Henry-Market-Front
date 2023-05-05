@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 20px 0px;
+    border: 1px solid rgb(200, 197, 197);
+    width: 90%;
+    background-color: white;
+}
+
+.image {
+    height: 90px;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.eliminar:hover{
+    color: red;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.preciodesc{
+    color: red;
+    text-decoration: line-through;
+}
+
+.precio{
+    color:black
+}
