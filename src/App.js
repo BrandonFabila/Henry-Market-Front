@@ -14,6 +14,11 @@ import FormCreateProduct from './components/admin/formCreateProduct/FormCreatePr
 import Account from './pages/account/Account';
 import HistorialCompra from './pages/HistorialCompra/HistorialCompra'
 import Carrito from './pages/Carrito/Carrito';
+import FormUpdateProduct from "./components/admin/formUpdateProduct/FormUpdateProduct"
+import ProductListAdmin from './components/admin/ProductListAdmin/ProductListAdmin';
+import HomeAdmin from "./components/admin/HomeAdmin/HomeAdmin"
+import Usuarios from './components/admin/Usuarios/Usuarios';
+import HistorialVentas from './components/admin/HistorialVentas/HistorialVentas';
 
 function App() {
   const location = useLocation()
@@ -34,7 +39,16 @@ function App() {
         <Route exact path="/account" element={<Account/>} />
         <Route exact path='/historial-de-compra' element={<HistorialCompra />} />;
         <Route exact path='/carrito' element={<Carrito />} />;
+
+
+        {/*   ADMIN   */}
+        <Route exact path="/adminHome" element={<HomeAdmin/>}/>
+         <Route exact path= "/products/admin" element={<ProductListAdmin/>}/>
          <Route exact path="/producto" element={<FormCreateProduct/>} /> 
+         <Route exact path="/product/:id_producto" element={<FormUpdateProduct/>}/>
+         <Route exact path="/admin/usuarios"element={<Usuarios/>} />
+         <Route exact path="/historialVentas" element={<HistorialVentas/>} />
+
       </Routes>
       <Footer />
     </div>
