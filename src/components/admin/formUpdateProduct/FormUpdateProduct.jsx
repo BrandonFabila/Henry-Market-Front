@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { updateProduct,  getCategorys, getProductById } from "../../../store/actions/index";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import {CloudinaryContext } from "cloudinary-react"; 
-import Cookies from "js-cookie";
+//import Cookies from "js-cookie";
 import { useParams } from "react-router";
 import { Navigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import style from "./formUpdateProduct.module.css";
 
 
 export default function FormUpdateProduct() {
-  const { categorys } = useSelector(state => state);
+  //const { categorys } = useSelector(state => state);
   const dispatch = useDispatch();
   const { id_producto } = useParams();
   //const session = Cookies.get("commerce_session");
@@ -33,7 +33,7 @@ export default function FormUpdateProduct() {
 
   }, [dispatch, id_producto]);
 
-  const productoEditable = useSelector(state => state.product)
+  //const productoEditable = useSelector(state => state.product)
 
   const [errors, setErrors] = useState({});
 
@@ -41,7 +41,7 @@ export default function FormUpdateProduct() {
     event.preventDefault();
 
     // Obtiene los valores del formulario
-    const { nombre,
+    /*const { nombre,
       cantidad,
       descripcion_producto,
       existencia,
@@ -52,34 +52,20 @@ export default function FormUpdateProduct() {
       valor_normal,
       valor_con_descuento,
       condicion,
-    } = form;
-    // cantidad = parseInt(cantidad);
-    // existencia = parseInt(existencia);
-    // valor_normal = parseFloat(valor_normal);
-    // valor_con_descuento = parseFloat(valor_con_descuento);
-    // Realiza las validaciones
-
-    // Si hay errores, los muestra y no continúa con la solicitud
+    } = form;*/
+   
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       console.log("FORME: ", errors)
-      // Actualiza el estado de los errores
     } else {
-      // Si no hay errores, continúa con el proceso de envío del formulario
       try {
         const filteredData = Object.fromEntries(
           Object.entries(form).filter(([_, value]) => !!value)
         );
-        //const salt = bcrypt.genSaltSync(10);
-        //const hashedPassword = bcrypt.hashSync(form.password, salt);
-        //setForm({ ...form, password: hashedPassword });
+     
         console.log("FORM: ", form)
         dispatch(updateProduct(filteredData))
-        //await axios
-        //  .put("http://localhost:3001/commerce", form)
-        //  .then(res => alert(res.data))
-        //  .catch(err => console.log(err.response.data));
-        // Cookies.set('commerce_session', JSON.stringify(form), { secure: true, sameSite: 'strict' });
+       
 
         setShouldRedirect(true);
       } catch (error) {
@@ -167,7 +153,7 @@ export default function FormUpdateProduct() {
   return (
     <>
       {shouldRedirect ? (
-        <Navigate to="/home" />
+        <Navigate to="/adminHome" />
       ) : (
 
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/

@@ -11,13 +11,15 @@ import CardsReviews from '../../components/cardsReview/CardsReview';
 import s from "./Detail.module.css"
 
 const Detail = () => {
+  const api_host = 'http://localhost:3001'
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
+
 
     const { id_producto } = useParams();
     const { product, carrito } = useSelector(state => state);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const estaLogueado = localStorage.getItem("estaLogueado");
-    const api_host = 'http://localhost:3001'
 
   useEffect(() => {
     setLoading(true);
@@ -86,7 +88,7 @@ const Detail = () => {
     const exists = carrito?.find(e => {
       return e.id_producto === product.id_producto
     })
-
+    console.log(shouldRedirect)
     if(estaLogueado === "database" || estaLogueado === "google"){
       if(!exists){
         dispatch(agregarAlCarrito(product, quantity))
@@ -150,7 +152,9 @@ const Detail = () => {
                             <h2 className={styles.valor}>${product.valor}</h2>
                           </div> }
                   </div>               
-                  <div>
+            </div>          
+            <div>
+            <div>
                   <h4>Selecciona la cantidad</h4>
                   {product.stock !== 1
                     ? (<span style={{ color: "gray" }}>({product.stock} disponibles)</span>)
@@ -163,11 +167,13 @@ const Detail = () => {
                 </div>
 
                 <div style={{ margin: '15px' }}>
-                  <button style={{ width: '250px' }} onClick={handlerComprar}>Comprar</button>
-                  <button style={{ width: '250px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <Link to='/carrito'>
+                  <button className={styles.button} style={{ width: 'auto', marginRight: '10px' }} onClick={handlerComprar}>Comprar</button>
+                  </Link>
+                  <button className={styles.button} style={{ width: 'auto' }} onClick={handlerCarrito}>Agregar al carrito</button>
                 </div>
                 </div>
-            </div>          
+            </div>
         )
         }
         <div className={s.box2}>

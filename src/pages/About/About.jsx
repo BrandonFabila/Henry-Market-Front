@@ -17,7 +17,7 @@ const About = () => {
       <img className={styles.img} src={logo} alt="logo"/>
       <div className={styles.parrafos}>
         <p>
-        Bienvenido/a, HENRY MARKET es una plataforma de e-commerce que está aquí para ayudarte a llevar tu negocio al siguiente nivel.
+        Es una plataforma de e-commerce que está aquí para ayudarte a llevar tu negocio al siguiente nivel.
         Ofrecemos una plantilla personalizable y fácil de usar que permite a las empresas vender sus productos y servicios en línea
         y llegar a nuevos mercados.
           <br/>
@@ -63,14 +63,6 @@ const About = () => {
                     rel="noreferrer">
                         Brandon Fabila
                     </a>
-                    <a
-                    className= {styles.links}
-                    href="https://www.linkedin.com/in/jhojan-alfredo-cruz-portillo-0b09661b8/"
-                    target="_blank"
-                    rel="noreferrer">
-                        Jhojan Cruz
-                    </a>
-                    
                     <a
                     className= {styles.links}
                     href="https://www.linkedin.com/in/lautacorva/"

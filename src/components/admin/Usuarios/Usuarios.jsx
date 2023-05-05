@@ -9,7 +9,7 @@ function Usuarios() {
   const allUsers = useSelector((state) => state.allUsers);
   useEffect(() => {
     dispatch(getAllUsers());
-  }, []);
+  }, [dispatch]);
   
 
   function buscarId(id_usuario) {
@@ -65,25 +65,23 @@ function Usuarios() {
               </tr>
             </thead>
             <tbody>
-              {allUsers?.map((p) => {
-                if (p.estado)
-                  return (
-                    <tr key={p.id_usuario}>
-                      <td>{p.primer_nombre}</td>
-                      <td>{p.primer_apellido}</td>
-                      <td>{p.email}</td>
-                      <td>
-                        <button
-                          onClick={() => {
-                            buscarId(p.id_usuario);
-                          }}
-                        >
-                          Banear
-                        </button>
-                      </td>
-                    </tr>
-                  );
-              })}
+            {allUsers.filter((p) => p.estado).map((p) => (
+              <tr key={p.id_usuario}>
+                <td>{p.primer_nombre}</td>
+                <td>{p.primer_apellido}</td>
+                <td>{p.email}</td>
+                <td>
+                  <button
+                    onClick={() => {
+                      buscarId(p.id_usuario);
+                    }}
+                  >
+                    Banear
+                  </button>
+                </td>
+              </tr>
+            ))}
+
             </tbody>
           </table>
           <div className={s.separador}></div>
@@ -105,26 +103,29 @@ function Usuarios() {
               </tr>
             </thead>
             <tbody>
-              {allUsers.map((p) => {
-                if (!p.estado)
-                  return (
-                    <tr key={p.id_usuario} className={s.eliminados}>
-                      <td>{p.primer_nombre}</td>
-                      <td>{p.primer_apellido}</td>
-                      <td>{p.email}</td>
-                      <td>
-                        <button
-                          className={s.botonnn}
-                          onClick={() => {
-                            buscarId2(p.id_usuario);
-                          }}
-                        >
-                          Desbanear
-                        </button>
-                      </td>
-                    </tr>
-                  );
-              })}
+            {allUsers.map((p) => {
+                    if (!p.estado) {
+                      return (
+                        <tr key={p.id_usuario} className={s.eliminados}>
+                          <td>{p.primer_nombre}</td>
+                          <td>{p.primer_apellido}</td>
+                          <td>{p.email}</td>
+                          <td>
+                            <button
+                              className={s.botonnn}
+                              onClick={() => {
+                                buscarId2(p.id_usuario);
+                              }}
+                            >
+                              Restaurar
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    } else {
+                      return (<h1>no hay nada</h1>);
+                    }
+                  })}
             </tbody>
           </table>
         </>

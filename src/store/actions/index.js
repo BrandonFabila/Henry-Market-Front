@@ -29,9 +29,10 @@ export const  REVIEWS = "REVIEWS"
 export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
+export const GET_SHOPPING = "GET_SHOPPING"
+const api_host= "http://localhost:3001/";
+// const api_host = 'https://henry-market-back-production.up.railway.app/'
 
- const api_host= "http://localhost:3001/";
-//const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
   return function (dispatch) {
@@ -171,9 +172,25 @@ export function getUsuarioByEmail(email) {
       });
     }
   };
+};
 
-  
- };
+export function getShopping() {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${api_host}/venta`);
+        // console.log(response);
+        dispatch({
+          type: GET_SHOPPING,
+          payload: response.data,
+        });
+      } catch (error) {
+        dispatch({
+          type: GET_SHOPPING,
+          payload: error,
+        });
+      }
+    };
+  }
 
  export const getUserById = (id) => async (dispatch) => {
   try {
