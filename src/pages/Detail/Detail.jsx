@@ -152,7 +152,9 @@ const Detail = () => {
                             <h2 className={styles.valor}>${product.valor}</h2>
                           </div> }
                   </div>               
-                  <div>
+            </div>          
+            <div>
+            <div>
                   <h4>Selecciona la cantidad</h4>
                   {product.stock !== 1
                     ? (<span style={{ color: "gray" }}>({product.stock} disponibles)</span>)
@@ -165,11 +167,13 @@ const Detail = () => {
                 </div>
 
                 <div style={{ margin: '15px' }}>
-                  <button style={{ width: '250px' }} onClick={handlerComprar}>Comprar</button>
-                  <button style={{ width: '250px' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <Link to='/carrito'>
+                  <button className={styles.button} style={{ width: 'auto', marginRight: '10px' }} onClick={handlerComprar}>Comprar</button>
+                  </Link>
+                  <button className={styles.button} style={{ width: 'auto' }} onClick={handlerCarrito}>Agregar al carrito</button>
                 </div>
                 </div>
-            </div>          
+            </div>
         )
         }
         <div className={s.box2}>

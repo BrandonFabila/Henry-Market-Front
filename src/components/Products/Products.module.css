@@ -8,7 +8,6 @@
   width: 100%;
 }
 
-
 .product {
   justify-content: center;
   justify-items: center;
@@ -16,7 +15,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100%;
+  width: 90%;
 
 }
 
@@ -54,4 +53,16 @@
   font-size: 2rem;
   border-radius: 10px;
   text-align: center;
+}
+@media (max-width: 460px) {
+  .container {
+      justify-content: center;
+      width: 75%;
+      margin: 0;
+  }
+}
+@media (max-width: 900px){
+  .container{
+    justify-content: space-around;
+  }
 }
