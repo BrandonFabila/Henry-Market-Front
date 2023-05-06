@@ -1,5 +1,4 @@
 import React from "react";
-import FormCreateProduct from "../../components/admin/formCreateProduct/FormCreateProduct";
 //Estilos
 import s from "./CreateProduct.module.css"
 
@@ -12,9 +11,7 @@ const CreateProduct = () => {
             </div>
             <div className={s.aux}>
                 <div style={{ padding: '10px', width: '50%' }}>
-                    <FormCreateProduct />
                 </div>
-              
             </div>
         </div>
     )
