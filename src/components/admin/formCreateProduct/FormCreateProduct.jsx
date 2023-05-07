@@ -11,8 +11,8 @@ import style from "./FormCreateProduct.module.css"
 
 
 export default function FormCreateProduct() {
-  // const api_host= "http://localhost:3001/";
-  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host= "http://localhost:3001/";
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
   const { categorys} = useSelector(state => state);
 
   const dispatch = useDispatch();

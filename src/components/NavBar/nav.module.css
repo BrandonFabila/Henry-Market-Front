@@ -46,6 +46,18 @@
     cursor: pointer;
 }
 
+.carritoCount {
+    top: 10%;
+    left: 90%;
+    position: absolute;
+    padding: 2.5px;
+    background-color: yellow;
+    width: 25px;
+    height: 25px;
+    color: black;
+    border-radius: 50%;
+}
+
 .menuDesplegable {
     display: none;
 }
