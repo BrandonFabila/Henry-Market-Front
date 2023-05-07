@@ -127,6 +127,7 @@ export default function reducer(state = initialState, action) {
         return {
           ...state,
           productsFitered: action.payload,
+          
         };
       case USER_LOGIN:
         return {
