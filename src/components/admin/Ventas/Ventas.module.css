@@ -1,6 +1,28 @@
-.edit:hover {
-    transform: scale(1.1);
+.ventas_table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
 }
+
+.ventas_table th,
+.ventas_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.ventas_table th {
+  background-color: #f2f2f2;
+}
+
+.ventas_table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.ventas_table tr:hover {
+  background-color: #ddd;
+}
+
 .reactpaginate {
     display: flex;
     justify-content: center;
