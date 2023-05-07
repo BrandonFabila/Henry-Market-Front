@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { updateProduct,  getCategorys, getProductById } from "../../../store/actions/index";
+import { updateProduct,   getProductById } from "../../../store/actions/index";
 import {  useDispatch } from "react-redux";
 import {CloudinaryContext } from "cloudinary-react"; 
 //import Cookies from "js-cookie";
 import { useParams } from "react-router";
 import { Navigate } from "react-router-dom";
-
 import style from "./formUpdateProduct.module.css";
+import { useSelector } from "react-redux";
+import swal from "sweetalert";
 
 
 export default function FormUpdateProduct() {
@@ -20,11 +21,10 @@ export default function FormUpdateProduct() {
   //let comercio = values.dataValues
 
   useEffect(() => {
-    dispatch(getCategorys());
     dispatch(getProductById(id_producto))
       .then((result) => {
         // Aquí puedes acceder a la información devuelta por getProductById
-        console.log("resultttttt", result);
+        console.log("RESULTADO", result);
       })
       .catch((error) => {
         // Aquí puedes manejar el error en caso de que getProductById falle
@@ -143,11 +143,28 @@ export default function FormUpdateProduct() {
   });
   const handleBorrar = async (id_producto) => {
     try {
-      await axios.put(`http://localhost:3001/products/delete/${id_producto}`);
+      swal({
+        title: "¿Estás seguro de que quieres eliminar este producto?",
+        text: "Una vez eliminado, no podrás recuperarlo",
+        icon: "warning",
+        buttons: ["Cancelar", "Eliminar"],
+        dangerMode: true,
+      }).then(async (willDelete) => {
+        if (willDelete) {
+          await axios.put(`http://localhost:3001/products/delete/${id_producto}`);
+          swal("¡Producto eliminado!", {
+            icon: "success",
+          });
+        } else {
+          swal("Producto no eliminado");
+        }
+      });
     } catch (error) {
       console.log(error);
     }
   };
+  const { product } = useSelector((state) => state);
+  console.log("aaaaaaaaaaaaa",product);
 
   console.log("formmmmmmmmmmmmmmmmmmmm: ", form)
   return (
@@ -159,7 +176,7 @@ export default function FormUpdateProduct() {
         /* ----------------------- CONTENEDOR GENERAL -----------------------*/
         <div className={style.contenedor}>
           {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
-          <div className='form-container'>
+          <div className={style.formContainer}>
             <CloudinaryContext cloudName="dfmkjxjsf">
               <h2 style={{ margin: '15px' }}>Editar o eliminar un producto</h2>
               <form onSubmit={handleSubmit}>
@@ -170,11 +187,12 @@ export default function FormUpdateProduct() {
                     Nombre del producto
                   </label>
                   <input
+                  placeholder={product.nombre}
                     type="text"
                     name="nombre"
                     value={form.nombre}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.forminput}
                   />
                   {errors.nombre && (
                     <div className={style.errors}>{errors.nombre}</div>
@@ -187,11 +205,12 @@ export default function FormUpdateProduct() {
                     Cantidad de stock
                   </label>
                   <input
+                    placeholder={product.stock}
                     type="number"
                     name="stock"
                     value={form.stock}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.forminput}
                   />
                   {errors.telefono && (
                     <div className={style.errors}>{errors.stock}</div>
@@ -204,11 +223,12 @@ export default function FormUpdateProduct() {
                     Valor regular
                   </label>
                   <input
+                  placeholder={product.valor}
                     type="number"
                     name="valor"
                     value={form.valor}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.forminput}
                   />
                   {errors.valor && (
                     <div className={style.errors}>{errors.valor}</div>
@@ -224,11 +244,13 @@ export default function FormUpdateProduct() {
                     Valor con descuento
                   </label>
                   <input
+                  placeholder={product.valor_descuento}
                     type="number"
                     name="valor_descuento"
                     value={form.valor_descuento}
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.forminput}
+
                   />
                   {errors.valor_descuento && (
                     <div className={style.errors}>{errors.valor_descuento}</div>
@@ -237,7 +259,7 @@ export default function FormUpdateProduct() {
 
                 {/* ----------------------- IMAGEN -----------------------*/}
                 <div className={style.contenedorDiv}>
-                  <label htmlFor="" className='form-label'>
+                  <label htmlFor="" className={style.formlabel}>
                     Imagen
                   </label>
                   <input
@@ -245,7 +267,8 @@ export default function FormUpdateProduct() {
                     id="imagen"
                     name="imagen"
                     onChange={handleInputChange}
-                    className='form-input'
+                    className={style.forminput}
+
                   />
                   <div>
                   </div>

@@ -31,8 +31,8 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
 export const GET_SHOPPING = "GET_SHOPPING"
 
-const api_host= "http://localhost:3001/";
-// const api_host = 'https://henry-market-back-production.up.railway.app/'
+ const api_host= "http://localhost:3001/";
+//const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
   return function (dispatch) {
