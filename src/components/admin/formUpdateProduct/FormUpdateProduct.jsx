@@ -12,6 +12,8 @@ import swal from "sweetalert";
 
 
 export default function FormUpdateProduct() {
+  // const api_host= "http://localhost:3001/";
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
   //const { categorys } = useSelector(state => state);
   const dispatch = useDispatch();
   const { id_producto } = useParams();
@@ -151,7 +153,7 @@ export default function FormUpdateProduct() {
         dangerMode: true,
       }).then(async (willDelete) => {
         if (willDelete) {
-          await axios.put(`http://localhost:3001/products/delete/${id_producto}`);
+          await axios.put(`${api_host}products/delete/${id_producto}`);
           swal("¡Producto eliminado!", {
             icon: "success",
           });
@@ -178,7 +180,7 @@ export default function FormUpdateProduct() {
           {/* ----------------------- CONTENEDOR FORMULARIO -----------------------*/}
           <div className={style.formContainer}>
             <CloudinaryContext cloudName="dfmkjxjsf">
-              <h2 style={{ margin: '15px' }}>Editar o eliminar un producto</h2>
+              <h2 style={{ marginTop: '25px' }}>Editar o eliminar un producto</h2>
               <form onSubmit={handleSubmit}>
 
                 {/* ----------------------- Nombre -----------------------*/}
@@ -299,10 +301,10 @@ export default function FormUpdateProduct() {
                     />
                   )}
                 </div>
-
-                <button onClick={() => { handleBorrar(id_producto) }} className={style.eliminar}>Eliminar</button>
-
-                <button type="submit">Confirmar cambios</button>
+                <div className={style.buttons}>
+                  <button onClick={() => { handleBorrar(id_producto) }} className={style.eliminar}>Eliminar</button>
+                  <button  type="submit">Confirmar cambios</button>
+                </div>
               </form>
             </CloudinaryContext>
           </div>

@@ -191,7 +191,7 @@ export default function FormUpdate({ idUsuario, userData }) {
                 />
               )}
             </div>
-            <button type="submit" className={style.actualizar} disabled={form.telefono || form.direccion ? false : true}>Actualizar</button>
+            <button type="submit" className={style.actualizar} disabled={form.imagen || form.telefono || form.direccion ? false : true}>Actualizar</button>
           </form>
         </CloudinaryContext>
       </div>
