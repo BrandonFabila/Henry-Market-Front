@@ -24,6 +24,8 @@
     height: 35px;
     margin-top: 25px;
     border-radius: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     letter-spacing: 0.05em;
     color: black;
 }
