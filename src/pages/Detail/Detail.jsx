@@ -11,8 +11,8 @@ import CardsReviews from '../../components/cardsReview/CardsReview';
 import s from "./Detail.module.css"
 
 const Detail = () => {
-  // const api_host = 'http://localhost:3001'
-  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host = 'http://localhost:3001'
+  //const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 
     const { id_producto } = useParams();

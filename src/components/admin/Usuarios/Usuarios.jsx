@@ -3,6 +3,7 @@ import { getAllUsers } from "../../../store/actions/index";
 import { useEffect } from "react";
 import s from "./Usuarios.module.css";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function Usuarios() {
   const dispatch = useDispatch();
@@ -10,12 +11,30 @@ function Usuarios() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  function showConfirmationDialog(message) {
+    return swal({
+      title: '¿Estás seguro?',
+      text: message,
+      icon: 'warning',
+      buttons: ['Cancelar', 'Sí'],
+      dangerMode: true,
+    }).then((confirmed) => {
+      if (confirmed) {
+        window.location.reload();
+        return Promise.resolve();
+      } else {
+        return Promise.reject();
+      }
+    });
+  }
   
 
   function buscarId(id_usuario) {
     const id = allUsers.find((c) => c.id_usuario === id_usuario);
-    handleBorrar(id.id_usuario);
-    console.log("asd", id.id_usuario);
+    showConfirmationDialog(`¿Desea banear al usuario ${id.primer_nombre} ${id.primer_apellido}?`)
+      .then(() => handleBorrar(id.id_usuario))
+      .catch(() => console.log('Acción cancelada.'));
   }
 
   const handleBorrar = async (id_usuario) => {
@@ -32,8 +51,9 @@ function Usuarios() {
 
   function buscarId2(id_usuario) {
     const id = allUsers.find((c) => c.id_usuario === id_usuario);
-    handledesBorrar(id.id_usuario);
-    console.log("asd", id.id_usuario);
+    showConfirmationDialog(`¿Desea restaurar al usuario ${id.primer_nombre} ${id.primer_apellido}?`)
+      .then(() => handledesBorrar(id.id_usuario))
+      .catch(() => console.log('Acción cancelada.'));
   }
 
   const handledesBorrar = async (id_usuario) => {
@@ -72,6 +92,7 @@ function Usuarios() {
                 <td>{p.email}</td>
                 <td>
                   <button
+                  className={s.boton1}
                     onClick={() => {
                       buscarId(p.id_usuario);
                     }}
@@ -112,7 +133,7 @@ function Usuarios() {
                           <td>{p.email}</td>
                           <td>
                             <button
-                              className={s.botonnn}
+                              className={s.boton2}
                               onClick={() => {
                                 buscarId2(p.id_usuario);
                               }}
