@@ -17,7 +17,8 @@ export default function NavBar() {
     const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-
+    
+    const carritoCount = JSON.parse(localStorage.getItem("count") || "0");
 
     useEffect(() => {
         if (location && location.pathname) {
@@ -86,10 +87,14 @@ export default function NavBar() {
                         </Link>
                     </div>
                 )}
-
-                <Link to='/carrito' onClick={handleMenuClick}>
-                    <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
-                </Link>
+                <div>
+                    <Link to='/carrito' onClick={handleMenuClick}>
+                        <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                    </Link>
+                    {carritoCount > 0 && (
+                        <h5 className={s.carritoCount}>{carritoCount}</h5>
+                    )}
+                </div>
             </div>
         </div>
     )

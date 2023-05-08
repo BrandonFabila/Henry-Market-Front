@@ -5,6 +5,7 @@
         components: {
             admin: {
                 FormCreateProduct: FormCreateProduct.jsx,
+                Uusarios: Usuarios.jsx
             },
             CheckoutForm: CheckoutForm.jsx,
             FormLogin: FormLogin.jsx,
@@ -18,7 +19,7 @@
         }
     }
 
-    const api_host= "http://localhost:3001/";
-    // const api_host = 'deploy'
+const api_host= "http://localhost:3001/";
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
 </script>
 

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+import FormComent from "./FormComent";
 
 // ACTIONS
 import { getShopping } from "../../store/actions/index";
@@ -11,16 +12,32 @@ import styles from "./HistorialCompra.module.css";
 const HistorialDeCompra = () => {
   const dispatch = useDispatch();
   const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
-  const {compras} = useSelector(state => state)
+  const { compras } = useSelector((state) => state);
 
   useEffect(() => {
     // window.localStorage.setItem("compras", JSON.stringify(compras))
     dispatch(getShopping());
   }, [dispatch]);
 
-  // Filtrar las compras del usuario logueado
-  const comprasUsuario = compras.length ? compras.filter((compras) => compras.Usuario.id_usuario === id_user) : ""
+ // Filtrar las compras del usuario logueado
+ const comprasUsuario = compras.length
+ ? compras.filter(
+     (compra) =>
+       compra.Usuario.id_usuario === id_user &&
+       compra.Detalle_venta.length > 0 // Solo compras con detalles de venta
+   )
+ : [];
+  const [showComent, setShowComent] = useState({});
 
+  const handleLogInClick = (id_detalle_venta) => {
+    setShowComent((prevState) => ({
+      ...prevState,
+      [id_detalle_venta]: !prevState[id_detalle_venta]
+    }));
+  };
+  
+
+console.log(comprasUsuario)
   return (
     <div className={styles.contenedor}>
       <div className={styles.tabla}>
@@ -30,17 +47,44 @@ const HistorialDeCompra = () => {
         {comprasUsuario.length ? (
           <div>
             {comprasUsuario.map((compra) => (
-              <div key={compra._id}>
+              <div key={compra.id_detalle_venta}>
                 <h3>Compra realizada el {compra.fecha}</h3>
                 {compra.Detalle_venta.map((detalle) => (
                   <div className={styles.detalle} key={detalle.Producto.id_producto}>
-                    <img className={styles.img} src={detalle.Producto.imagen} alt={detalle.Producto.nombre}/>
-                    <label className={styles.aux}>{detalle.Producto.nombre}</label>
-                    <label className={styles.aux}>
+                    <div>
+                      <img className={styles.img} src={detalle.Producto.imagen} alt={detalle.Producto.nombre}/>
+                    </div>
+                    <p className={styles.aux}>{detalle.Producto.nombre}</p>
+                    <p className={styles.aux}>
                       ${detalle.Producto.valor_descuento || detalle.Producto.valor} x unidad
-                    </label>
-                    <label className={styles.aux}>Cant: {detalle.cantidad}</label>
-                    <label className={styles.aux}>Total: ${detalle.valor_total_cantidad}</label>
+                    </p>
+                    <p className={styles.aux}>Cant: {detalle.cantidad}</p>
+                    <p className={styles.aux}>Total: ${detalle.valor_total_cantidad}</p>
+
+                    {detalle.comentado === false ? 
+                    <div className={styles.divcom} >
+                      <button 
+                        className={styles.combut} 
+                        onClick={() => handleLogInClick(detalle.id_detalle_venta)}
+                      >
+                        <img src="https://www.svgrepo.com/show/489238/add-comment.svg" alt="comenta" className={styles.coment} />
+                      </button>
+                      {showComent[detalle.id_detalle_venta] && 
+                        <FormComent 
+                          key={detalle.id_detalle_venta}
+                          mostrarProp={true} 
+                          idUsuario={id_user}
+                          id_detalle_venta={detalle.id_detalle_venta}
+                          id_venta={detalle.id_venta}
+                          producto={detalle.Producto.nombre} 
+                          id_producto={detalle.id_producto}
+                          />
+                        }
+                    </div> 
+                    : 
+                    null }
+                    
+
                   </div>
                 ))}
               </div>

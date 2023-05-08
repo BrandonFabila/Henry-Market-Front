@@ -5,6 +5,9 @@ import s from "./Usuarios.module.css";
 import axios from "axios";
 
 function Usuarios() {
+  const api_host= "http://localhost:3001/";
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
+
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.allUsers);
   useEffect(() => {
@@ -20,7 +23,7 @@ function Usuarios() {
 
   const handleBorrar = async (id_usuario) => {
     try {
-      let a = await axios.put("http://localhost:3001/usuario/delete", {
+      let a = await axios.put(`${api_host}usuario/delete`, {
         id_usuario: id_usuario,
         estado: false,
       });
@@ -38,7 +41,7 @@ function Usuarios() {
 
   const handledesBorrar = async (id_usuario) => {
     try {
-      let a = await axios.put("http://localhost:3001/usuario/delete", {
+      let a = await axios.put(`${api_host}usuario/delete`, {
         id_usuario: id_usuario,
         estado: true,
       });

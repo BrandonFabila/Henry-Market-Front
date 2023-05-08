@@ -3,7 +3,6 @@
     justify-content: center;
     height: fit-content;
     width: 100%;
-    background-color: #97978d;
     margin-bottom: 120px;
 }
 
@@ -11,8 +10,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 150px;
-    margin-bottom: 20px;
+   box-shadow: 0px 0px 25px rgb(0, 0, 0);
+    margin-top: 115px;
+    margin-bottom: 55px;
     padding: 20px;
     border: 5px black solid;
     border-radius: 20px;
@@ -26,9 +26,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    width:100%;
-    color: aliceblue;
+    background-color: var(--blue-color);
+    width: 100%;
+    color: rgb(255, 255, 255);
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     padding: 20px;
@@ -36,12 +36,13 @@
 
 .detalle{
     display: flex;
-    border: 3px black solid;
-    border-radius: 20px;
-    width: 1100px;
-    margin-top: 10px;
-    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 3px var(--blue-color) solid;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 10px;
     padding: 20px;
 }
 
@@ -59,11 +60,41 @@
 
 .aux{
     display: flex;
-    margin-top: 23px;
+    font-size: medium;
+    margin-top: 22px;
+    width: 200px;
+    margin: 15px;
 }
 
 .link{
     display: flex;
     color: #97978d;
     text-decoration: none;
+}
+
+.divcom{
+    height: 50px;
+    width: 50px;
+}
+
+.coment{
+    height: 40px;
+    width: 40px;
+}
+
+.combut{
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    padding: 2.5px;
+    width: 50px;
+    height: 50px;
+}
+
+.combut:hover{
+    background-color: var(--blue-color);
+}
+
+.combut:active{
+    background-color: yellow;
 }
