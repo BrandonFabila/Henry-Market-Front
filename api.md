@@ -6,6 +6,7 @@
             admin: {
                 FormCreateProduct: FormCreateProduct.jsx,
                 Uusarios: Usuarios.jsx
+                FormUpdateProduct: FormUpdateProduct.jsx
             },
             CheckoutForm: CheckoutForm.jsx,
             FormLogin: FormLogin.jsx,
