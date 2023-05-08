@@ -6,12 +6,12 @@ import QuantityDisplay from '../../components/quantitydisplay/QuantityDisplay';
 import styles from './Detail.module.css';
 import Loader from '../../components/loader/loader';
 import swal from 'sweetalert'
-import axios from 'axios'
 import CardsReviews from '../../components/cardsReview/CardsReview';
 import s from "./Detail.module.css"
 
+
 const Detail = () => {
-  const api_host = 'http://localhost:3001'
+  //const api_host = 'http://localhost:3001'
   //const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 
@@ -105,22 +105,6 @@ const Detail = () => {
     }
   }
 
-  const [descripcion_motivo, setDescripcion_motivo] = useState();
-  const [valor_calificacion, setValor_calificacion] = useState();
-
-
-  async function handleSubmit() {
-    const data = {
-      id_producto: id_producto,
-      descripcion_motivo,
-      valor_calificacion
-    }
-    await axios.post(`${api_host}/products/${id_producto}/calificacion`, data)
-    setDescripcion_motivo()
-    setValor_calificacion()
-  }
-
-
   return (
     <>
       <div>
@@ -182,33 +166,7 @@ const Detail = () => {
             </div>
           </div>
 
-          <div style={{marginBottom: '50px'}}>
-            <h1>Deja un comentario</h1>
-            <label>Calificar</label>
-            <select
-              className={s.select}
-              style={{ width: '40%' }}
-              value={valor_calificacion}
-              onChange={(e) => setValor_calificacion(e.target.value)}
-            >
-              <option value="0">Puntaje</option>
-              <option value="1">⭐</option>
-              <option value="2">⭐⭐</option>
-              <option value="3">⭐⭐⭐</option>
-              <option value="4">⭐⭐⭐⭐</option>
-              <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-            <form className={s.form} onSubmit={handleSubmit}>
-              <label>¿Qué te pareció este producto?</label>
-              <input
-                className={s.input}
-                type="text"
-                value={descripcion_motivo}
-                onChange={(e) => setDescripcion_motivo(e.target.value)}
-              />
-              <button className={s.btn} type='submit'>Enviar</button>
-            </form>
-          </div>
+         
         </div>
         
     </>

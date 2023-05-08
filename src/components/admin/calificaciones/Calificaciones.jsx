@@ -34,7 +34,8 @@ const Calificaciones = () => {
       </tr>
     </thead>
     <tbody>
-      {calificaciones.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage).map((p) => {
+    {Array.isArray(calificaciones) && calificaciones.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage).map((p) => {
+  // rest of your code
         if (p.estado) {
           return (
             <>

@@ -1,4 +1,4 @@
-  .contenedor{
+  /*.contenedor{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -151,7 +151,7 @@
     }
     
     .text {
-      /* height:100%; */
+      /* height:100%; 
       padding-bottom: 1.0rem;
       margin-top: 0.0rem;
     }
@@ -164,9 +164,11 @@
     
     .text span:nth-of-type(2) {
       font-weight: bold;
-    }
+    } */
   
-  /*
+  
+  
+  
   .contenedor{
     display: flex;
     flex-direction: column;
@@ -177,9 +179,10 @@
     margin-left: auto;
     margin-right: auto;
     border-color: black;
-    box-shadow: 0px 0px 15px black;
     width: 50%;
     margin-right: 90px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+
     
 }
 .contenedor2{
@@ -197,11 +200,7 @@
 .labels, h3 {
   color: #333;
 }
-.labels::before {
-  font-family: 'FontAwesome';
-  content: "\f1ea";
-  margin-right: 10px;
-}
+
 .text {
   font-family: 'Montserrat', sans-serif;
 }
@@ -221,14 +220,13 @@
     border-radius: 5px;
 }
 .inputs, .descripcion {
-  border: none;
-  border-bottom: 2px solid #333;
-  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 1rem;
-  padding: 0.5rem 0;
-  margin-bottom: 1rem;
+  padding: 10px;
   width: 100%;
-  color: #333;
+  margin-bottom: 10px;
+  color: #555;
 }
 .inputs:focus, .descripcion:focus {
   outline: none;
@@ -312,4 +310,29 @@
   border-radius: 10px;
 
 }
-  */
+input[type="file"]::-webkit-file-upload-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="file"]::-moz-file-upload-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
