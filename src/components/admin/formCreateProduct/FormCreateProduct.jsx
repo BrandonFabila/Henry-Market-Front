@@ -5,21 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 import { getCategorys } from "../../../store/actions/index"
-import Cookies from "js-cookie";
 
 import style from "./FormCreateProduct.module.css"
 
 
+
 export default function FormCreateProduct() {
-  // const api_host= "http://localhost:3001/";
+  //  const api_host= "http://localhost:3001/";
   const api_host = 'https://henry-market-back-production.up.railway.app/'
   const { categorys} = useSelector(state => state);
 
   const dispatch = useDispatch();
 
-  const session = Cookies.get("user_session");
-  let values = JSON.parse(session)
-  let user = values.dataValues
 
   useEffect(() => {
     dispatch(getCategorys());
@@ -93,45 +90,7 @@ export default function FormCreateProduct() {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
 
-  const handleInputChange = async event => {
-    const property = event.target.name;
-    const value = event.target.value;
-    if (event.target.type === "file") {
-      const file = event.target.files[0]; 
-      let valor = 0;
-      if (file) valor = 1
-      console.log(valor);
-   
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "im2gqbe4"); 
-      formData.append("api_key", "341983536529681"); 
-
-
-      try {
-        const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/dcel6k4l6/image/upload",
-          formData
-        );
-
-        console.log(response.data.secure_url);
-        const imageUrl = response.data.secure_url;
-
-
-        setForm({
-          ...form, 
-          imagen: imageUrl 
-        });
-      } catch (error) {
-        console.error("Error al subir la imagen a Cloudinary:", error);
-      }
-    } else {
-      setForm({
-        ...form,
-        [property]: value
-      });
-    }
-  }
+  
 
   const [form, setForm] = useState({
     nombre: "",
@@ -141,14 +100,68 @@ export default function FormCreateProduct() {
     stock: "",
     id_categoria_producto: "",
     imagen: "",
-    admin: user.admin
   });
 
+  const [productCard, setProductCard] = useState({
+    nombre: '',
+    valor: '',
+    Categoria_producto: { nombre_categoria_producto: '' },
+    imagen: '',
+  });
+  const handleInputChange = async (event) => {
+    const property = event.target.name;
+    const value = event.target.type === "file" ? event.target.files[0] : event.target.value;
+  
+    if (event.target.type === "file") {
+      let imageUrl = form.imagen;
+      if (value) {
+        const formData = new FormData();
+        formData.append("file", value);
+        formData.append("upload_preset", "im2gqbe4");
+        formData.append("api_key", "341983536529681");
+  
+        try {
+          const response = await axios.post(
+            "https://api.cloudinary.com/v1_1/dcel6k4l6/image/upload",
+            formData
+          );
+  
+          imageUrl = response.data.secure_url;
+        } catch (error) {
+          console.error("Error al subir la imagen a Cloudinary:", error);
+        }
+      }
+  
+      setForm({
+        ...form,
+        imagen: imageUrl,
+      });
+    } else {
+      setForm({
+        ...form,
+        [property]: value,
+      });
+    }
+  };
+  
+  
+  useEffect(() => {
+    setProductCard({
+      nombre: form.nombre,
+      valor: form.valor,
+      Categoria_producto: { nombre_categoria_producto: '' },
+      imagen: form.imagen,
+    });
+  }, [form]);
+  
+
   return (
+    <div className={style.contenedor2} >
     <>
       {shouldRedirect ? (
         <Navigate to="/adminHome" replace={true}/>
       ) : (
+  
         <div className={style.contenedor} style={{padding: '15px'}}>
           <CloudinaryContext cloudName="dfmkjxjsf">
             <form onSubmit={handleSubmit}>
@@ -286,6 +299,8 @@ export default function FormCreateProduct() {
                   id="imagen"
                   name="imagen"
                   onChange={handleInputChange}
+                 
+
                   className={style.inputs}
                 />                
 
@@ -305,8 +320,26 @@ export default function FormCreateProduct() {
 
           </CloudinaryContext>
         </div>
+        
       )
       }
+      <div className={style.container}>
+  <div className={style.img}>
+    <img src={productCard.imagen} alt={productCard.nombre} />
+  </div>
+  <div className={style.precios}>
+    
+    <h3 className={style.vNormal}>${productCard.valor}</h3>
+  </div>
+  <div className={style.text}>
+    <span style={{ fontWeight: 'bolder' }}>{productCard.nombre}</span>
+    <span style={{ fontWeight: 'lighter' }}>
+      {productCard.Categoria_producto.nombre_categoria_producto}
+      
+    </span>
+  </div>
+</div>
     </>
+    </div>
   );
 }

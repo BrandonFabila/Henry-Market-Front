@@ -28,8 +28,10 @@
 .inputs{
     width: 410px;
     font-size: large;
-    padding: .3rem;
-    border-radius: 7.5px;
+    padding: .5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1rem;
 }
 
 .inputs::placeholder{

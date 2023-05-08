@@ -10,6 +10,7 @@ const Products = () => {
   const products = useSelector((state) => state.products) ?? [];
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const productsPerPage = 20;
   const pageCount = Math.ceil(products.length / productsPerPage);
@@ -23,7 +24,14 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <> Buscar producto: 
+      <input
+      className={styles.busqueda}
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Buscar productos por nombre"
+      />
       <table>
         <thead>
           <tr>
@@ -34,31 +42,34 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-        {products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage).map((p) => {
-  if (p.estado) {
-    return (
-      <>
-        <tr key={p.id_producto}>
-          <td>{p.nombre}</td>
-          <td>{p.descripcion_producto}</td>
-          <td>{p.stock}</td>
-          <td>
-            <Link to={`/product/${p.id_producto}`}>
-              <FiEdit size={22} color="var(--green-color)" className={styles.edit} style={{ margin: '5px 0px' }} />
-            </Link>
-          </td>
-        </tr>
-        <hr style={{ width: '520%' }} />
-      </>
-    );
-  } else {
-    return null;
-  }
-})}
+        {products
+          .filter((p) => p.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+          .slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+          .map((p) => {
+            if (p.estado) {
+              return (
+                <>
+                  <tr key={p.id_producto}>
+                    <td>{p.nombre}</td>
+                    <td>{p.descripcion_producto}</td>
+                    <td>{p.stock}</td>
+                    <td>
+                      <Link to={`/product/${p.id_producto}`}>
+                        <FiEdit size={22} color="var(--green-color)" className={styles.edit} style={{ margin: '5px 0px' }} />
+                      </Link>
+                    </td>
+                  </tr>
+                  <hr style={{ width: '520%' }} />
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
         </tbody>
       </table>
       <ReactPaginate
-      className={styles.reactpaginate } 
+        className={styles.reactpaginate } 
         previousLabel={'Previous'}
         nextLabel={'Next'}
         breakLabel={'...'}

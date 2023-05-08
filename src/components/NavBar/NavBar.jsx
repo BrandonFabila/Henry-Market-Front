@@ -2,7 +2,6 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 // import { useDispatch } from 'react-redux'
-
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
@@ -10,6 +9,7 @@ import logotipo from '../../media/logotipo-blanco.png'
 
 import s from './nav.module.css'
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
     const location = useLocation()
@@ -17,8 +17,7 @@ export default function NavBar() {
     const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-
-
+    
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
@@ -28,7 +27,8 @@ export default function NavBar() {
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
     };
-
+    
+    const count = useSelector(state => state.countCarrito)
     const handleLogOut = () => {
         setShowProfileMenu(!showProfileMenu);
          window.localStorage.removeItem("estaLogueado");
@@ -86,10 +86,14 @@ export default function NavBar() {
                         </Link>
                     </div>
                 )}
-
-                <Link to='/carrito' onClick={handleMenuClick}>
-                    <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
-                </Link>
+                <div>
+                    <Link to='/carrito' onClick={handleMenuClick}>
+                        <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                    </Link>
+                    <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
+                        {count}
+                    </h4>
+                </div>
             </div>
         </div>
     )

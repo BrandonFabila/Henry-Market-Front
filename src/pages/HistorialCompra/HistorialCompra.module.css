@@ -3,20 +3,16 @@
     justify-content: center;
     height: fit-content;
     width: 100%;
-    background-color: #97978d;
-    margin-bottom: 120px;
+    justify-items: center;
 }
 
 .tabla{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 150px;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 5px black solid;
-    border-radius: 20px;
-    width: 90%;
+    margin-top: 95px;
+    margin-bottom: 45px;
+    width: 99%;
     background-color: white;
     height: fit-content;
 
@@ -25,26 +21,33 @@
 .titulo{
     display: flex;
     align-items: center;
+    width: 95dvw;
     justify-content: center;
-    background-color: black;
-    width:100%;
-    color: aliceblue;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    padding: 20px;
+    border-radius: 1rem;
+    background-color: var(--blue-color);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+}
+
+.nomP{
+    width: 300px;
 }
 
 .detalle{
     display: flex;
-    border: 3px black solid;
-    border-radius: 20px;
-    width: 1100px;
-    margin-top: 10px;
-    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: space-evenly;
+    border: 3.5px var(--blue-color) solid;
+    border-radius: 20px;
+    width: 95dvw;
+    margin-bottom: 25px;
     padding: 20px;
 }
-
+.fecha{
+    margin-top: 50px;
+}
 .columna{
     display: flex;
     align-items: center;
@@ -59,11 +62,40 @@
 
 .aux{
     display: flex;
-    margin-top: 23px;
+    font-size: medium;
+    width: 150px;
+    align-items: center;
 }
 
 .link{
     display: flex;
     color: #97978d;
     text-decoration: none;
+}
+
+.divcom{
+    height: 50px;
+    width: 50px;
+}
+
+.coment{
+    height: 40px;
+    width: 40px;
+}
+
+.combut{
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    padding: 2.5px;
+    width: 50px;
+    height: 50px;
+}
+
+.combut:hover{
+    background-color: var(--blue-color);
+}
+
+.combut:active{
+    background-color: yellow;
 }

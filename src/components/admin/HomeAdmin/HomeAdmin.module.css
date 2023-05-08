@@ -7,3 +7,49 @@
     align-items: center;
 }
 
+.boton{
+  border: none;
+  font-size: 18px;
+  background: var(--blue-color);
+  background-image: linear-gradient(to bottom, var(--light-blue-color) 0%, var(--dark-blue-color) 100%);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0px 0px 10px rgba(83, 83, 83, 0.548);
+  border-radius: 1rem;
+  padding: 4px 40px;
+  transition: 0.1s;
+  margin: 10px;
+  font-weight: 700;
+
+}
+.boton:hover{
+  background-color: var(--light-blue-color);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.boton:active{
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.boton.loading::after{
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 8px;
+  animation: loading 1s infinite ease-in-out;
+}
+
+@keyframes loading{
+  0%{
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 0;
+  }
+}

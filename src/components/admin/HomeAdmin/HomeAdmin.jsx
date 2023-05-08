@@ -12,16 +12,19 @@ function HomeAdmin() {
          <div className={s.botones}>
             <h3>Selecciona qué deseas administrar</h3>
             <Link to="/products/admin">
-               <button style={{ width: '200px' }}>Administrar productos</button>
+               <button className={s.boton} style={{ width: '200px' }}>Administrar productos</button>
             </Link>
             <Link to="/admin/usuarios">
-               <button style={{ width: '200px' }}>Administrar Usuarios</button>
+               <button className={s.boton} style={{ width: '200px' }}>Administrar Usuarios</button>
             </Link>
             <Link to="/producto">
-               <button style={{ width: '200px' }}>Crear Producto</button>
+               <button className={s.boton} style={{ width: '200px' }}>Crear Producto</button>
             </Link>
             <Link to="/historialVentas">
-               <button style={{ width: '200px' }}>Historial de ventas</button>
+               <button className={s.boton}  style={{ width: '200px' }}>Historial de ventas</button>
+            </Link>
+            <Link to="/calificaciones">
+               <button className={s.boton} style={{ width: '200px' }}>administrar calificaciones</button>
             </Link>
          </div>
       </div>

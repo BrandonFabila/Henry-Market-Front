@@ -30,8 +30,9 @@ export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
 export const GET_SHOPPING = "GET_SHOPPING"
-
-// const api_host= "http://localhost:3001/";
+export const CALIFICACIONES = "CALIFICACIONES"
+export const DELETE_CALIFICACION = "DELETE_CALIFICACION"
+//  const api_host= "http://localhost:3001/";
 const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export function getAllProducts() {
@@ -255,9 +256,9 @@ export function sumarCount() {
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
   return {
-    type: AGREGAR_AL_CARRITO,
-    payload: { id, quantity },
-  };
+      type: AGREGAR_AL_CARRITO,
+      payload: { id, quantity },
+    };
 }
 
 export function cleanProduct() {
@@ -307,3 +308,26 @@ export const getAllUsers = () => {
     }
   };
 };
+
+export function getAllCalificaciones() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${api_host}products/todascalificaciones`);
+      console.log(response.data);
+      dispatch({ type: CALIFICACIONES, payload: response.data });
+    } catch (error) {
+      dispatch({ type: CALIFICACIONES, payload: error });
+    }
+  };
+}
+export function deleteCalificacion(idCalificacion){
+  return async(dispatch)=>{
+    try{
+      const response = await axios.put(`${api_host}products/calificaciones/${idCalificacion}`)
+      dispatch({ DELETE_CALIFICACION, payload: response.data });
+    }catch(error){
+      dispatch({ type: DELETE_CALIFICACION, payload: error });
+
+    }
+  }
+}
