@@ -33,7 +33,9 @@ export default function ShoppingCart() {
 
   //Suma de subtotales
   let total = 0
+  let articles = 0
   carrito.forEach(producto => {
+    articles += producto.cantidad
     producto.valor_descuento ? 
       total = total + producto.valor_descuento * producto.cantidad
       :
@@ -55,6 +57,7 @@ export default function ShoppingCart() {
             <div style={{ marginBottom: "120px" }}>
               {carrito.map(producto => (
                 <CartCard
+                  articulos={articles}
                   valor={producto.valor}
                   key={producto.id}
                   id_producto={producto.id_producto}
@@ -67,12 +70,19 @@ export default function ShoppingCart() {
               ))}
               <div className={styles.containerTotal}>
                 <div className={styles.total}>
-                  <div style={{ fontSize: "30px", marginLeft: "15px" }}>
-                    <h3>Total</h3>
+                  
+                  <div className={styles.foot} >
+                    <div style={{ fontSize: "27px" }}>
+                      <h3>{articles} Articulos</h3>
+                    </div>
                   </div>
-                  <div style={{ fontSize: "30px", marginRight: "15px" }}>
-                    <h3>${total}</h3>
+
+                  <div className={styles.foot} >
+                    <div style={{ fontSize: "27px" }}>
+                      <h3>Total:  ${total}</h3>
+                    </div>
                   </div>
+
                 </div>
               </div>
               
@@ -85,13 +95,9 @@ export default function ShoppingCart() {
 
             </div>
           ) : (
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div className={styles.text}>
-                <div>
-                  <p>No hay productos en el carrito.</p>
+                <div className={styles.vacio}>
+                  <h1>Añade productos en el carrito.</h1>
                 </div>
-              </div>
-            </div>
           )}
         </div>
         )}

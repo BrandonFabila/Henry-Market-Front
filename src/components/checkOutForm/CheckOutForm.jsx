@@ -30,6 +30,8 @@ const CheckoutForm = (props) => {
             const { id, card } = paymentMethod
             const date = new Date()
             const idString = id.toString()
+                    window.localStorage.setItem("carrito", JSON.stringify([]));
+                    window.localStorage.setItem("count", JSON.stringify(0));
             try {
                 const { data } = await axios.post(`${api_host}venta`, {
                     fecha: date,
@@ -52,7 +54,7 @@ const CheckoutForm = (props) => {
                     button: 'Accept'
                 });
                 navigateTo('/');
-
+                
             } catch (error) {
 
                 console.log(error.message)

@@ -4,6 +4,10 @@
     margin-top: 35px;
 }
 
+.total {
+  background-color: var(--blue-color);
+}
+
 
 
 .but{
