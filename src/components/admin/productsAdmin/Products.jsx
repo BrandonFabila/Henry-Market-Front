@@ -58,7 +58,7 @@ const Products = () => {
         </tbody>
       </table>
       <ReactPaginate
-      className={styles.reactpaginate } 
+        className={styles.reactpaginate } 
         previousLabel={'Previous'}
         nextLabel={'Next'}
         breakLabel={'...'}
