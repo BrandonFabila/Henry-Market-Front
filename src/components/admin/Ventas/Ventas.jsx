@@ -34,7 +34,8 @@ export default function Ventas(){
                     </tr>
                 </thead>
                 <tbody>
-                    {compras.slice(currentPage * ventasPerPage, (currentPage + 1) * ventasPerPage).map((venta) => {
+                {Array.isArray(compras) && compras.slice(currentPage * ventasPerPage, (currentPage + 1) * ventasPerPage).map((venta) => {
+
                         if(venta.id_venta){
                             return(
                                 <>

@@ -11,7 +11,9 @@ import s from "./Detail.module.css"
 
 
 const Detail = () => {
+  const api_host = 'http://localhost:3001'
   // const api_host = 'https://henry-market-back-production.up.railway.app/'
+
     let [quantity, setQuantity] = useState(1);
     const count = useSelector(state => state.countCarrito)
 

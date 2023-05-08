@@ -217,6 +217,22 @@ export default function FormUpdateProduct() {
                   )}
                 </div>
 
+                <div className={style.contenedorDiv}>
+                  <label  className="form-label">
+                    Descripción del producto
+                  </label>
+                  <textarea
+                    name="descripcion_producto"
+                    value={form.descripcion_producto}
+                    onChange={handleInputChange}
+                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolor deserunt inventore sit tempora, quia dolore magnam corporis atque beatae at ipsum quisquam quidem eaque ad deleniti, libero vitae reprehenderit."
+                    className={style.forminput}
+                  />
+                  {errors.descripcion_producto && (
+                    <div className={style.errors}>{errors.descripcion_producto}</div>
+                  )}
+                </div>
+
                 {/* ----------------------- VALOR NORMAL -----------------------*/}
                 <div className={style.contenedorDiv}>
                   <label for="" className='form-label'>
