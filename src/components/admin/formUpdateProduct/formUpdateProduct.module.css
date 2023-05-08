@@ -1,58 +1,92 @@
-.contenedor{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 100px;
-    margin-top: 90px;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+  margin-top: 80px;
+
 }
 
-.fechas {
-    display: flex;
-    justify-content: center;
+.formContainer {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 70%;
+  max-width: 600px;
+  margin: 20px;
+  padding-top:200px;
+  padding-bottom: 100px;
+  margin-bottom: 120px;
+  
 }
 
-.nombres{
-    display: flex;
-    flex-direction: row;
-    justify-content: center
+.formlabel {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #333;
 }
 
-.apellidos{
-    display: flex;
-    flex-direction: row;
-    justify-content: center
+.forminput {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
 }
 
-.contenedorDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.imageFile {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 180px;
-    height: 130px;
-    width: 130px;
-    margin-top: 10px;
-    object-fit: cover;
+.forminput:focus {
+  outline: none;
+  border-color: #888;
 }
 
 .errors {
-    font-family: sans-serif;    
-    color: #ff0000;
-    font-size: 14px;
+  font-family: sans-serif;    
+  color: #ff0000;
+  font-size: 14px;
 }
 
 .eliminar {
-    background-color: rgb(209, 5, 5);
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  padding: 10px 20px;
 }
 
 .eliminar:hover {
-    background-color: red;
+  background-color: #c0392b;
+}
+
+button[type="submit"] {
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  padding: 10px 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.imageFile {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }

@@ -82,7 +82,7 @@ export default function Products() {
                   )}
 
                   {pagesToShow.map((pagina) => (
-                    <button
+                    <button 
                       key={pagina}
                       className={`btnPag ${pagina === numeroPagina ? styles.activePage : ""}`}
                       onClick={() => setNumeroPagina(pagina)}

@@ -6,8 +6,8 @@ import validations from "./validations";
 import style from "./FormUpdate.module.css";
 
 export default function FormUpdate({ idUsuario, userData }) {
-  const api_host = 'https://henry-market-back-production.up.railway.app/'
-  // const api_host = "http://localhost:3001/"
+  // const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host = "http://localhost:3001/"
 
   const [form, setForm] = useState({
     id_usuario: null,
@@ -80,9 +80,6 @@ export default function FormUpdate({ idUsuario, userData }) {
     const value = event.target.value;
     if (event.target.type === "file") {
       const file = event.target.files[0]; 
-      let valor = 0;
-      if (file) valor = 1;
-      console.log(valor);
       // Subir la imagen a Cloudinary
       const formData = new FormData();
       formData.append("file", file);

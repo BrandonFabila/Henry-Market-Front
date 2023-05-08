@@ -26,13 +26,20 @@ export default function CartCard(product) {
   };
 
   const handleIncrease = () => {
-    if (quantity !== 10) {
-      setQuantity(quantity + 1);
-      dispatch(sumarCantidad(product))
-      dispatch(sumarCount())
+    if(product.articulos <= 49) {
+      if (quantity <= 24) {
+        setQuantity(quantity + 1);
+        dispatch(sumarCantidad(product))
+        dispatch(sumarCount())
+      } else {
+        swal({
+          title: `Solo 25 unidades por compra`,
+          icon: 'info'
+        })
+      }
     } else {
       swal({
-        title: 'Número máximo de unidades disponibles',
+        title: `Solo puedes llevar 50 productos por compra`,
         icon: 'info'
       })
     }
@@ -50,26 +57,27 @@ export default function CartCard(product) {
               </div>
               {product.valor_descuento ? 
                 (
-                  <div>
+                  <div className={s.text} >
                     <div className={s.preciodesc} >${product.valor}</div>
                     <div className={s.precio}>${product.valor_descuento} x unidad</div>
                   </div>
                 )
                 :
                 (
-                  <div>
+                  <div className={s.text}>
                     <div className={s.precio}>${product.valor} x unidad</div>
                   </div>
                 )
               }
               <div className={s.quantity}>
               <QuantityDisplay
+                articulos={product.articulos}
                 quantity={product.cantidad}
                 onDecrease={handleDecrease}
                 onIncrease={handleIncrease}
               />
               </div>
-              <div>
+              <div className={s.text}>
                 <h3 style={{fontSize: "25px"}}>Subtotal ${product.valor_descuento ? product.valor_descuento*product.cantidad : product.valor*product.cantidad}</h3>
               </div>
               <div className={s.eliminar} onClick={handleEliminarProducto}>
@@ -78,7 +86,6 @@ export default function CartCard(product) {
             </div>
           </div>
           <div style={{display:"flex", justifyContent: "center"}}>
-            <hr style={{width:"90%"}}/>
           </div>
     </div>      
   );

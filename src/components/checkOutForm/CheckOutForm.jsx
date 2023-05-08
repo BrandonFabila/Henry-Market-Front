@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = (props) => {
-    const api_host = 'https://henry-market-back-production.up.railway.app/'
-//   const api_host = "http://localhost:3001/"
+    // const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host = "http://localhost:3001/"
     
     const { total, id_user, carrito } = props;
     const stripe = useStripe();
@@ -30,6 +30,8 @@ const CheckoutForm = (props) => {
             const { id, card } = paymentMethod
             const date = new Date()
             const idString = id.toString()
+                    window.localStorage.setItem("carrito", JSON.stringify([]));
+                    window.localStorage.setItem("count", JSON.stringify(0));
             try {
                 const { data } = await axios.post(`${api_host}venta`, {
                     fecha: date,
@@ -52,7 +54,7 @@ const CheckoutForm = (props) => {
                     button: 'Accept'
                 });
                 navigateTo('/');
-
+                
             } catch (error) {
 
                 console.log(error.message)
