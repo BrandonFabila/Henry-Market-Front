@@ -12,14 +12,17 @@ import s from "./Detail.module.css"
 
 const Detail = () => {
   // const api_host = 'https://henry-market-back-production.up.railway.app/'
-
+    let [quantity, setQuantity] = useState(1);
+    const count = useSelector(state => state.countCarrito)
 
     const { id_producto } = useParams();
     const { product, carrito } = useSelector(state => state);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const estaLogueado = localStorage.getItem("estaLogueado");
-
+    const exists = carrito?.find(e => {
+      return e.id_producto === product.id_producto
+    })
   useEffect(() => {
     setLoading(true);
     dispatch(getProductById(id_producto)).finally(() => setLoading(false));
@@ -30,15 +33,11 @@ const Detail = () => {
     })
   }, [dispatch, id_producto])
   const handlerCarrito = () => {
-    const exists = carrito?.find(e => {
-      return e.id_producto === product.id_producto
-    })
-
-
    if(estaLogueado === "database" || estaLogueado === "google"){
     if(!exists){
       dispatch(agregarAlCarrito(product, quantity))
       dispatch(agregarCount(quantity))
+      setQuantity(1)
        swal({
          title: `Agregaste ${product.nombre}`,
          icon: "success",
@@ -46,12 +45,24 @@ const Detail = () => {
          showConfirmButton: false
        })
       }else{
-        swal({
-          title: `Este articulo ya está agregado`,
-          text: "Para modificar la cantidad dirijase al carrito de compra",
-          icon: "error",
-          timer: "3000"
-        })
+        dispatch(agregarAlCarrito(product, quantity))
+        dispatch(agregarCount(quantity))
+        setQuantity(1)
+        if (quantity === 1) {
+          swal({
+            title: `Has añadido ${quantity} unidad más`,
+            text: `${product.nombre}`,
+            icon: "success",
+            timer: "3000"
+          })
+        } else {
+          swal({
+            title: `Has añadido ${quantity} unidades`,
+            text: `${product.nombre}`,
+            icon: "success",
+            timer: "3000"
+          })
+        }
       }
    }else{
     swal({
@@ -63,8 +74,6 @@ const Detail = () => {
   }  
   
   // Cantidad de articulos
-  const [quantity, setQuantity] = useState(1);
-
   const handleDecrease = () => {
     if (quantity !== 1) {
       setQuantity(quantity - 1);
@@ -72,15 +81,49 @@ const Detail = () => {
   }
 
   const handleIncrease = () => {
-    if (quantity !== product.existencia) {
-      setQuantity(quantity + 1);
+    if (exists) {
+      if (exists.cantidad === 25) {
+        swal({
+          title: `Máximo 25 unidades de ${product.nombre} por compra`,
+          icon: 'info'
+        });
+      } else if (exists.cantidad + quantity <= 24 && quantity !== product.existencia) {
+        if (count + quantity <= 49) {
+          setQuantity(quantity + 1);
+        } else {
+          swal({
+            title: `Carrito lleno`,
+            text: `No puedes agregar más de 50 productos`,
+            icon: 'info'
+          });
+        }
+      }
     } else {
-      swal({
-        title: 'Número máximo de unidades disponibles',
-        icon: 'info'
-      })
+      if (quantity === 25) {
+        swal({
+          title: `Máximo 25 unidades de ${product.nombre} por compra`,
+          icon: 'info'
+        });
+      } else if (quantity <= 24 && quantity !== product.existencia) {
+        if (count + quantity <= 49) {
+          setQuantity(quantity + 1);
+        } else if (quantity === 50) {
+          swal({
+            title: `Carrito lleno`,
+            text: `No puedes agregar más de 50 productos`,
+            icon: 'info'
+          });
+        } else {
+          swal({
+            title: `Carrito a punto de llenarse`,
+            text: `No puedes agregar más de 50 productos`,
+            icon: 'info'
+          });
+        }
+      }
     }
-  }
+  };
+  
   //Boton comprar ahora
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const handlerComprar = () => {
@@ -90,7 +133,7 @@ const Detail = () => {
     console.log(shouldRedirect)
     if(estaLogueado === "database" || estaLogueado === "google"){
       if(!exists){
-        dispatch(agregarAlCarrito(product, quantity))
+        dispatch(agregarAlCarrito(product, quantity, count))
         dispatch(agregarCount(quantity))
       }
       setShouldRedirect(true)
@@ -144,16 +187,24 @@ const Detail = () => {
                     : (<span style={{ color: "gray" }}>({product.stock} disponible)</span>)}
                   <QuantityDisplay
                     quantity={quantity}
+                    totalProducts={count}
                     onDecrease={handleDecrease}
                     onIncrease={handleIncrease}
                   />
                 </div>
-
+                
                 <div style={{ margin: '15px' }}>
                   <Link to='/carrito'>
                   <button className={styles.button} style={{ width: 'auto', marginRight: '10px' }} onClick={handlerComprar}>Comprar</button>
                   </Link>
-                  <button className={styles.button} style={{ width: 'auto' }} onClick={handlerCarrito}>Agregar al carrito</button>
+                  <button 
+                    className={styles.button} 
+                    disabled={ quantity >= 26 || quantity + count >= 51} 
+                    style={{ width: 'auto' }} 
+                    onClick={handlerCarrito}
+                    >
+                      Agregar al carrito
+                    </button>
                 </div>
                 </div>
             </div>

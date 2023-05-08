@@ -24,8 +24,8 @@ const FormComent = (props) => {
   
       axios.post(`${api_host}products/${id_producto}/calificacion`, data)
         .then(() => {
+          window.location.href = "/historial-de-compra";
           setShowForm(false);
-          
           swal({
             title: 'Comentado',
             text: 'Gracias por tu opinion!',

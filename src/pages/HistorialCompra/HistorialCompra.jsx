@@ -48,19 +48,34 @@ console.log(comprasUsuario)
           <div>
             {comprasUsuario.map((compra) => (
               <div key={compra.id_detalle_venta}>
-                <h3>Compra realizada el {compra.fecha}</h3>
+                <div className={styles.fecha} >
+                  <h3>Compra realizada el {compra.fecha}</h3>
+                </div>
                 {compra.Detalle_venta.map((detalle) => (
                   <div className={styles.detalle} key={detalle.Producto.id_producto}>
-                    <div>
+                    <div >
                       <img className={styles.img} src={detalle.Producto.imagen} alt={detalle.Producto.nombre}/>
                     </div>
-                    <p className={styles.aux}>{detalle.Producto.nombre}</p>
-                    <p className={styles.aux}>
-                      ${detalle.Producto.valor_descuento || detalle.Producto.valor} x unidad
-                    </p>
-                    <p className={styles.aux}>Cant: {detalle.cantidad}</p>
-                    <p className={styles.aux}>Total: ${detalle.valor_total_cantidad}</p>
-
+                    <div className={styles.nomP} >
+                      <h4 >{detalle.Producto.nombre}</h4>
+                    </div>
+                    <div className={styles.aux} >
+                      <h4>
+                        ${detalle.Producto.valor_descuento || detalle.Producto.valor} x unidad
+                      </h4>
+                    </div>
+                    <div className={styles.aux} >
+                      <h4>
+                        Cant: {detalle.cantidad}
+                      </h4>
+                    </div>  
+                    <div>
+                      <h4 className={styles.aux}>
+                        Total: ${detalle.valor_total_cantidad}
+                      </h4>
+                    </div>  
+                    
+                    
                     {detalle.comentado === false ? 
                     <div className={styles.divcom} >
                       <button 
@@ -78,6 +93,7 @@ console.log(comprasUsuario)
                           id_venta={detalle.id_venta}
                           producto={detalle.Producto.nombre} 
                           id_producto={detalle.id_producto}
+                          showComent={setShowComent}
                           />
                         }
                     </div> 
@@ -91,7 +107,7 @@ console.log(comprasUsuario)
             ))}
           </div>
         ) : (
-          <p>No se encontraron compras realizadas</p>
+          <h4>No se encontraron compras realizadas</h4>
         )}
       </div>
     </div>

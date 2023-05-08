@@ -255,9 +255,9 @@ export function sumarCount() {
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
   return {
-    type: AGREGAR_AL_CARRITO,
-    payload: { id, quantity },
-  };
+      type: AGREGAR_AL_CARRITO,
+      payload: { id, quantity },
+    };
 }
 
 export function cleanProduct() {

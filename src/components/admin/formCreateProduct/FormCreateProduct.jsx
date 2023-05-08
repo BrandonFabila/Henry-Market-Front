@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 import { getCategorys } from "../../../store/actions/index"
-import Cookies from "js-cookie";
 
 import style from "./FormCreateProduct.module.css"
 
@@ -18,9 +17,6 @@ export default function FormCreateProduct() {
 
   const dispatch = useDispatch();
 
-  const session = Cookies.get("user_session");
-  let values = JSON.parse(session)
-  let user = values.dataValues
 
   useEffect(() => {
     dispatch(getCategorys());
@@ -118,9 +114,7 @@ export default function FormCreateProduct() {
   
     if (event.target.type === "file") {
       let imageUrl = form.imagen;
-      let valor = 0;
       if (value) {
-        valor = 1;
         const formData = new FormData();
         formData.append("file", value);
         formData.append("upload_preset", "im2gqbe4");

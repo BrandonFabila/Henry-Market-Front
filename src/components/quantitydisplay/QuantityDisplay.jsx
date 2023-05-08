@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './QuantityDisplay.module.css'
 
-function QuantityDisplay ({onDecrease, onIncrease, quantity}) {
+function QuantityDisplay ({onDecrease, onIncrease, quantity, ariticulos}) {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
