@@ -37,7 +37,7 @@ export default function Carousel({ numSlides, speed }) {
   }, [isMobile, isTwoMobile, isTreeMobile, isFourMobile, numSlides]);
 
   const renderSlides = () => {
-    const productosConDescuento = products.filter(producto => producto.valor_descuento);
+    const productosConDescuento = products.filter(producto => producto.valor_descuento && producto.estado);
     return productosConDescuento.map(p => (
       <CardOfert key={p.id_producto} id={p.id_producto} imagen={p.imagen} nombre={p.nombre} valor={p.valor} valor_descuento={p.valor_descuento} />
     ));

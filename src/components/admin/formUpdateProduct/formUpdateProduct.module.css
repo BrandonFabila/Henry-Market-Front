@@ -56,6 +56,18 @@
   margin-right: 15px;
   padding: 10px 20px;
 }
+.restaurar{
+  background-color: #00f721;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;  
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px 20px;
+}
 
 .eliminar:hover {
   background-color: #c0392b;
