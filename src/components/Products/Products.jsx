@@ -17,9 +17,7 @@ export default function Products() {
   const aux =
     productsFitered && productsFitered.slice
       ? productsFitered.slice(conteoInicial, conteoFinal)
-      : [];
-
-      
+      : [];      
       
   const MAX_PAGES = 10;
   const paginas = [];

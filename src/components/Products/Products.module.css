@@ -6,6 +6,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+  margin-top: 30px;
+
 }
 
 .product {
@@ -55,15 +57,21 @@
   border-radius: 10px;
   text-align: center;
 }
+
 @media (max-width: 460px) {
   .container {
-      justify-content: center;
-      width: 75%;
-      margin: 0;
+    justify-content: center;
+    width: 75%;
+    margin: 0;
+    margin-top: 60px;
+
   }
 }
-@media (max-width: 900px){
-  .container{
+
+@media (max-width: 900px) {
+  .container {
+    margin-top: 60px;
+
     justify-content: space-around;
   }
 }
