@@ -11,6 +11,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showDisabledProducts, setShowDisabledProducts] = useState(false);
 
   const productsPerPage = 20;
   const pageCount = Math.ceil(products.length / productsPerPage);
@@ -19,53 +20,66 @@ const Products = () => {
     setCurrentPage(data.selected);
   };
 
+  const handleFilterClick = () => {
+    setShowDisabledProducts(!showDisabledProducts);
+  };
+
   React.useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
   return (
-    <> Buscar producto: 
+    <>
+      Buscar producto: 
       <input
-      className={styles.busqueda}
+        className={styles.busqueda}
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Buscar productos por nombre"
       />
+      <div>
+        <button
+          className={styles.mostrar}
+          onClick={handleFilterClick}
+          style={{ backgroundColor: showDisabledProducts ? 'var(--red-color)' : 'var(--green-color)' }}
+        >
+          {showDisabledProducts ? 'Mostrando solo deshabilitados' : 'Mostrando solo habilitados'}
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Descripción</th>
             <th style={{ padding: '0.5rem' }}> Stock </th>
-            <th>Editar o eliminar</th>
+            <th>{showDisabledProducts ? 'Restaurar' : 'Editar o eliminar'}</th>
           </tr>
         </thead>
         <tbody>
         {products
-          .filter((p) => p.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
-          .slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
-          .map((p) => {
-            if (p.estado) {
-              return (
-                <>
-                  <tr key={p.id_producto}>
-                    <td>{p.nombre}</td>
-                    <td>{p.descripcion_producto}</td>
-                    <td>{p.stock}</td>
-                    <td>
-                      <Link to={`/product/${p.id_producto}`}>
-                        <FiEdit size={22} color="var(--green-color)" className={styles.edit} style={{ margin: '5px 0px' }} />
-                      </Link>
-                    </td>
-                  </tr>
-                  <hr style={{ width: '520%' }} />
-                </>
-              );
-            } else {
-              return null;
-            }
-          })}
+  .filter((p) => p.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+  .filter((p) => showDisabledProducts ? !p.estado : p.estado)
+  .slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+  .map((p) => {
+    return (
+      <>
+        <tr key={p.id_producto}>
+          <td>{p.nombre}</td>
+          <td>{p.descripcion_producto}</td>
+          <td>{p.stock}</td>
+          <td>
+            {showDisabledProducts }
+              <Link to={`/product/${p.id_producto}`}>
+                <FiEdit size={22} color="var(--green-color)" className={styles.edit} style={{ margin: '5px 0px' }} />
+              </Link>           
+          </td>
+        </tr>
+        <hr style={{ width: '520%' }} />
+      </>
+    );
+  })}
+
         </tbody>
       </table>
       <ReactPaginate
