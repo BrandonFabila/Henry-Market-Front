@@ -96,14 +96,20 @@ const handleLogin = async (values) => {
       console.log('Login failed');
     }
   } catch (error) {
-    // const err = error.response.data;
-    console.log(error)
+    if (error.response.data.error === 'User not enabled for login') {
+      swal({
+        title: 'Tu cuenta ha sido desactivada', 
+        text: 'Por favor contacte a dev.market.henry@gmail.com',
+        icon: 'error',
+        timer: '5000',
+      });
+    } else {
     swal({
-      text: 'Invalid email or password',
+      text: 'Correo o contraseña invalidos',
       icon: 'error',
       timer: '2000'
     });
-    // console.log(err)
+    }
   }
 };
 

@@ -7,9 +7,11 @@
 }
 
 .card {
+
   height: 340px;
   width: 420px;
   margin: 10px;
+
   cursor: pointer;
 }
 
@@ -19,8 +21,10 @@
   width: 420px;
   text-align: center;
   position: relative;
+
   transition: all 0.9s;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.671);
+
   transform-style: preserve-3d;
 }
 
@@ -56,7 +60,9 @@
   align-items: center;
   display: flex;
   transform: rotateY(0.5turn);
+
   background-color: var(--blue-color);
+
 }
 
 .description {

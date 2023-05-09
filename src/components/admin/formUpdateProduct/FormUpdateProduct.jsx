@@ -111,7 +111,6 @@ export default function FormUpdateProduct() {
         );
 
         // Obtener la URL de la imagen subida desde la respuesta de Cloudinary
-        console.log(response.data.secure_url);
         const imageUrl = response.data.secure_url;
 
 
@@ -166,9 +165,7 @@ export default function FormUpdateProduct() {
     }
   };
   const { product } = useSelector((state) => state);
-  console.log("aaaaaaaaaaaaa",product);
 
-  console.log("formmmmmmmmmmmmmmmmmmmm: ", form)
   return (
     <>
       {shouldRedirect ? (

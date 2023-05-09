@@ -10,7 +10,7 @@ export default function Products() {
   
   const [numeroPagina, setNumeroPagina] = useState(1);
 
-  const grupo = 9;
+  const grupo = 8;
   const conteoFinal = numeroPagina * grupo;
   const conteoInicial = conteoFinal - grupo;
 
