@@ -17,12 +17,26 @@ function CardOfert({ imagen, nombre, id, valor, valor_descuento }) {
 
   return (
     <Link to={`/products/${id}`} style={{ textDecoration: 'none' }}>
-      <div className={s.container} style={{ backgroundImage: `url(${imagen})`, }}>
-        <div className={s.text}>
-          <h4 className={s.nombre}>{nombre}</h4>
-          <h1 className={s.descuento}>{calcPorcentaje(valor, valor_descuento)}</h1>
+      <div className={s.container}>
+        <div className={s.img_container} style={{ backgroundImage: `url(${imagen})` }}>
+          <div>
+            <h4 className={s.porcentaje}>-{calcPorcentaje(valor, valor_descuento)}</h4>
+          </div>
+        </div>
+
+        <div className={s.texto}>
+          <h4 className={s.nombre}>{nombre}</h4>          
+          <div className={s.precios}>
+            <div className={s.descuento}>
+              <h5 className={s.valor}>${valor}</h5>
+            </div>
+            <div className={s.descuento}>
+              <h5 className={s.valor_descuento}>${valor_descuento}</h5>
+            </div>
+          </div>
         </div>
       </div>
+
     </Link>
   )
 }
