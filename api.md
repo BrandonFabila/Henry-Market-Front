@@ -6,13 +6,14 @@
             admin: {
                 FormCreateProduct: FormCreateProduct.jsx,
                 Uusarios: Usuarios.jsx
+                FormUpdateProduct: FormUpdateProduct.jsx
             },
             CheckoutForm: CheckoutForm.jsx,
             FormLogin: FormLogin.jsx,
+            FormUpdatePassword: FormUpdatePassword.jsx
             FormUpdate: FormUpdate.jsx
         },
         pages: {
-            Detail: Detail.jsx,
         },
         store: {
             actions: index.js,

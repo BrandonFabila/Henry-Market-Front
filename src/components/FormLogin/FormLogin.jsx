@@ -31,8 +31,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export default function FormLogin() {
-   const api_host = 'http://localhost:3001/'
-  //const api_host = 'https://henry-market-back-production.up.railway.app/'
+  //  const api_host = 'http://localhost:3001/'
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
   
 
   const estado = true
@@ -96,14 +96,20 @@ const handleLogin = async (values) => {
       console.log('Login failed');
     }
   } catch (error) {
-    // const err = error.response.data;
-    console.log(error)
+    if (error.response.data.error === 'User not enabled for login') {
+      swal({
+        title: 'Tu cuenta ha sido desactivada', 
+        text: 'Por favor contacte a dev.market.henry@gmail.com',
+        icon: 'error',
+        timer: '5000',
+      });
+    } else {
     swal({
-      text: 'Invalid email or password',
+      text: 'Correo o contraseña invalidos',
       icon: 'error',
       timer: '2000'
     });
-    // console.log(err)
+    }
   }
 };
 

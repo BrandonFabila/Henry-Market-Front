@@ -20,7 +20,7 @@ function CardCategory({ id_categoria_producto, nombre_categoria_producto, imagen
         </div>
         <div className={s.back}>
           <div>
-            <h3>Explorar más {nombre_categoria_producto} ...</h3>
+            <h3 style={{ color: 'white'}} >Explorar más {nombre_categoria_producto} ...</h3>
           </div>
         </div>
       </div>
