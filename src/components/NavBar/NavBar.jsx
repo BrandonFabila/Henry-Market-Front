@@ -81,7 +81,14 @@ export default function NavBar() {
             {!esAdmin && <div className={s.search}><SearchBar /></div>}
 
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '15%', alignItems: 'center' }}>
-                <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                {
+                    esAdmin ? (
+                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi comercio</div>
+                    ) : (
+                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                    )
+                }
+
                 {showProfileMenu && (
                     <div className={s.menuDesplegable}>
 
@@ -124,14 +131,18 @@ export default function NavBar() {
                         </Link>
                     </div>
                 )}
-                <div>
-                    <Link to='/carrito' onClick={handleMenuClick}>
-                        <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
-                    </Link>
-                    <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
-                        {count}
-                    </h4>
-                </div>
+
+                {!esAdmin && (
+                    <div>
+                        <Link to='/carrito' onClick={handleMenuClick}>
+                            <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                        </Link>
+                        <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
+                            {count}
+                        </h4>
+                    </div>
+                )
+                }
             </div>
         </div>
     )
