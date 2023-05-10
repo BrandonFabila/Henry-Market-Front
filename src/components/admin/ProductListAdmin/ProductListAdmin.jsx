@@ -14,7 +14,7 @@ function ProductListAdmin() {
           <div className={style.ventas}>
             <Products />
           </div>
-        </div> : <p> No hay nada pa </p>
+        </div> : <p> No hay nada para mostrar </p>
       }
     </>
   )
