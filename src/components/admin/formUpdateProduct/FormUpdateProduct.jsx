@@ -12,8 +12,8 @@ import swal from "sweetalert";
 
 
 export default function FormUpdateProduct() {
-   const api_host= "http://localhost:3001/";
-  ///const api_host = 'https://henry-market-back-production.up.railway.app/'
+  //  const api_host= "http://localhost:3001/";
+  const api_host = 'https://henry-market-back-production.up.railway.app/';
   //const { categorys } = useSelector(state => state);
   const dispatch = useDispatch();
   const { id_producto } = useParams();
@@ -223,7 +223,7 @@ export default function FormUpdateProduct() {
                     name="descripcion_producto"
                     value={form.descripcion_producto}
                     onChange={handleInputChange}
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolor deserunt inventore sit tempora, quia dolore magnam corporis atque beatae at ipsum quisquam quidem eaque ad deleniti, libero vitae reprehenderit."
+                    placeholder={product.descripcion_producto}
                     className={style.forminput}
                   />
                   {errors.descripcion_producto && (
