@@ -83,7 +83,7 @@ export default function FormRegister() {
           .catch(err => {
             swal({
               title: 'Error',
-              text: 'intente nuevamente',
+              text: 'Intente nuevamente',
               icon: 'error',
               timer: '2000',
               button: 'Accept'
