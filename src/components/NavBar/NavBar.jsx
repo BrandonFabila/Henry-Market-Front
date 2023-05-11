@@ -41,7 +41,7 @@ export default function NavBar() {
             setShowProfileMenu(false);
         }
         dispatch(getUsuarioByEmail(email));
-    }, [location, dispatch]);
+    }, [location, dispatch, email]);
 
     useEffect(() => {
         if (usuarioMemo.length > 0) {

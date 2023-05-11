@@ -163,8 +163,8 @@ export default function FormLogin() {
           <h1>Login</h1>
           <Field name='email' type='email' placeholder='Email' className={styles.formInput} />
           <ErrorMessage name='email' />
-          <Field name='password' type={showPwd ? "text" : "password"} placeholder='Password' className={styles.formInput} />
-          <div className={styles.formInput}>
+          <Field name='password' type={showPwd ? "text" : "password"} placeholder='Password' style={{marginLeft:'35px'}} className={styles.formInput} />
+          <div style={{cursor:'pointer'}}>
             <div className="position-absolute pointer pwd-icon" onClick={() => setShowPwd(!showPwd)}>
               {showPwd ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height={"1.5rem"}>
                 <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
@@ -181,16 +181,17 @@ export default function FormLogin() {
 
           <div className={styles.botones}>
             <button className={styles.botonLogin} type='submit' >Iniciar sesión</button>
-            <div>
-              <div style={{ border: '1px solid grey', width: '150px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '150px' }}></div>
+            <span style={{marginLeft:'30px'}}>O también:</span>
+            <div className={styles.or} >
+              <button type="button"  className={styles.botonRedes} onClick={handleGoogleLogin}><img style={{marginRight: '5px'}} className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' />Iniciar sesión con Google</button>
             </div>
+          </div>
+          <div style={{margin: '20px'}}>
+              <div style={{ border: '1px solid grey', width: '170px' }}></div> <span style={{ margin: '0px 10px' }}>¿No tienes cuenta?</span> <div style={{ border: '1px solid grey', width: '170px' }}></div>
+          </div>
             <Link to={'/register'}>
-              <button type="button" className={styles.boton}>Registrarse</button>
+              <button type="button" style={{marginRight:'20px'}} className={styles.boton}>Regístrate</button>
             </Link>
-          </div>
-          <div className={styles.or} >
-            <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' /></button>
-          </div>
 
         </Form>
 

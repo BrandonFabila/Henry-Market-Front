@@ -276,7 +276,7 @@ export default function FormCreateProduct() {
                       onChange={e => handleInputChange(e)}
                       className={style.inputs}
                     >
-                      <option>Selecciona categoria</option>
+                      <option >Selecciona categoria</option>
                       {categorys &&
                         categorys.map(c => (
                           <option key={c.id_categoria_producto} value={c.id_categoria_producto} primary={c.nombre_categoria_producto}>

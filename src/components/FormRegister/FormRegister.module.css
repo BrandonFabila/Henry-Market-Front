@@ -3,8 +3,6 @@
     padding: 0px;
     margin: 35px;
     border-radius: 1.25rem;
-    background-color: var(--blue-color);
-
   }
   
   .formcontainer {
@@ -42,7 +40,7 @@
   
   .forminput:focus {
     outline: none;
-    box-shadow: 0px 0px 5px #ffca28; /* Resaltar el campo activo con un borde amarillo */
+    /*  box-shadow: 0px 0px 5px var(--yellow-color); Resaltar el campo activo con un borde amarillo */
   }
   
   .label {
@@ -55,7 +53,7 @@
     color: rgb(0, 0, 0); /* Texto rojo para los mensajes de error */
     margin-bottom: 20px;
     background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,202,40,1) 25%, rgba(255,202,40,1) 75%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(70deg, rgba(0,0,0,0) 0%,  rgba(248, 245, 45, 0.774)45%, rgba(248, 245, 45, 0.774) 75%, rgba(0,0,0,0) 100%);
     width: 365px;
     /* box-shadow: 0px 0px 5px rgb(0, 0, 0); Resaltar el campo activo con un borde amarillo */
 
@@ -72,12 +70,11 @@
   }
   
   .button[type="submit"] {
-    background-color: #2196f3; /* Fondo azul para el botón de enviar */
+    background-color: #ffffff;
     border: none;
     border-radius: 5px;
     width: 365px;
-
-    color: #fff; /* Texto blanco para el botón de enviar */
+    color: black; /* Texto blanco para el botón de enviar */
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -86,7 +83,7 @@
   }
   
   .button[type="submit"]:hover {
-    background-color: #ffca28; /* Cambiar el fondo del botón a amarillo al pasar el cursor */
+    background-color: var(--yellow-color); /* Cambiar el fondo del botón a amarillo al pasar el cursor */
     color: #000000;
   }
   
