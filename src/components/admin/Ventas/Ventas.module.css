@@ -23,43 +23,31 @@
   background-color: #ddd;
 }
 
-.reactpaginate {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .reactpaginate ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .reactpaginate li {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-  }
-  
-  
-  .reactpaginate li.disabled {
-    color: #999;
-    cursor: not-allowed;
-  }
+
+.paginadoAbj {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.paginadoAbj button {
+  padding: 10px 15px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 1rem;
+}
+
+.activePage {
+  background-color: yellow;
+}
+
+.paginadoAbj button:active {
+  background-color: yellow;
+}
+
+.paginadoAbj button:focus {
+  background-color: yellow;
+}
   
  
 

@@ -36,7 +36,6 @@ export default function NavBar() {
         }
     }, [location]);
 
-
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
     };

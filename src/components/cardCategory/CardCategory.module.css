@@ -1,9 +1,9 @@
 .nombre {
   font-size: 20px;
   margin: 10px 0;
-  color: whitesmoke;
+  color: black;
   border-radius: 8px;
-  background-color: var(--blue-color);
+  background-color: var(--yellow-color);
 }
 
 .card {
@@ -41,7 +41,7 @@
 .front,
 .back {
   border-radius: 3px;
-  color: whitesmoke;
+  color: black;
   position: absolute;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@
 }
 
 .back_text {
-  color: whitesmoke;
+  color: black;
 }
 .back {
   justify-content: center;
@@ -61,7 +61,7 @@
   display: flex;
   transform: rotateY(0.5turn);
 
-  background-color: var(--blue-color);
+  background-color: var(--yellow-color);
 
 }
 

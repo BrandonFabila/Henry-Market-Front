@@ -45,7 +45,7 @@ export default function Carousel({ numSlides, speed }) {
 
   return (
     <div style={{ marginTop: '50px', padding: '50px' }}>
-      <h1>Mira las ofertas destacadas!</h1>
+      <h1>¡Mira las ofertas destacadas!</h1>
       <Slider
         dots={false}
         slidesToShow={slidesToShow}

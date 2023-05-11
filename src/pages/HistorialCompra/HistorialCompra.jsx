@@ -49,7 +49,7 @@ console.log(comprasUsuario)
             {comprasUsuario.map((compra) => (
               <div key={compra.id_detalle_venta}>
                 <div className={styles.fecha} >
-                  <h3>Compra realizada el {compra.fecha}</h3>
+                  <h3 style={{background:'rgb(248, 245, 45)', color:'black'}}>Compra realizada el {compra.fecha}</h3>
                 </div>
                 {compra.Detalle_venta.map((detalle) => (
                   <div className={styles.detalle} key={detalle.Producto.id_producto}>
