@@ -83,7 +83,7 @@ export default function FormRegister() {
           .catch(err => {
             swal({
               title: 'Error',
-              text: 'intente nuevamente',
+              text: 'Intente nuevamente',
               icon: 'error',
               timer: '2000',
               button: 'Accept'
@@ -358,7 +358,7 @@ export default function FormRegister() {
                   )}
                 </div>
 
-                <button className={s.button} type="submit">Registrase</button>
+                <button className={s.button} type="submit">Registrarse</button>
               </form>
             </CloudinaryContext>
           </div>

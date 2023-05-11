@@ -12,8 +12,8 @@ import swal from "sweetalert";
 
 
 export default function FormUpdateProduct() {
-  // const api_host= "http://localhost:3001/";
-  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  //  const api_host= "http://localhost:3001/";
+  const api_host = 'https://henry-market-back-production.up.railway.app/';
   //const { categorys } = useSelector(state => state);
   const dispatch = useDispatch();
   const { id_producto } = useParams();
@@ -111,7 +111,6 @@ export default function FormUpdateProduct() {
         );
 
         // Obtener la URL de la imagen subida desde la respuesta de Cloudinary
-        console.log(response.data.secure_url);
         const imageUrl = response.data.secure_url;
 
 
@@ -146,19 +145,18 @@ export default function FormUpdateProduct() {
   const handleBorrar = async (id_producto) => {
     try {
       swal({
-        title: "¿Estás seguro de que quieres eliminar este producto?",
-        text: "Una vez eliminado, no podrás recuperarlo",
+        title: "¿Estás seguro de que quieres hacer estos cambios?",
         icon: "warning",
-        buttons: ["Cancelar", "Eliminar"],
+        buttons: ["Cancelar", "Aceptar cambios"],
         dangerMode: true,
       }).then(async (willDelete) => {
         if (willDelete) {
           await axios.put(`${api_host}products/delete/${id_producto}`);
-          swal("¡Producto eliminado!", {
+          swal("¡Producto actualizado!", {
             icon: "success",
           });
         } else {
-          swal("Producto no eliminado");
+          swal("Cambios no realizados");
         }
       });
     } catch (error) {
@@ -166,9 +164,7 @@ export default function FormUpdateProduct() {
     }
   };
   const { product } = useSelector((state) => state);
-  console.log("aaaaaaaaaaaaa",product);
 
-  console.log("formmmmmmmmmmmmmmmmmmmm: ", form)
   return (
     <>
       {shouldRedirect ? (
@@ -227,7 +223,7 @@ export default function FormUpdateProduct() {
                     name="descripcion_producto"
                     value={form.descripcion_producto}
                     onChange={handleInputChange}
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolor deserunt inventore sit tempora, quia dolore magnam corporis atque beatae at ipsum quisquam quidem eaque ad deleniti, libero vitae reprehenderit."
+                    placeholder={product.descripcion_producto}
                     className={style.forminput}
                   />
                   {errors.descripcion_producto && (
@@ -302,7 +298,15 @@ export default function FormUpdateProduct() {
                   )}
                 </div>
                 <div className={style.buttons}>
-                  <button onClick={() => { handleBorrar(id_producto) }} className={style.eliminar}>Eliminar</button>
+                {product.estado ? (
+                        <button onClick={() => handleBorrar(id_producto)} className={style.eliminar}>
+                          Eliminar
+                        </button>
+                      ) : (
+                        <button onClick={() => handleBorrar(id_producto)} className={style.restaurar}>
+                          Restaurar
+                        </button>
+                      )}
                   <button  type="submit">Confirmar cambios</button>
                 </div>
               </form>
