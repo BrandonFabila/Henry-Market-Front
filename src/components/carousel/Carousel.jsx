@@ -24,7 +24,7 @@ export default function Carousel({ numSlides, speed }) {
   useEffect(() => {
     // Actualiza la cantidad de elementos a mostrar en el Carousel según el tamaño de la pantalla
     if (isMobile) {
-      setSlidesToShow(2);
+      setSlidesToShow(1);
     } else if (isTwoMobile) {
       setSlidesToShow(2);
     } else if (isTreeMobile) {
