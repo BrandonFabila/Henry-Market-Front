@@ -41,6 +41,7 @@ export default function NavBar() {
     const usuario = useSelector(state => state.usuario);
     const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
 
+
     useEffect(() => {
         if (usuarioMemo.length > 0) {
             setUserData(usuarioMemo[0]);
