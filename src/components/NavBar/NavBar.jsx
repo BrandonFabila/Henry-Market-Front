@@ -1,25 +1,20 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-import { getUsuarioByEmail } from "../../store/actions/index";
 
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
 
-import { useDispatch } from 'react-redux'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
 
 
 import s from './nav.module.css'
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-// import state from "sweetalert/typings/modules/state";
 
 export default function NavBar() {
     const location = useLocation()
-    const dispatch = useDispatch()
     const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -39,7 +34,7 @@ export default function NavBar() {
                 setIsAdmin(false)
             }
         }
-    }, [location, dispatch]);
+    }, [location]);
 
 
     const handleMenuClick = () => {
@@ -48,11 +43,11 @@ export default function NavBar() {
 
     const count = useSelector(state => state.countCarrito)
     const handleLogOut = () => {
+        setIsAdmin(false)
         setShowProfileMenu(!showProfileMenu);
         window.localStorage.removeItem("estaLogueado");
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('count');
-        // dispatch(userLoggedIn(logOut));
     }
 
 
@@ -80,7 +75,7 @@ export default function NavBar() {
                     )
                 }
 
-                {showProfileMenu && (
+                {showProfileMenu && !estaLogueado && (
                     <div className={s.menuDesplegable}>
 
                         <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
@@ -97,9 +92,8 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {showProfileMenu && estaLogueado && (
+                {showProfileMenu && estaLogueado && !isAdmin && (
                     <div className={s.menuDesplegable}>
-
                         <Link to="/account" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Ver perfil</h4></div>
                         </Link>
@@ -113,7 +107,7 @@ export default function NavBar() {
                 )}
 
                 {showProfileMenu && isAdmin && (
-                    <div>
+                    <div className={s.menuDesplegable}>
                         <Link to="/adminHome" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Inicio</h4></div>
                         </Link>

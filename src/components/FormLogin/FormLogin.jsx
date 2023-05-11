@@ -119,6 +119,9 @@ export default function FormLogin() {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
+
+      console.log(user);
+
       if (user) {
         swal({
           title: 'Bienvenido',
@@ -145,6 +148,7 @@ export default function FormLogin() {
       });
     }
   }
+
   const [showPwd, setShowPwd] = useState(false)
   return (
     <div className={styles.container}>
