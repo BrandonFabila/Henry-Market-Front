@@ -32,9 +32,16 @@ export const GET_ALL_USERS = "GET_ALL_USERS"
 export const GET_SHOPPING = "GET_SHOPPING"
 export const CALIFICACIONES = "CALIFICACIONES"
 export const DELETE_CALIFICACION = "DELETE_CALIFICACION"
+export const VACIAR_CARRITO = "VACIAR_CARRITO"
 
-//  const api_host= "http://localhost:3001/";
-const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host= "http://localhost:3001/";
+//const api_host = 'https://henry-market-back-production.up.railway.app/'
+
+export const vaciarCarrito = () => {
+  return {
+    type: VACIAR_CARRITO,
+  };
+};
 
 export function getAllProducts() {
   return function (dispatch) {

@@ -5,6 +5,8 @@ import DrawerMenu from '../DrawerMenu/DrawerMenu'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
+import { useDispatch } from "react-redux";
+import { vaciarCarrito } from '../../store/actions';
 
 
 import s from './nav.module.css'
@@ -13,7 +15,7 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
     const location = useLocation()
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -35,6 +37,7 @@ export default function NavBar() {
          window.localStorage.removeItem('carrito');
          window.localStorage.removeItem('count');
         // dispatch(userLoggedIn(logOut));
+        dispatch(vaciarCarrito());
     }
 
 

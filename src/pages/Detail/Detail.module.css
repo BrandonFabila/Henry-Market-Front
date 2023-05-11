@@ -56,17 +56,33 @@
     padding: 10px;
     align-self: flex-start;
 }
-.button{
-    width: 100px;
-    border-radius: 5rem;
-    height: 25px;
-    background-color: var(--blue-color);
-    color: white;
-    font-size: large;
+.button {
+  width: 150px;
+  height: 30px;
+  border: none;
+  border-radius: 1rem;
+  background: var(--blue-color);
+  background-image: linear-gradient(to bottom, var(--light-blue-color) 0%, var(--dark-blue-color) 100%);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0px 0px 10px rgba(83, 83, 83, 0.548);
+  padding: 4px 40px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
 }
 
-button:hover{
-    color: black;
+.button:hover {
+  background-color: var(--light-blue-color);
+  color:black
+}
+
+.button:active {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button:focus {
+  outline: none;
 }
 
 @media (max-width: 820px) {
