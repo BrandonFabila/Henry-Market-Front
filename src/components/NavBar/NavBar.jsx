@@ -19,29 +19,28 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
     const location = useLocation()
-    const dispatch = useDispatch()
-    const estaLogueado = window.localStorage.getItem("estaLogueado");
-
+    const dispatch = useDispatch()    
+    const estaLogueado = window.localStorage.getItem("estaLogueado");    
+    
     const [userData, setUserData] = useState({});
-    const token = Cookies.get("user_token");
-    const decodedToken = jwt_decode(token);
-    const email = decodedToken.email;
-
-    const usuario = useSelector(state => state.usuario);
-    const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
-
-
-
-
-
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-
+    
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
         }
-        dispatch(getUsuarioByEmail(email));
-    }, [location, dispatch, email]);
+
+        if (estaLogueado) {
+            const token = Cookies.get("user_token");
+            const decodedToken = jwt_decode(token);
+            const email = decodedToken.email;
+            dispatch(getUsuarioByEmail(email))
+        }
+    }, [location, dispatch]);
+    
+    const usuario = useSelector(state => state.usuario);
+    const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
+
 
     useEffect(() => {
         if (usuarioMemo.length > 0) {
@@ -83,7 +82,7 @@ export default function NavBar() {
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '15%', alignItems: 'center' }}>
                 {
                     esAdmin ? (
-                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi comercio</div>
+                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Administración</div>
                     ) : (
                         <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
                     )
@@ -123,8 +122,11 @@ export default function NavBar() {
 
                 {showProfileMenu && esAdmin && (
                     <div>
-                        <Link to="/historial-de-compra" className={s.link_menu} onClick={handleMenuClick}>
-                            <div className={s.link_text}><h4>Historial de compras</h4></div>
+                        <Link to="/adminHome" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Inicio</h4></div>
+                        </Link>
+                        <Link to="/historialVentas" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Historial de ventas</h4></div>
                         </Link>
                         <Link to="/" className={s.link_menu} onClick={handleLogOut}>
                             <div className={s.link_text}><h4>Cerrar sesión</h4></div>

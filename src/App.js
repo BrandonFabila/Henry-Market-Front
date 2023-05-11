@@ -35,20 +35,20 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />}/>
-        <Route exact path="/account" element={<Account/>} />
+        <Route exact path='/products/categoria/:id_categoria_producto' element={<Home />} />
+        <Route exact path="/account" element={<Account />} />
         <Route exact path='/historial-de-compra' element={<HistorialCompra />} />;
         <Route exact path='/carrito' element={<Carrito />} />;
 
 
         {/*   ADMIN   */}
-        <Route exact path="/adminHome" element={<HomeAdmin/>}/>
-         <Route exact path= "/products/admin" element={<ProductListAdmin/>}/>
-         <Route exact path="/producto" element={<FormCreateProduct/>} /> 
-         <Route exact path="/product/:id_producto" element={<FormUpdateProduct/>}/>
-         <Route exact path="/admin/usuarios"element={<Usuarios/>} />
-         <Route exact path="/historialVentas" element={<HistorialVentas/>} />
-         <Route exact path="/calificaciones" element={<ListaCalf/>} />
+        <Route exact path="/adminHome" element={<HomeAdmin />} />
+        <Route exact path="/products/admin" element={<ProductListAdmin />} />
+        <Route exact path="/producto" element={<FormCreateProduct />} />
+        <Route exact path="/product/:id_producto" element={<FormUpdateProduct />} />
+        <Route exact path="/admin/usuarios" element={<Usuarios />} />
+        <Route exact path="/historialVentas" element={<HistorialVentas />} />
+        <Route exact path="/calificaciones" element={<ListaCalf />} />
 
       </Routes>
       <Footer />
