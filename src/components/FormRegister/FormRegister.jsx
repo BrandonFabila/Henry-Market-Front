@@ -358,7 +358,7 @@ export default function FormRegister() {
                   )}
                 </div>
 
-                <button className={s.button} type="submit">Registrase</button>
+                <button className={s.button} type="submit">Registrarse</button>
               </form>
             </CloudinaryContext>
           </div>

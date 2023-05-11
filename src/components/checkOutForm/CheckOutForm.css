@@ -5,22 +5,26 @@
 }
 
 .total {
-  background-color: var(--blue-color);
+  background-color: var(--yellow-color);
+  color: black;
 }
 
 
 
 .but{
-    border-radius: 1rem;
+    border-radius: 2rem;
     height: 35px;
     width: 370px;
     margin-top: 35px;
     margin-bottom: 35px;
-    background-color: var(--blue-color);
+    background-color: var(--yellow-color);
     border-color: transparent;
-    color: white;
+    color: black;
     font-size:larger;
     justify-content: center;
+}
+.but:hover{
+  color: white;
 }
 
 .formgroup {
@@ -48,9 +52,9 @@
   .formcontrol:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #80bdff;
+    /* border-color: #80bdff; */
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   }
 
 

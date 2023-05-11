@@ -1,174 +1,3 @@
-  /*.contenedor{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 30px;
-      margin-top: 90px;
-      margin-left: auto;
-      margin-right: auto;
-      border-color: black;
-      background-color: var(--blue-color);
-      box-shadow: 0px 0px 15px black;
-      width: 50%;
-      margin-right: 90px;
-      
-  }
-  .contenedor2{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  .labels {
-      font-size: large;
-      margin-top: 15px;
-  }
-
-  .inputs {
-      margin-top: 5px;
-      font-size: larger;
-      width: 350px ;
-      border-radius: 1rem;
-      height: 2.5rem;
-  }
-
-  .descripcion {
-      font-size: large;
-      width: 350px;
-      height: 4rem;
-      border-radius: 5px;
-  }
-
-  .publicar{
-      margin-top: 35px;
-      margin-bottom: 15px;
-      font-size: large;
-      border-radius: 1rem;
-      width: 200px;
-      height: 2.5rem;
-      background-color: rgb(43, 224, 230);
-      color: #000000;
-      text-decoration:double;
-  }
-
-  .imbutton{
-      width: 150px;
-  }
-
-  .fechas {
-      display: flex;
-      justify-content: center;
-  }
-
-  .nombres{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      
-  }
-
-  .apellidos{
-      display: flex;
-      flex-direction: row;
-      justify-content: center
-  }
-
-  .contenedorDiv{ 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      
-  }
-
-  .imageFile {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      height: 300px;
-      width: 300px;
-      margin-top: 10px;
-      object-fit: cover;
-  }
-
-  .errors {
-      font-family: sans-serif;    
-      color: #ff0000;
-      font-size: 14px;
-  }
-
-  .container {
-    height: 300px;
-    background-color: white;
-    color: black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
-    padding-bottom: 1.5rem;
-    transition: 0.1s;
-    border-radius: 1.75rem;
-    width: 30%;
-    margin-left: 20px;
-    margin-top: 200px;
-    }
-    
-    .container:hover {
-      transform: scale(1.03);
-    }
-    
-    .link {
-      text-decoration: none;
-    }
-    
-    .container img {
-      width: 100%;
-      margin-top: 20px;
-      height: 100%;
-      object-fit: contain
-    }
-    
-    .vNormal {
-      font-size: 16px;
-      color: #383838;
-    }
-    
-    .precios {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      background-color: var(--green-color);
-      transition: 0.1s;
-    }
-    
-    
-    .img {
-      width: 100%;
-      height: 65%;
-    }
-    
-    .img>img {
-      object-fit: contain;
-    
-    }
-    
-    .text {
-      /* height:100%; 
-      padding-bottom: 1.0rem;
-      margin-top: 0.0rem;
-    }
-    
-    div>span {
-      display: flex;
-      flex-direction: column;
-    
-    }
-    
-    .text span:nth-of-type(2) {
-      font-weight: bold;
-    } */
-  
-  
-  
-  
   .contenedor{
     display: flex;
     flex-direction: column;
@@ -176,22 +5,16 @@
     justify-content: center;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: auto;
-    margin-right: auto;
-    border-color: black;
+    border-radius: 20px;
     width: 50%;
-    margin-right: 90px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-
-    
 }
 .contenedor2{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color:#f5f5f5;
-
-
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f5f5f5;
+    flex-direction: row;
   }
 .labels {
     font-size: large;
@@ -209,7 +32,7 @@
     margin-top: 5px;
     font-size: larger;
     width: 350px ;
-    border-radius: 1rem;
+    border-radius: 5px;
     height: 2.5rem;
 }
 
@@ -220,7 +43,6 @@
     border-radius: 5px;
 }
 .inputs, .descripcion {
-  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   padding: 10px;
@@ -230,7 +52,7 @@
 }
 .inputs:focus, .descripcion:focus {
   outline: none;
-  border-bottom: 2px solid #007bff;
+  /* border-bottom: 2px solid var(--yellow-color); */
 }
 
 .publicar{
@@ -240,7 +62,7 @@
     border-radius: 1rem;
     width: 200px;
     height: 2.5rem;
-    background-color: rgb(43, 224, 230);
+    background-color: var(--yellow-color);
     color: #000000;
     text-decoration:double;
 }
@@ -311,8 +133,8 @@
 
 }
 input[type="file"]::-webkit-file-upload-button {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #f5f5f5;
+  color: black;
   padding: 8px 12px;
   border-radius: 5px;
   border: none;
@@ -320,8 +142,8 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 input[type="file"]::-moz-file-upload-button {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #f5f5f5;
+  color: black;
   padding: 8px 12px;
   border-radius: 5px;
   border: none;
@@ -329,8 +151,8 @@ input[type="file"]::-moz-file-upload-button {
 }
 
 input[type="file"]::file-selector-button {
-  background-color: #3498db;
-  color: #fff;
+  background-color: var(--yellow-color);
+  color: black;
   padding: 8px 12px;
   border-radius: 5px;
   border: none;

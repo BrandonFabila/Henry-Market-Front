@@ -10,9 +10,9 @@
 .boton {
   border: none;
   font-size: 18px;
-  background: var(--blue-color);
-  background-image: linear-gradient(to bottom, var(--light-blue-color) 0%, var(--dark-blue-color) 100%);
-  color: white;
+  background: var(--yellow-color);
+  background-image: linear-gradient(to bottom, var(--light-yellow-color) 0%, var(--dark-yellow-color) 100%);
+  color: black;
   font-weight: 600;
   box-shadow: 0px 0px 10px rgba(83, 83, 83, 0.548);
   border-radius: 1rem;
@@ -21,10 +21,15 @@
   margin: 10px;
   font-weight: 700;
 }
+<<<<<<< HEAD
 
 .boton:hover {
   background-color: var(--light-blue-color);
   color: black; 
+=======
+.boton:hover{
+  background-color: var(--light-yellow-color);
+>>>>>>> 805f72766ee723a6e91d015ee2bae5f4bb48fe4f
   transition: background-color 0.3s ease-in-out;
 }
 
