@@ -1,7 +1,11 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
+// import { getUsuarioByEmail } from "../../store/actions/index";
+
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 import Cookies from "js-cookie";
+// import jwt_decode from "jwt-decode";
+
 import { useDispatch } from 'react-redux'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
@@ -10,6 +14,7 @@ import { vaciarCarrito } from '../../store/actions';
 
 
 import s from './nav.module.css'
+//useMemo
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 // import state from "sweetalert/typings/modules/state";
@@ -36,7 +41,8 @@ export default function NavBar() {
                 setIsAdmin(false)
             }
         }
-    }, [location, estaLogueado]);
+    }, [location, dispatch, estaLogueado]);
+
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
         
