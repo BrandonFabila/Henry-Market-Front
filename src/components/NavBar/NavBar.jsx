@@ -41,15 +41,6 @@ export default function NavBar() {
         }
     }, [location, dispatch]);
 
-    const usuario = useSelector(state => state.usuario);
-    const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
-
-    useEffect(() => {
-        if (usuarioMemo.length > 0) {
-            setUserData(usuarioMemo[0]);
-        }
-    }, [usuarioMemo.length, usuarioMemo]);
-
 
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
