@@ -29,7 +29,7 @@ export default function validations(values) {
 
     if (blankSpace.test(values.telefono)) errors.telefono = 'No puede ser un espacio en blanco'
     if (values.telefono && values.telefono.length < 10) errors.telefono = 'Mínimo 10 digitos'
-    if(!regexTelefono.test(values.telefono)) errors.telefono = "Debe contener solo numeros"
+    if(!regexTelefono.test(values.telefono)) errors.telefono = "Debe contener solo números"
     if(!values.telefono) errors.telefono = 'Campo Requerido'
     if (values.telefono.length > 20) errors.telefono = 'Máximo 20 digitos'
 
@@ -46,7 +46,7 @@ export default function validations(values) {
 
     
     if (values.password && values.passwordconfirm && values.password !== values.passwordconfirm) errors.passwordconfirm = 'Las contraseñas no coinciden'
-    if (!values.passwordconfirm) errors.passwordconfirm = 'Porfavor confirma tu contraseña'
+    if (!values.passwordconfirm) errors.passwordconfirm = 'Por favor confirma tu contraseña'
     if (blankSpace.test(values.passwordconfirm)) errors.passwordconfirm = 'No puede ser un espacio en blanco'
 
 
