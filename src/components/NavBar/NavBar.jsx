@@ -1,41 +1,65 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
+import { getUsuarioByEmail } from "../../store/actions/index";
+
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
-// import { useDispatch } from 'react-redux'
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+
+import { useDispatch } from 'react-redux'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
-import { useDispatch } from "react-redux";
 import { vaciarCarrito } from '../../store/actions';
 
 
 import s from './nav.module.css'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
+// import state from "sweetalert/typings/modules/state";
 
 export default function NavBar() {
     const location = useLocation()
-    const dispatch = useDispatch()
-    const estaLogueado = window.localStorage.getItem("estaLogueado");
-
+    const dispatch = useDispatch()    
+    const estaLogueado = window.localStorage.getItem("estaLogueado");    
+    
+    const [userData, setUserData] = useState({});
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
         }
-    }, [location]);
 
+        if (estaLogueado) {
+            const token = Cookies.get("user_token");
+            const decodedToken = jwt_decode(token);
+            const email = decodedToken.email;
+            dispatch(getUsuarioByEmail(email))
+        }
+    }, [location, dispatch]);
+    
+    const usuario = useSelector(state => state.usuario);
+    const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
+
+    useEffect(() => {
+        if (usuarioMemo.length > 0) {
+            setUserData(usuarioMemo[0]);
+        }
+    }, [usuarioMemo.length, usuarioMemo]);
+
+    const esAdmin = userData.admin
+   // console.log("aaaaaaaaaaaaaa", userData)
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
     };
-    
+
     const count = useSelector(state => state.countCarrito)
     const handleLogOut = () => {
         setShowProfileMenu(!showProfileMenu);
-         window.localStorage.removeItem("estaLogueado");
-         window.localStorage.removeItem('carrito');
-         window.localStorage.removeItem('count');
+        window.localStorage.removeItem("estaLogueado");
+        window.localStorage.removeItem('carrito');
+        window.localStorage.removeItem('count');
         // dispatch(userLoggedIn(logOut));
         dispatch(vaciarCarrito());
     }
@@ -52,12 +76,19 @@ export default function NavBar() {
                 <div className={s.logocompleto} style={{ backgroundImage: `url(${logoCompleto})` }}></div>
             </Link>
 
-            
 
-            <div className={s.search}><SearchBar /></div>
+
+            {!esAdmin && <div className={s.search}><SearchBar /></div>}
 
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '15%', alignItems: 'center' }}>
-                <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                {
+                    esAdmin ? (
+                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Administración</div>
+                    ) : (
+                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                    )
+                }
+
                 {showProfileMenu && (
                     <div className={s.menuDesplegable}>
 
@@ -89,14 +120,32 @@ export default function NavBar() {
                         </Link>
                     </div>
                 )}
-                <div>
-                    <Link to='/carrito' onClick={handleMenuClick}>
-                        <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
-                    </Link>
-                    <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
-                        {count}
-                    </h4>
-                </div>
+
+                {showProfileMenu && esAdmin && (
+                    <div>
+                        <Link to="/adminHome" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Inicio</h4></div>
+                        </Link>
+                        <Link to="/historialVentas" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Historial de ventas</h4></div>
+                        </Link>
+                        <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                            <div className={s.link_text}><h4>Cerrar sesión</h4></div>
+                        </Link>
+                    </div>
+                )}
+
+                {!esAdmin && (
+                    <div>
+                        <Link to='/carrito' onClick={handleMenuClick}>
+                            <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
+                        </Link>
+                        <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
+                            {count}
+                        </h4>
+                    </div>
+                )
+                }
             </div>
         </div>
     )
