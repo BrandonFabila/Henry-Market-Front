@@ -34,8 +34,8 @@ export const CALIFICACIONES = "CALIFICACIONES"
 export const DELETE_CALIFICACION = "DELETE_CALIFICACION"
 export const VACIAR_CARRITO = "VACIAR_CARRITO"
 
-  const api_host= "http://localhost:3001/";
-//const api_host = 'https://henry-market-back-production.up.railway.app/'
+  //const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 export const vaciarCarrito = () => {
   return {

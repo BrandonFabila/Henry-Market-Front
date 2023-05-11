@@ -21,15 +21,8 @@
   margin: 10px;
   font-weight: 700;
 }
-<<<<<<< HEAD
-
-.boton:hover {
-  background-color: var(--light-blue-color);
-  color: black; 
-=======
 .boton:hover{
   background-color: var(--light-yellow-color);
->>>>>>> 805f72766ee723a6e91d015ee2bae5f4bb48fe4f
   transition: background-color 0.3s ease-in-out;
 }
 

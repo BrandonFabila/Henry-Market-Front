@@ -31,8 +31,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export default function FormLogin() {
-    const api_host = 'http://localhost:3001/'
-  //const api_host = 'https://henry-market-back-production.up.railway.app/'
+   // const api_host = 'http://localhost:3001/'
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
   
 
   const estado = true
@@ -119,6 +119,7 @@ export default function FormLogin() {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
+      console.log("aaaaaaaaaaaaaaasdasdasdasdasdasdasaa",user)
       if (user) {
         swal({
           title: 'Bienvenido',
