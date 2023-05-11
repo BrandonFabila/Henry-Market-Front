@@ -19,25 +19,28 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
     const location = useLocation()
-    const dispatch = useDispatch()    
-    const estaLogueado = window.localStorage.getItem("estaLogueado");    
-    
-    const [userData, setUserData] = useState({});
+    const dispatch = useDispatch()
+    const estaLogueado = window.localStorage.getItem("estaLogueado");
+
+    const [isAdmin, setIsAdmin] = useState(false)
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-    
+
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
         }
 
         if (estaLogueado) {
-            const token = Cookies.get("user_token");
-            const decodedToken = jwt_decode(token);
-            const email = decodedToken.email;
-            dispatch(getUsuarioByEmail(email))
+            const userSession = JSON.parse(Cookies.get('user_session'))
+            if (userSession && userSession.dataValues) {
+                const { admin } = userSession.dataValues
+                setIsAdmin(admin)
+            } else {
+                setIsAdmin(false)
+            }
         }
     }, [location, dispatch]);
-    
+
     const usuario = useSelector(state => state.usuario);
     const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
 
@@ -47,7 +50,6 @@ export default function NavBar() {
         }
     }, [usuarioMemo.length, usuarioMemo]);
 
-    const esAdmin = userData.admin
 
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
@@ -76,11 +78,11 @@ export default function NavBar() {
 
 
 
-            {!esAdmin && <div className={s.search}><SearchBar /></div>}
+            {!isAdmin && <div className={s.search}><SearchBar /></div>}
 
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '15%', alignItems: 'center' }}>
                 {
-                    esAdmin ? (
+                    isAdmin ? (
                         <div className={s.iniciar_sesion} onClick={handleMenuClick}>Administración</div>
                     ) : (
                         <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
@@ -119,7 +121,7 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {showProfileMenu && esAdmin && (
+                {showProfileMenu && isAdmin && (
                     <div>
                         <Link to="/adminHome" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Inicio</h4></div>
@@ -133,7 +135,7 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {!esAdmin && (
+                {!isAdmin && (
                     <div>
                         <Link to='/carrito' onClick={handleMenuClick}>
                             <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
