@@ -4,11 +4,14 @@ import axios from 'axios'
 import swal from 'sweetalert'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { vaciarCarrito } from '../../store/actions';
 
 const CheckoutForm = (props) => {
-    const api_host = 'https://henry-market-back-production.up.railway.app/'
-//   const api_host = "http://localhost:3001/"
-    
+//  const api_host = 'https://henry-market-back-production.up.railway.app/'
+  const api_host = "http://localhost:3001/"
+  const dispatch = useDispatch();
+
     const { total, id_user, carrito } = props;
     const stripe = useStripe();
     const elements = useElements();
@@ -52,9 +55,11 @@ const CheckoutForm = (props) => {
                     icon: 'success',
                     timer: '2000',
                     button: 'Accept'
-                });
-                navigateTo('/');
-                
+                  }).then(() => {
+                    // Llama a la acción vaciarCarrito para vaciar el carrito
+                    dispatch(vaciarCarrito());
+                    navigateTo('/');
+                  });
             } catch (error) {
 
                 console.log(error.message)

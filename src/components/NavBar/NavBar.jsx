@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
+import { vaciarCarrito } from '../../store/actions';
 
 
 import s from './nav.module.css'
@@ -44,6 +45,7 @@ export default function NavBar() {
 
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
+        
     };
 
     const count = useSelector(state => state.countCarrito)
@@ -53,6 +55,8 @@ export default function NavBar() {
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('count');
         // dispatch(userLoggedIn(logOut));
+        dispatch(vaciarCarrito());
+        setIsAdmin(false)
     }
 
 
@@ -80,10 +84,10 @@ export default function NavBar() {
                     )
                 }
 
-                {showProfileMenu && (
+                {showProfileMenu && !estaLogueado && (
                     <div className={s.menuDesplegable}>
-
-                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
+                          
+                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}   >
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
                         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
@@ -97,7 +101,7 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {showProfileMenu && estaLogueado && (
+                {showProfileMenu && estaLogueado && !isAdmin && (
                     <div className={s.menuDesplegable}>
 
                         <Link to="/account" className={s.link_menu} onClick={handleMenuClick}>
@@ -113,7 +117,8 @@ export default function NavBar() {
                 )}
 
                 {showProfileMenu && isAdmin && (
-                    <div>
+                    <div className={s.menuDesplegable}
+                    >
                         <Link to="/adminHome" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Inicio</h4></div>
                         </Link>
