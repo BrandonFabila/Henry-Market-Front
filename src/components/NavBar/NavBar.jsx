@@ -131,14 +131,18 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {!isAdmin && (
+                {isAdmin || !estaLogueado ? (
+                    null
+                ) : (
                     <div>
                         <Link to='/carrito' onClick={handleMenuClick}>
                             <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
                         </Link>
-                        <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
+                        {count ? (
+                            <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
                             {count}
                         </h4>
+                        ): null}
                     </div>
                 )
                 }
