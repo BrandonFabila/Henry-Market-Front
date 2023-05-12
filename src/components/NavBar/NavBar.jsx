@@ -22,14 +22,22 @@ export default function NavBar() {
 
     const [isAdmin, setIsAdmin] = useState(false)
     const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
         }
 
-        if (estaLogueado) {
+        if (estaLogueado === 'google') {
             const userSession = JSON.parse(Cookies.get('user_session'))
+            setUserData(userSession)
+        }
+
+        if (estaLogueado === 'database') {
+            const userSession = JSON.parse(Cookies.get('user_session'))
+            setUserData(userSession)
+
             if (userSession && userSession.dataValues) {
                 const { admin } = userSession.dataValues
                 setIsAdmin(admin)
@@ -60,7 +68,7 @@ export default function NavBar() {
         })
     }
 
-
+    console.log('USERDATA', userData);
     return (
         <div className={s.container}>
             <div className={s.menu}>
@@ -72,8 +80,6 @@ export default function NavBar() {
                 <div className={s.logocompleto} style={{ backgroundImage: `url(${logoCompleto})` }}></div>
             </Link>
 
-
-
             {!isAdmin && <div className={s.search}><SearchBar /></div>}
 
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '15%', alignItems: 'center' }}>
@@ -81,12 +87,38 @@ export default function NavBar() {
                     isAdmin ? (
                         <div className={s.iniciar_sesion} onClick={handleMenuClick}>Administración</div>
                     ) : (
-                        <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                        <>
+                            {
+                                !estaLogueado && (
+                                    <div className={s.iniciar_sesion} onClick={handleMenuClick}>Mi cuenta</div>
+                                )
+
+                            }
+                            {
+                                estaLogueado === 'database' && (
+                                    <div className={s.account} onClick={handleMenuClick}>
+                                        <div className={s.picture} style={{ backgroundImage: `url(${userData.imagen})` }}></div>
+                                        <h5 className={s.name}>¡Hola, {userData.primer_nombre}!</h5>
+                                    </div>
+                                )
+
+                            }
+                            {
+                                estaLogueado === 'google' && (
+                                    <div className={s.account} onClick={handleMenuClick}>
+                                        <div className={s.picture} style={{ backgroundImage: `url(${userData.photoURL})` }}></div>
+                                        <h5 className={s.name}>¡Hola, {userData.displayName}!</h5>
+                                    </div>
+                                )
+
+                            }
+
+                        </>
                     )
                 }
 
                 {showProfileMenu && !estaLogueado && (
-                    <div className={s.menuDesplegable} style={{right: '8%'}}>
+                    <div className={s.menuDesplegable} style={{ right: '8%' }}>
                         <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
