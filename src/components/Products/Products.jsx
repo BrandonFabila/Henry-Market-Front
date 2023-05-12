@@ -63,6 +63,7 @@ export default function Products() {
                     nombre={product.nombre}
                     imagen={product.imagen}
                     valor={product.valor}
+                    valor_descuento={product.valor_descuento}
                     id_producto={product.id_producto}
                     Categoria_producto={product.Categoria_producto}
                   />
