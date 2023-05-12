@@ -99,11 +99,12 @@ const Detail = () => {
         }
       }
     } else {
-      if (quantity === 25) {
+      if (quantity === product.stock) {
         swal({
-          title: `Máximo 25 unidades de ${product.nombre} por compra`,
+          title: `Máximas unidades disponibles de ${product.nombre} alcanzadas`,
           icon: 'info'
         });
+
       } else if (quantity <= 24 && quantity !== product.existencia) {
         if (count + quantity <= 49) {
           setQuantity(quantity + 1);

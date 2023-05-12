@@ -4,9 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 import Cookies from "js-cookie";
 
+import { useDispatch } from 'react-redux'
 import SearchBar from "./SearchBar/SearchBar";
 import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
+import { vaciarCarrito } from '../../store/actions';
 
 
 import s from './nav.module.css'
@@ -15,6 +17,7 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
     const location = useLocation()
+    const dispatch = useDispatch()
     const estaLogueado = window.localStorage.getItem("estaLogueado");
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -34,7 +37,7 @@ export default function NavBar() {
                 setIsAdmin(false)
             }
         }
-    }, [location]);
+    }, [location, dispatch, estaLogueado]);
 
     const handleMenuClick = () => {
         setShowProfileMenu(!showProfileMenu);
@@ -47,6 +50,9 @@ export default function NavBar() {
         window.localStorage.removeItem("estaLogueado");
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('count');
+        // dispatch(userLoggedIn(logOut));
+        dispatch(vaciarCarrito());
+        setIsAdmin(false)
     }
 
 
@@ -76,8 +82,8 @@ export default function NavBar() {
 
                 {showProfileMenu && !estaLogueado && (
                     <div className={s.menuDesplegable}>
-
-                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
+                          
+                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}   >
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
                         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
@@ -119,14 +125,18 @@ export default function NavBar() {
                     </div>
                 )}
 
-                {!isAdmin && (
+                {isAdmin || !estaLogueado ? (
+                    null
+                ) : (
                     <div>
                         <Link to='/carrito' onClick={handleMenuClick}>
                             <div className={s.carrito}><MdOutlineShoppingCart size={33} /></div>
                         </Link>
-                        <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
+                        {count ? (
+                            <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
                             {count}
                         </h4>
+                        ): null}
                     </div>
                 )
                 }
