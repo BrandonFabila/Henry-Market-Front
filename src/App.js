@@ -29,16 +29,25 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   useEffect(() => {
-    const userSession = JSON.parse(Cookies.get('user_session'));
-    if (userSession && userSession.dataValues) {
-      const { admin } = userSession.dataValues;
-      setIsAdmin(admin); 
-      setIsLoggedIn(true); 
-    } else {
-      setIsAdmin(false); 
-      setIsLoggedIn(false); 
+    const userSession = Cookies.get('user_session');
+    if (userSession) {
+      try {
+        const userSessionData = JSON.parse(userSession);
+        if (userSessionData && userSessionData.dataValues) {
+          const { admin } = userSessionData.dataValues;
+          setIsAdmin(admin);
+          setIsLoggedIn(true);
+          return; 
+        }
+      } catch (error) {
+        console.error('Error al analizar la cadena JSON:', error);
+      }
     }
+    
+    setIsAdmin(false);
+    setIsLoggedIn(false);
   }, []);
+  
 
   return (
     <div className="App">
