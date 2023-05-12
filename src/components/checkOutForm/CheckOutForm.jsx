@@ -8,8 +8,9 @@ import { useDispatch } from "react-redux";
 import { vaciarCarrito } from '../../store/actions';
 
 const CheckoutForm = (props) => {
- const api_host = 'https://henry-market-back-production.up.railway.app/'
-//   const api_host = "http://localhost:3001/"
+  const api_host = 'https://henry-market-back-production.up.railway.app/'
+//  const api_host = "http://localhost:3001/"
+  
   const dispatch = useDispatch();
 
     const { total, id_user, carrito } = props;
