@@ -10,7 +10,7 @@ const Pay = (props) => {
 
     return (
             <Elements  stripe={stripePromise} >
-                <h1>Inserta tú tarjeta</h1>
+                <h1>Ingresa los datos de tu tarjeta</h1>
                 <div className='container p-4'>
                     <div className='row'>
                         <div className='col-md-4 offset-md-4'>

@@ -113,7 +113,7 @@ export default function ShoppingCart() {
             </div>
           ) : (
             <div className={styles.vacio}>
-              <h1>Añade productos en el carrito.</h1>
+              <h1>Añade productos al carrito</h1>
             </div>
           )}
         </div>
