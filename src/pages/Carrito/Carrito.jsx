@@ -11,40 +11,58 @@ import Pay from '../payment/Pay'
 
 
 export default function ShoppingCart() {
-
+  const estaLogueado = window.localStorage.getItem("estaLogueado");
   const dispatch = useDispatch()
-  const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
+
+  const [idUser, setIdUser] = useState('')
+
   const { carrito, countCarrito, } = useSelector((state) => state);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  
+
   useEffect(() => {
-    const email = mail()
-    window.localStorage.setItem("carrito", JSON.stringify(carrito));
-    window.localStorage.setItem("count", JSON.stringify(countCarrito));
-    dispatch(getUserById(email))
-    return () => {
-      if(setShouldRedirect){
-        window.localStorage.setItem("carrito", JSON.stringify([]));
-        window.localStorage.setItem("count", JSON.stringify(0));
+    if (estaLogueado === 'database') {
+      const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
+      setIdUser(id_user)
+      const email = mail()
+      window.localStorage.setItem("carrito", JSON.stringify(carrito));
+      window.localStorage.setItem("count", JSON.stringify(countCarrito));
+      dispatch(getUserById(email))
+      return () => {
+        if (setShouldRedirect) {
+          window.localStorage.setItem("carrito", JSON.stringify([]));
+          window.localStorage.setItem("count", JSON.stringify(0));
+        }
+        setShouldRedirect(false);
       }
-      setShouldRedirect(false);
+    } else {
+      const google_id_user = JSON.parse(Cookies.get("user_session")).uid;
+      setIdUser(google_id_user)
+      window.localStorage.setItem("carrito", JSON.stringify(carrito));
+      window.localStorage.setItem("count", JSON.stringify(countCarrito));
+      return () => {
+        if (setShouldRedirect) {
+          window.localStorage.setItem("carrito", JSON.stringify([]));
+          window.localStorage.setItem("count", JSON.stringify(0));
+        }
+        setShouldRedirect(false);
+      }
     }
-  }, [carrito, countCarrito, dispatch]);
+  }, [carrito, countCarrito, dispatch, estaLogueado]);
 
   //Suma de subtotales
   let total = 0
   let articles = 0
   carrito.forEach(producto => {
     articles += producto.cantidad
-    producto.valor_descuento ? 
+    producto.valor_descuento ?
       total = total + producto.valor_descuento * producto.cantidad
       :
-      total = total + producto.valor * producto.cantidad 
+      total = total + producto.valor * producto.cantidad
   });
 
   return (
     <>
-    {shouldRedirect ? (
+      {shouldRedirect ? (
         <Navigate to="/" />
       ) : (
         <div style={{ marginTop: "100px" }}>
@@ -70,7 +88,7 @@ export default function ShoppingCart() {
               ))}
               <div className={styles.containerTotal}>
                 <div className={styles.total}>
-                  
+
                   <div className={styles.foot} >
                     <div style={{ fontSize: "27px" }}>
                       <h3>{articles} Articulos</h3>
@@ -85,22 +103,21 @@ export default function ShoppingCart() {
 
                 </div>
               </div>
-              
-              <Pay 
+
+              <Pay
                 total={total}
-                id_user={id_user}
+                id_user={idUser}
                 carrito={carrito}
-                
               />
 
             </div>
           ) : (
-                <div className={styles.vacio}>
-                  <h1>Añade productos en el carrito.</h1>
-                </div>
+            <div className={styles.vacio}>
+              <h1>Añade productos en el carrito.</h1>
+            </div>
           )}
         </div>
-        )}
+      )}
     </>
   );
 }

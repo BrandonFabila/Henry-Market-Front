@@ -119,7 +119,7 @@ export default function FormLogin() {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
-      console.log("GOOGLE USER", user)
+      console.log("user_session", user)
 
       const googleToken = user.getIdToken()
       console.log('GOOGLE TOKEN', googleToken);
@@ -193,7 +193,7 @@ export default function FormLogin() {
             <button className={styles.botonLogin} type='submit' >Iniciar sesión</button>
             <span style={{ marginLeft: '30px' }}>O también:</span>
             <div className={styles.or} >
-              <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img style={{ marginRight: '5px' }} className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' />Iniciar sesión con Google</button>
+              <button type="button" className={styles.botonRedes} onClick={handleGoogleLogin}><img style={{ marginRight: '5px' }} className={styles.btnRedes} src={iconGoogle} alt='GoogleLogo' />Continuar con Google</button>
             </div>
           </div>
           <div style={{ margin: '20px' }}>

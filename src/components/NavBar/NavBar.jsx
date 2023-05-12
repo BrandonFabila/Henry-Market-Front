@@ -10,10 +10,10 @@ import logoCompleto from '../../media/logoCompleto-blanco.png'
 import logotipo from '../../media/logotipo-blanco.png'
 import { vaciarCarrito } from '../../store/actions';
 
-
-import s from './nav.module.css'
+import swal from "sweetalert";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import s from './nav.module.css'
 
 export default function NavBar() {
     const location = useLocation()
@@ -53,6 +53,11 @@ export default function NavBar() {
         // dispatch(userLoggedIn(logOut));
         dispatch(vaciarCarrito());
         setIsAdmin(false)
+        swal({
+            title: 'Sesión cerrada con éxito',
+            icon: 'info',
+            timer: '2000'
+        })
     }
 
 
@@ -81,9 +86,8 @@ export default function NavBar() {
                 }
 
                 {showProfileMenu && !estaLogueado && (
-                    <div className={s.menuDesplegable}>
-
-                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}   >
+                    <div className={s.menuDesplegable} style={{right: '8%'}}>
+                        <Link to="/login" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
                         <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100%' }}>
@@ -97,11 +101,25 @@ export default function NavBar() {
                     </div>
                 )}
 
+                {showProfileMenu && estaLogueado === 'google' && !isAdmin && (
+                    <div className={s.menuDesplegable}>
+                        {/* <Link to="/account" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Ver mi perfil</h4></div>
+                        </Link>
+                        <Link to="/historial-de-compra" className={s.link_menu} onClick={handleMenuClick}>
+                            <div className={s.link_text}><h4>Historial de compras</h4></div>
+                        </Link> */}
+                        <Link to="/" className={s.link_menu} onClick={handleLogOut}>
+                            <div className={s.link_text}><h4>Cerrar sesión</h4></div>
+                        </Link>
+                    </div>
+                )}
 
-                {showProfileMenu && estaLogueado && !isAdmin && (
+
+                {showProfileMenu && estaLogueado === 'database' && !isAdmin && (
                     <div className={s.menuDesplegable}>
                         <Link to="/account" className={s.link_menu} onClick={handleMenuClick}>
-                            <div className={s.link_text}><h4>Ver perfil</h4></div>
+                            <div className={s.link_text}><h4>Ver mi perfil</h4></div>
                         </Link>
                         <Link to="/historial-de-compra" className={s.link_menu} onClick={handleMenuClick}>
                             <div className={s.link_text}><h4>Historial de compras</h4></div>

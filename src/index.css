@@ -11,7 +11,8 @@
 }
 
 button {
-  box-shadow: 0px 0px 5px rgb(95, 95, 95);
+  box-shadow: 0px 0px 5px rgba(95, 95, 95, 0.637);
+  font-weight: 600;
 }
 
 button:hover {
