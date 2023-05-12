@@ -171,7 +171,7 @@ const api_host = 'https://henry-market-back-production.up.railway.app/'
                 type="submit" 
                 disabled={ !errors.comentario && form.calificacion ? false : true} 
               >
-                Actualizar
+                Comentar
               </button>
             </form>
           </div>
