@@ -16,6 +16,7 @@ function CardsCategory() {
    
   return (
     <div className={styles.container}>
+      
       {categorys?.map((category, index) => {
         return <CardCategory
           key={index}

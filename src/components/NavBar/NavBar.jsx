@@ -82,7 +82,7 @@ export default function NavBar() {
 
                 {showProfileMenu && !estaLogueado && (
                     <div className={s.menuDesplegable}>
-                          
+
                         <Link to="/login" className={s.link_menu} onClick={handleMenuClick}   >
                             <div className={s.link_text}><h4>Iniciar sesión</h4></div>
                         </Link>
@@ -96,6 +96,7 @@ export default function NavBar() {
                         </Link>
                     </div>
                 )}
+
 
                 {showProfileMenu && estaLogueado && !isAdmin && (
                     <div className={s.menuDesplegable}>
@@ -134,9 +135,9 @@ export default function NavBar() {
                         </Link>
                         {count ? (
                             <h4 className={count === 50 ? s.carritofull : s.carritoCount} >
-                            {count}
-                        </h4>
-                        ): null}
+                                {count}
+                            </h4>
+                        ) : null}
                     </div>
                 )
                 }
