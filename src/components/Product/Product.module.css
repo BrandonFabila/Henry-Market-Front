@@ -21,6 +21,18 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.192);
 }
 
+.porcentaje {
+  color: black;
+  font-size: 19px;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0px rgb(170, 170, 0);
+  position: relative;
+  background-color: var(--yellow-color);
+  width: 80px;
+  left: 70%;
+  bottom: 12px;
+}
+
 .texto {
   display: flex;
   flex-direction: column;

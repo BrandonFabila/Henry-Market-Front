@@ -1,11 +1,16 @@
 .container{
-    /* position: relative; */
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 20px;
     margin-bottom: 150px;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
 @media (max-width: 767px) {
