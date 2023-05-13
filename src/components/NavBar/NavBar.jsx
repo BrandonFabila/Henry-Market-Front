@@ -29,14 +29,19 @@ export default function NavBar() {
             setShowProfileMenu(false);
         }
 
-        if (estaLogueado === 'google') {
-            const userSession = JSON.parse(Cookies.get('user_session'))
-            setUserData(userSession)
+        if (estaLogueado && estaLogueado === 'google') {
+            const user = Cookies.get('user_session')
+            if (user) {
+                const userSession = JSON.parse(user)
+                setUserData(userSession)
+            }
         }
 
-        if (estaLogueado === 'database') {
+        else if (estaLogueado && estaLogueado === 'database') {
+            
             const userSession = JSON.parse(Cookies.get('user_session'))
-            setUserData(userSession)
+            setUserData(userSession.dataValues)
+            console.log('USER DATA DATABASE', userData);
 
             if (userSession && userSession.dataValues) {
                 const { admin } = userSession.dataValues
@@ -95,7 +100,7 @@ export default function NavBar() {
 
                             }
                             {
-                                estaLogueado === 'database' && (
+                                estaLogueado && estaLogueado === 'database' && (
                                     <div className={s.account} onClick={handleMenuClick}>
                                         <div className={s.picture} style={{ backgroundImage: `url(${userData.imagen})` }}></div>
                                         <h5 className={s.name}>¡Hola, {userData.primer_nombre}!</h5>
@@ -104,7 +109,7 @@ export default function NavBar() {
 
                             }
                             {
-                                estaLogueado === 'google' && (
+                                estaLogueado && estaLogueado === 'google' && (
                                     <div className={s.account} onClick={handleMenuClick}>
                                         <div className={s.picture} style={{ backgroundImage: `url(${userData.photoURL})` }}></div>
                                         <h5 className={s.name}>¡Hola, {userData.displayName}!</h5>
