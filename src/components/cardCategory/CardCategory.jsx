@@ -4,10 +4,8 @@ import { useDispatch } from 'react-redux'
 import { getProductFiltered } from '../../store/actions';
 import s from './CardCategory.module.css'
 
-function CardCategory({ id_categoria_producto, nombre_categoria_producto, imagen_categoria_producto, key }) {
+function CardCategory({ id_categoria_producto, nombre_categoria_producto, imagen_categoria_producto }) {
   const dispatch = useDispatch();
-  const primera = key === 0 || key === 1
-  const widthBig = '600px'
 
   const handlerCategory = () => {
     dispatch(getProductFiltered(id_categoria_producto));
