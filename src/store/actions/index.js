@@ -33,9 +33,28 @@ export const GET_SHOPPING = "GET_SHOPPING"
 export const CALIFICACIONES = "CALIFICACIONES"
 export const DELETE_CALIFICACION = "DELETE_CALIFICACION"
 export const VACIAR_CARRITO = "VACIAR_CARRITO"
+export const SET_COUNT_CARRITO = "SET_COUNT_CARRITO"
+export const SET_CARRITO = "SET_CARRITO"
 
   //const api_host= "http://localhost:3001/";
 const api_host = 'https://henry-market-back-production.up.railway.app/'
+
+
+
+
+export const setCarrito = (carrito) => {
+  return {
+    type: SET_CARRITO,
+    payload: carrito,
+  };
+};
+
+export const setCountCarrito = (countCarrito) => {
+  return {
+    type: SET_COUNT_CARRITO,
+    payload: countCarrito,
+  };
+};
 
 export const vaciarCarrito = () => {
   return {

@@ -2,19 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import validations from "./validations";
-import {  useDispatch } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react"; // para guardar las imágenes externamente 
 import swal from "sweetalert"
 import s from "./FormRegister.module.css"
 
 export default function FormRegister() {
   const [showPwd, setShowPwd] = useState(false)
-  const dispatch = useDispatch();
   const api_host = 'https://henry-market-back-production.up.railway.app/'
   //const api_host = "http://localhost:3001/"
-
-  useEffect(() => {
-  }, [dispatch]);
 
   const [form, setForm] = useState({
     primer_nombre: "",
@@ -51,7 +46,7 @@ export default function FormRegister() {
     } = form;
 
     // Realiza las validaciones
-    const errors = validations({
+     const errors = validations({
       primer_nombre,
       primer_apellido,
       direccion,
@@ -99,8 +94,8 @@ export default function FormRegister() {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleInputChange = async event => {
-    const property = event.target.name;
-    const value = event.target.value;
+    const property =  event.target.name;
+    const value =  event.target.value;
     // Verificar si el input es de tipo file
     if (event.target.type === "file") {
       const file = event.target.files[0]; // Obtener el archivo seleccionado
