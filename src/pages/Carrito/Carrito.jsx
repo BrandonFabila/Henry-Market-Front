@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/cart-card/CartCard"
-import { getUserById } from "../../store/actions/index"
+import { getUserById, setCarrito, setCountCarrito } from "../../store/actions/index"
 import Cookies from "js-cookie";
 //import jwt_decode from "jwt-decode";
 import { mail } from "./user"
@@ -16,38 +16,35 @@ export default function ShoppingCart() {
 
   const [idUser, setIdUser] = useState('')
 
-  const { carrito, countCarrito, } = useSelector((state) => state);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const { carrito, countCarrito } = useSelector((state) => state);
+  const [shouldRedirect] = useState(false);
 
   useEffect(() => {
     if (estaLogueado === 'database') {
       const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
       setIdUser(id_user)
       const email = mail()
-      window.localStorage.setItem("carrito", JSON.stringify(carrito));
-      window.localStorage.setItem("count", JSON.stringify(countCarrito));
       dispatch(getUserById(email))
-      return () => {
-        if (setShouldRedirect) {
-          window.localStorage.setItem("carrito", JSON.stringify([]));
-          window.localStorage.setItem("count", JSON.stringify(0));
-        }
-        setShouldRedirect(false);
-      }
     } else {
       const google_id_user = JSON.parse(Cookies.get("user_session")).uid;
       setIdUser(google_id_user)
-      window.localStorage.setItem("carrito", JSON.stringify(carrito));
-      window.localStorage.setItem("count", JSON.stringify(countCarrito));
-      return () => {
-        if (setShouldRedirect) {
-          window.localStorage.setItem("carrito", JSON.stringify([]));
-          window.localStorage.setItem("count", JSON.stringify(0));
-        }
-        setShouldRedirect(false);
-      }
     }
-  }, [carrito, countCarrito, dispatch, estaLogueado]);
+  }, [dispatch, estaLogueado]);
+
+  useEffect(() => {
+    window.localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.localStorage.setItem("count", JSON.stringify(countCarrito));
+  }, [carrito, countCarrito]);
+
+  useEffect(() => {
+    const storedCarrito = window.localStorage.getItem("carrito");
+    const storedCount = window.localStorage.getItem("count");
+
+    if (storedCarrito && storedCount) {
+      dispatch(setCarrito(JSON.parse(storedCarrito)));
+      dispatch(setCountCarrito(JSON.parse(storedCount)));
+    }
+  }, [dispatch]);
 
   //Suma de subtotales
   let total = 0

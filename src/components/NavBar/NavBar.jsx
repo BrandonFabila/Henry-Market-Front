@@ -23,31 +23,27 @@ export default function NavBar() {
     const [isAdmin, setIsAdmin] = useState(false)
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [userData, setUserData] = useState({})
-
     useEffect(() => {
         if (location && location.pathname) {
             setShowProfileMenu(false);
         }
-
+    
         if (estaLogueado && estaLogueado === 'google') {
-            const user = Cookies.get('user_session')
+            const user = Cookies.get('user_session');
             if (user) {
-                const userSession = JSON.parse(user)
-                setUserData(userSession)
+                const userSession = JSON.parse(user);
+                setUserData(() => userSession);
             }
-        }
-
-        else if (estaLogueado && estaLogueado === 'database') {
-            
-            const userSession = JSON.parse(Cookies.get('user_session'))
-            setUserData(userSession.dataValues)
-            console.log('USER DATA DATABASE', userData);
-
+        } else if (estaLogueado && estaLogueado === 'database') {
+            const userSession = JSON.parse(Cookies.get('user_session'));
+            setUserData(() => userSession.dataValues);
+            console.log('USER DATA DATABASE', userSession.dataValues);
+    
             if (userSession && userSession.dataValues) {
-                const { admin } = userSession.dataValues
-                setIsAdmin(admin)
+                const { admin } = userSession.dataValues;
+                setIsAdmin(admin);
             } else {
-                setIsAdmin(false)
+                setIsAdmin(false);
             }
         }
     }, [location, dispatch, estaLogueado]);
