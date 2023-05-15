@@ -36,7 +36,7 @@ export const VACIAR_CARRITO = "VACIAR_CARRITO"
 export const SET_COUNT_CARRITO = "SET_COUNT_CARRITO"
 export const SET_CARRITO = "SET_CARRITO"
 
-  //const api_host= "http://localhost:3001/";
+  // const api_host= "http://localhost:3001/";
 const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 

@@ -4,7 +4,6 @@ import CartCard from "../../components/cart-card/CartCard"
 import { getUserById, setCarrito, setCountCarrito } from "../../store/actions/index"
 import Cookies from "js-cookie";
 //import jwt_decode from "jwt-decode";
-import { mail } from "./user"
 import { Navigate } from "react-router-dom"
 import styles from './shopping.module.css'
 import Pay from '../payment/Pay'
@@ -23,8 +22,7 @@ export default function ShoppingCart() {
     if (estaLogueado === 'database') {
       const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
       setIdUser(id_user)
-      const email = mail()
-      dispatch(getUserById(email))
+      dispatch(getUserById(id_user))
     } else {
       const google_id_user = JSON.parse(Cookies.get("user_session")).uid;
       setIdUser(google_id_user)

@@ -9,7 +9,7 @@ import s from "./FormRegister.module.css"
 export default function FormRegister() {
   const [showPwd, setShowPwd] = useState(false)
   const api_host = 'https://henry-market-back-production.up.railway.app/'
-  //const api_host = "http://localhost:3001/"
+  // const api_host = "http://localhost:3001/"
 
   const [form, setForm] = useState({
     primer_nombre: "",
