@@ -64,47 +64,46 @@ const Calificaciones = () => {
           </thead>
           <tbody>
           {aux.length ? (
-            aux.map((p, index) => {
-              return (
-                <>
-                  <tr key={index}>
-                    <td>{p.valor_calificacion}</td>
-                    <td>{p.descripcion_motivo}</td>
-                    <td>
-                      <FaTrash
-                        size={22}
-                        color="var(--green-color)"
-                        className={styles.delete}
-                        onClick={() =>
-                          swal({
-                            title: "¿Estás seguro de que quieres eliminar este comentario?",
-                            text: "Una vez eliminado, no podrás recuperarlo",
-                            icon: "warning",
-                            buttons: ["Cancelar", "Eliminar"],
-                            dangerMode: true,
-                          })
-                          .then((willDelete) => {
-                            if (willDelete) {
-                              dispatch(deleteCalificacion(p.id_motivo_calificacion))
-                              .then(() => {
-                                swal("El comentario ha sido eliminado.", {
-                                  icon: "success",
-                                }).then(() => {
-                                  window.location.reload();
-                                });
-                              });
-                            } else {
-                              swal("El comentario no ha sido eliminado.");
-                            }
-                          })
-                        }
-                      />
-                    </td>
-                  </tr>
-                  <hr style={{ width: '520%' }} />
-                </>
-              );
-            })
+  aux
+    .filter((p) => p.estado) 
+    .map((p, index) => {
+      return (
+        <>
+          <tr key={index}>
+            <td>{p.valor_calificacion}</td>
+            <td>{p.descripcion_motivo}</td>
+            <td>
+              <FaTrash
+                size={22}
+                color="var(--green-color)"
+                className={styles.delete}
+                onClick={() =>
+                  swal({
+                    title: "¿Estás seguro de que quieres eliminar este comentario?",
+                    text: "Una vez eliminado, no podrás recuperarlo",
+                    icon: "warning",
+                    buttons: ["Cancelar", "Eliminar"],
+                    dangerMode: true,
+                  }).then((willDelete) => {
+                    if (willDelete) {
+                      dispatch(deleteCalificacion(p.id_motivo_calificacion)).then(() => {
+                        swal("El comentario ha sido eliminado.", {
+                          icon: "success",
+                        }).then(() => {
+                          window.location.reload();
+                        });
+                      });
+                    } else {
+                      swal("El comentario no ha sido eliminado.");
+                    }
+                  })
+                }
+              />
+            </td>
+          </tr>
+        </>
+      );
+    })
           ) : (
             <>
             <tr>
