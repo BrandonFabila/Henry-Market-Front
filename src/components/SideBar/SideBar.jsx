@@ -50,7 +50,7 @@ export default function SideBar() {
                                 className={styles.nav_link}
                                 onClick={() => dispatch(getProductFilteredDescuento(id_categoria_producto))}
                             >
-                                Productos con descuento
+                                Descuentos
                             </span>
                         </div>
 
