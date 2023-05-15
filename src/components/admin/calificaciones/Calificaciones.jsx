@@ -65,7 +65,7 @@ const Calificaciones = () => {
           <tbody>
           {aux.length ? (
   aux
-    .filter((p) => p.estado) // Filter comments by estado being true
+    .filter((p) => p.estado) 
     .map((p, index) => {
       return (
         <>

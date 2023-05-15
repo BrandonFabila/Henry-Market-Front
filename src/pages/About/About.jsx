@@ -97,6 +97,3 @@ const About = () => {
 
 export default About;
 
-//https://www.linkedin.com/in/BrandonFabila/
-//https://www.linkedin.com/in/christian-ringler-139581235/
-//https://www.linkedin.com/in/lautacorva/
