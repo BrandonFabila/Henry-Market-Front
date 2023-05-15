@@ -8,27 +8,28 @@ import FormUpdatePassword from "../../components/formUpdate/FormUpdatePassword"
 import s from "./Account.module.css";
 
 const Account = () => {
+  const estaLogueado = window.localStorage.getItem("estaLogueado");
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
 
-  const token = Cookies.get("user_token");
-  const decodedToken = jwt_decode(token);
-
-  const email = decodedToken.email;
-
-  const usuario = useSelector(state => state.usuario);
-  const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
-
-  useEffect(() => {
-    dispatch(getUsuarioByEmail(email));
-  }, [dispatch, email]);
-
-  useEffect(() => {
-    if (usuarioMemo.length > 0) {
+    const token = Cookies.get("user_token");
+    const decodedToken = jwt_decode(token);
+    
+    const email = decodedToken.email;
+    
+    const usuario = useSelector(state => state.usuario);
+    const usuarioMemo = useMemo(() => usuario ?? [], [usuario]);
+    
+    useEffect(() => {
+      dispatch(getUsuarioByEmail(email));
+    }, [dispatch, email]);
+    
+    useEffect(() => {
+      if (usuarioMemo.length > 0) {
       setUserData(usuarioMemo[0]);
     }
   }, [usuarioMemo.length, usuarioMemo]);
-
+  
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const handleLogInClick = () => {
@@ -37,14 +38,16 @@ const Account = () => {
 
   const idUsuario = usuario.length > 0 ? usuario[0].id_usuario : null;
 
-  const nombreUsuario = userData.primer_nombre + ' '  + userData.primer_apellido 
+  const nombreUsuario = userData.primer_nombre + ' ' + userData.primer_apellido
+
+
 
   return (
     <div className={s.container}>
 
       <div className={s.usuario}>
         <div className={s.datos} >
-          <h2 style={{textAlign: 'center', fontSize: '30px', marginBottom: '-10px' }}>{nombreUsuario}</h2>
+          <h2 style={{ textAlign: 'center', fontSize: '30px', marginBottom: '-10px' }}>{nombreUsuario}</h2>
           <h3 style={{ marginBottom: '20px', textAlign: 'center', fontSize: '20px' }}>{userData.email}</h3>
         </div>
 
@@ -54,15 +57,22 @@ const Account = () => {
           </div>
         </div>
 
-        <FormUpdate userData={userData}  idUsuario={idUsuario} />
+        {
+          estaLogueado === 'database' ? (
+            <>
+              <FormUpdate userData={userData} idUsuario={idUsuario} />
 
-        <div className={s.update}>
-          <button className={s.contraseña} onClick={handleLogInClick}>Cambiar contraseña</button>
-          {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} mostrarProp={true} />}
-        </div>
+              <div className={s.update}>
+                <button className={s.contraseña} onClick={handleLogInClick}>Cambiar contraseña</button>
+                {showProfileMenu && <FormUpdatePassword idUsuario={idUsuario} mostrarProp={true} />}
+              </div>
+            </>
+          ) : null
+        }
+
 
       </div>
-      
+
     </div>
   );
 };

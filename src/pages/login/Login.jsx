@@ -9,9 +9,9 @@ const Login = () => {
     <div className={s.container}>
 
       <div className={s.buttonBack} >
-            <ButtonBack />
+        <ButtonBack />
       </div>
-      
+
       <div className={s.formulario}>
         <FormLogin />
       </div>

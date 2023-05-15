@@ -11,6 +11,33 @@
     background-color: rgb(0, 0, 0);
 }
 
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* width: 280px; */
+    padding: 5px;
+    margin: 0px 10px;    
+    width: 300px;
+}
+
+.name {
+    margin: 0;
+}
+
+.account:hover {
+    cursor: pointer;
+}
+
+.picture {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
 .logo {
     height: 60px;
     width: 60px;

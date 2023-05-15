@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import CartCard from "../../components/cart-card/CartCard"
-import { getUserById } from "../../store/actions/index"
+import { getUserById, setCarrito, setCountCarrito } from "../../store/actions/index"
 import Cookies from "js-cookie";
 //import jwt_decode from "jwt-decode";
 import { mail } from "./user"
@@ -11,40 +11,55 @@ import Pay from '../payment/Pay'
 
 
 export default function ShoppingCart() {
-
+  const estaLogueado = window.localStorage.getItem("estaLogueado");
   const dispatch = useDispatch()
-  const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
-  const { carrito, countCarrito, } = useSelector((state) => state);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-  
+
+  const [idUser, setIdUser] = useState('')
+
+  const { carrito, countCarrito } = useSelector((state) => state);
+  const [shouldRedirect] = useState(false);
+
   useEffect(() => {
-    const email = mail()
+    if (estaLogueado === 'database') {
+      const id_user = JSON.parse(Cookies.get("user_session")).dataValues.id_usuario;
+      setIdUser(id_user)
+      const email = mail()
+      dispatch(getUserById(email))
+    } else {
+      const google_id_user = JSON.parse(Cookies.get("user_session")).uid;
+      setIdUser(google_id_user)
+    }
+  }, [dispatch, estaLogueado]);
+
+  useEffect(() => {
     window.localStorage.setItem("carrito", JSON.stringify(carrito));
     window.localStorage.setItem("count", JSON.stringify(countCarrito));
-    dispatch(getUserById(email))
-    return () => {
-      if(setShouldRedirect){
-        window.localStorage.setItem("carrito", JSON.stringify([]));
-        window.localStorage.setItem("count", JSON.stringify(0));
-      }
-      setShouldRedirect(false);
+  }, [carrito, countCarrito]);
+
+  useEffect(() => {
+    const storedCarrito = window.localStorage.getItem("carrito");
+    const storedCount = window.localStorage.getItem("count");
+
+    if (storedCarrito && storedCount) {
+      dispatch(setCarrito(JSON.parse(storedCarrito)));
+      dispatch(setCountCarrito(JSON.parse(storedCount)));
     }
-  }, [carrito, countCarrito, dispatch]);
+  }, [dispatch]);
 
   //Suma de subtotales
   let total = 0
   let articles = 0
   carrito.forEach(producto => {
     articles += producto.cantidad
-    producto.valor_descuento ? 
+    producto.valor_descuento ?
       total = total + producto.valor_descuento * producto.cantidad
       :
-      total = total + producto.valor * producto.cantidad 
+      total = total + producto.valor * producto.cantidad
   });
 
   return (
     <>
-    {shouldRedirect ? (
+      {shouldRedirect ? (
         <Navigate to="/" />
       ) : (
         <div style={{ marginTop: "100px" }}>
@@ -70,7 +85,7 @@ export default function ShoppingCart() {
               ))}
               <div className={styles.containerTotal}>
                 <div className={styles.total}>
-                  
+
                   <div className={styles.foot} >
                     <div style={{ fontSize: "27px" }}>
                       <h3>{articles} Articulos</h3>
@@ -85,22 +100,21 @@ export default function ShoppingCart() {
 
                 </div>
               </div>
-              
-              <Pay 
+
+              <Pay
                 total={total}
-                id_user={id_user}
+                id_user={idUser}
                 carrito={carrito}
-                
               />
 
             </div>
           ) : (
-                <div className={styles.vacio}>
-                  <h1>Añade productos en el carrito.</h1>
-                </div>
+            <div className={styles.vacio}>
+              <h1>Añade productos al carrito</h1>
+            </div>
           )}
         </div>
-        )}
+      )}
     </>
   );
 }
