@@ -6,13 +6,17 @@ import Logo from "../../media/logoCompleto-negro.png";
 //Import Estilos
 import styles from "./About.module.css";
 
+import brandon from "../../media/brandon.jpg"
+import lautaro from "../../media/lautaro.jpg"
+import daniel from "../../media/daniel.png"
+import chris from "../../media/chris.png"
+import linkedin from "../../media/linkedin.png"
 const logo = Logo;
 
 const About = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titulo}>
-        <h1>¿Qué es HENRY MARKET?</h1>
       </div>
       <img className={styles.img} src={logo} alt="logo"/>
       <div className={styles.parrafos}>
@@ -43,40 +47,46 @@ const About = () => {
           <br/>
           Si estás buscando expandir tu negocio y llegar a nuevos mercados, ¡no dudes en unirte a HENRY MARKET!
         </p>
-        <p>
+        <p >
           <br />
           <br />
           <br />
-          Nuestro equipo:
+          <h2 className={styles.titulo2}> Nuestro equipo</h2>
           <div className={styles.nombres}>
-                    <a
-                    className= {styles.links}
-                    href="https://www.linkedin.com/in/DanielCastillo97/"
-                    target="_blank"
-                    rel="noreferrer">
-                        <div>Daniel Castillo</div>
-                    </a>
-                    <a
-                    className= {styles.links}
-                    href="https://www.linkedin.com/in/BrandonFabila/"
-                    target="_blank"
-                    rel="noreferrer">
-                        Brandon Fabila
-                    </a>
-                    <a
-                    className= {styles.links}
-                    href="https://www.linkedin.com/in/lautacorva/"
-                    target="_blank"
-                    rel="noreferrer">
-                        Lautaro Corva
-                    </a>
-                    <a
-                    className= {styles.links}
-                    href="https://www.linkedin.com/in/christian-ringler-139581235/"
-                    target="_blank"
-                    rel="noreferrer">
-                        Chris Ringler
-                    </a>
+                    <div>
+                      <img src={daniel} className={styles.profiles} alt="daniel" />
+                        <div className={styles.name}>Daniel Castillo</div>
+                        <div className={styles.puesto}>Desarrollador web</div>
+                        <a className={styles.linkedinButton} href="https://www.linkedin.com/in/DanielCastillo97/" target="_blank" rel="noreferrer">
+                        <img src={linkedin} alt="LinkedIn" className={styles.linkedinLogo} />
+
+                        </a>
+                    </div>
+                    <div>
+                      <img src={brandon} className={styles.profiles} alt="brandon" />
+                        <div className={styles.name}>Brandon Fabila</div>
+                        <div className={styles.puesto}>Desarrollador web</div>
+                        <a className={styles.linkedinButton} href="https://www.linkedin.com/in/BrandonFabila/" target="_blank" rel="noreferrer">
+                        <img src={linkedin} alt="LinkedIn" className={styles.linkedinLogo} />
+
+                        </a>
+                    </div>
+                    <div>
+                      <img src={lautaro} className={styles.profiles} alt="lautaro" />
+                        <div className={styles.name}>Lautaro Corva</div>
+                        <div className={styles.puesto}>Desarrollador web</div>
+                        <a href="https://www.linkedin.com/in/lautacorva/" target="_blank" rel="noreferrer">
+                        <img src={linkedin} alt="LinkedIn" className={styles.linkedinLogo} />
+</a>
+                    </div>
+                    <div>
+                      <img src={chris} className={styles.profiles} alt="chris" />
+                        <div className={styles.name}>Chris Ringler</div>
+                        <div className={styles.puesto}>Desarrollador web</div>
+                        <a  href="https://www.linkedin.com/in/christian-ringler-139581235/" target="_blank" rel="noreferrer">
+                         <img src={linkedin} alt="LinkedIn" className={styles.linkedinLogo} />
+                         </a>
+                    </div>
                     
                 </div>
         </p>
@@ -86,3 +96,4 @@ const About = () => {
 };
 
 export default About;
+
