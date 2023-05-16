@@ -1,51 +1,134 @@
 .edit:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
-.reactpaginate {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .reactpaginate ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .reactpaginate li {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-  }
-  
-  
-  .reactpaginate li.disabled {
-    color: #999;
-    cursor: not-allowed;
-  }
-  
- 
 
- .busqueda{
+.butcon {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 15px;
+}
+
+.butcon button.activo {
+  background-color: var(--yellow-color);
+  color: black; /* Puedes ajustar el color del texto según tus preferencias */
+}
+
+.paginadoAbj {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 155px;
+}
+
+.paginadoAbj button {
+  padding: 10px 15px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 1rem;
+}
+
+.activePage {
+  background-color: yellow;
+}
+
+.paginadoAbj button:active {
+  background-color: yellow;
+}
+
+.paginadoAbj button:focus {
+  background-color: yellow;
+}
+
+.reactpaginate li.disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.busqueda {
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   font-size: 16px;
-  margin-bottom: 10px;
-  
- }
+  margin-bottom: 35px;
+  width: 300px;
+}
+.busqueda::placeholder {
+  text-align: center;
+}
+
+.mostrar {
+  font-size: 1rem;
+  background-color: white;
+  padding: 10px 20px;
+  width: 200px;
+  color: black;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+.mostrar:hover {
+  background-color: var(--yellow-color);
+}
+
+.thN {
+  width: 200px;
+}
+
+.thD {
+  width: 220px;
+}
+
+.thS {
+  width: 10px;
+}
+
+.textoN {
+  text-align: left;
+}
+
+.textoD {
+  text-align: left;
+}
+
+.textoStock {
+  text-align: center;
+}
+
+.separator {
+  background: rgb(36, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(36, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 500px) {
+  /* Estilos que se aplicarán cuando el tamaño de la pantalla sea igual o inferior a 500px */
+  .thD {
+    width: 400px;
+  }
+  .thN {
+    width: 400px;
+  }
+  .thS {
+    width: 200px;
+  }
+  .textoN {
+    padding-left: 50px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .butcon {
+    margin-left: 200px;
+  }
+}
+@media (min-width: 1600px) {
+  .butcon {
+    margin-left: 400px;
+  }
+}

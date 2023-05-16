@@ -1,8 +1,8 @@
 import {GET_PRODUCT_FILTERED, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, USER_LOGIN ,
   GET_CATEGORY, GET_PRODUCT_BY_NAME, READY,LOADING,ORDERED_BY_NAME_ASC,ORDERED_BY_NAME_DESC 
 ,ORDERED_BY_LOWEST_PRICE,ORDERED_BY_HIGHEST_PRICE, ORDERED_BY_RECIENTES, GET_USER_BY_EMAIL,GET_USER_BY_ID,
-COUNT_DELETE ,BORRAR_DEL_CARRITO, RESTAR_CANTIDAD_CARRITO, SUMAR_CANTIDAD_CARRITO, COUNT_RESTAR,COUNT_SUMAR,AGREGAR_AL_CARRITO 
-,CLEAN_PRODUCT, COUNT_AGREGAR,REVIEWS,CLEAN_REVIEWS, UPDATE_PRODUCT, GET_ALL_USERS,GET_SHOPPING,CALIFICACIONES,DELETE_CALIFICACION} from '../actions';
+COUNT_DELETE ,BORRAR_DEL_CARRITO, RESTAR_CANTIDAD_CARRITO, SUMAR_CANTIDAD_CARRITO, COUNT_RESTAR,COUNT_SUMAR,AGREGAR_AL_CARRITO,
+SET_CARRITO,SET_COUNT_CARRITO,CLEAN_PRODUCT,VACIAR_CARRITO, COUNT_AGREGAR,REVIEWS,CLEAN_REVIEWS, UPDATE_PRODUCT, GET_ALL_USERS,GET_SHOPPING,CALIFICACIONES,DELETE_CALIFICACION} from '../actions';
 
 const initialState = { 
     products: [],
@@ -25,6 +25,22 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   
   switch (action.type) {
+     case SET_CARRITO:
+      return {
+        ...state,
+        carrito: action.payload,
+      };
+    case SET_COUNT_CARRITO:
+      return {
+        ...state,
+        countCarrito: action.payload,
+      };
+    case VACIAR_CARRITO:
+  return {
+    ...state,
+    carrito: [],
+    countCarrito: 0,
+  };
 
     case DELETE_CALIFICACION:
       return {
@@ -51,40 +67,49 @@ export default function reducer(state = initialState, action) {
         ...state,
         reviews: action.payload,
       };
-    case COUNT_AGREGAR:
-      return {
-        ...state,
-        countCarrito: state.countCarrito + action.payload,
-      };
     case CLEAN_PRODUCT:
       return {
         ...state,
         product: [],
       };
-    case AGREGAR_AL_CARRITO:
-      const itemExistente = state.carrito.find(
-        (item) => item.id_producto === action.payload.id.id_producto
-      );
-
-      if (itemExistente) {
+      case AGREGAR_AL_CARRITO:
+        const itemExistente = state.carrito.find(
+          (item) => item.id_producto === action.payload.id.id_producto
+        );
+  
+        if (itemExistente) {
+          return {
+            ...state,
+            carrito: state.carrito.map((item) =>
+              item.id_producto === action.payload.id.id_producto
+                ? { ...item, cantidad: item.cantidad + 1 }
+                : item
+            ),
+          };
+        } else {
+          const newProduct = {
+            ...action.payload.id,
+            cantidad: action.payload.quantity,
+          };
+          const newCarrito = [...state.carrito, newProduct];
+  
+          window.localStorage.setItem("carrito", JSON.stringify(newCarrito));
+  
+          return {
+            ...state,
+            carrito: newCarrito,
+          };
+        }
+  
+      case COUNT_AGREGAR:
+        const newCount = state.countCarrito + action.payload;
+        window.localStorage.setItem("count", JSON.stringify(newCount));
+  
         return {
           ...state,
-          carrito: state.carrito.map((item) =>
-            item.id_producto === action.payload.id.id_producto
-              ? { ...item, cantidad: item.cantidad + 1 }
-              : item
-          ),
+          countCarrito: newCount,
         };
-      } else {
-        //No esta en el carrito
-        return {
-          ...state,
-          carrito: [
-            ...state.carrito,
-            { ...action.payload.id, cantidad: action.payload.quantity },
-          ],
-        };
-      }
+  
     case COUNT_SUMAR:
       return {
         ...state,

@@ -5,8 +5,8 @@ import style from "./Coment.module.css";
 
 const FormComent = (props) => {
 
-  const api_host= "http://localhost:3001/";
-// const api_host = 'https://henry-market-back-production.up.railway.app/'
+  //const api_host= "http://localhost:3001/";
+const api_host = 'https://henry-market-back-production.up.railway.app/'
 
   const { idUsuario, producto, id_producto, id_detalle_venta } = props; 
   // const usuarioId = idUsuario;
@@ -171,7 +171,7 @@ const FormComent = (props) => {
                 type="submit" 
                 disabled={ !errors.comentario && form.calificacion ? false : true} 
               >
-                Actualizar
+                Comentar
               </button>
             </form>
           </div>

@@ -154,7 +154,7 @@ export default function FormUpdate({ idUsuario, userData }) {
                 Teléfono
               </label>
               <input
-                placeholder={userData.telefono}
+                placeholder={userData.telefono === '5500000000' ? 'Aun no ha sido asiganado' : userData.telefono}
                 type="text"
                 name="telefono"
                 value={form.telefono}

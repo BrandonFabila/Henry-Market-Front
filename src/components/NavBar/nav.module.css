@@ -8,7 +8,34 @@
     top: 0;
     z-index: 800;
     color: white;
-    background-color: var(--blue-color);
+    background-color: rgb(0, 0, 0);
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* width: 280px; */
+    padding: 5px;
+    margin: 0px 10px;    
+    width: 300px;
+}
+
+.name {
+    margin: 0;
+}
+
+.account:hover {
+    cursor: pointer;
+}
+
+.picture {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
 }
 
 .logo {
@@ -143,7 +170,7 @@
         height: 150px;
         z-index: 100;
         top: 100%;
-        right: 6%;
+        right: 11%;
         background-color: white;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.712);
         border-bottom-left-radius: 5px;

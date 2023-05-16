@@ -10,7 +10,7 @@ function ListaCalf() {
     <>
       {session ?
         <div className={style.container}>
-          <div className={style.ventas}>
+          <div>
             <Calificaciones />
           </div>
         </div> : <p> No hay nada pa </p>

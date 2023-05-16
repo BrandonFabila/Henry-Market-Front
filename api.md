@@ -5,13 +5,16 @@
         components: {
             admin: {
                 FormCreateProduct: FormCreateProduct.jsx,
-                Uusarios: Usuarios.jsx
                 FormUpdateProduct: FormUpdateProduct.jsx
+                Uusarios: Usuarios.jsx
             },
             CheckoutForm: CheckoutForm.jsx,
             FormLogin: FormLogin.jsx,
-            FormUpdatePassword: FormUpdatePassword.jsx
-            FormUpdate: FormUpdate.jsx
+            FormRegister: FormRegister.jsx,
+            FormUpdate: {
+                FormUpdate.jsx.
+                FormUpdatePassword.jsx,
+            }
         },
         pages: {
         },
@@ -23,4 +26,3 @@
 const api_host= "http://localhost:3001/";
   // const api_host = 'https://henry-market-back-production.up.railway.app/'
 </script>
-
