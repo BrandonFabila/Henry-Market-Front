@@ -88,7 +88,8 @@ function Usuarios() {
               </tr>
             </thead>
             <tbody>
-            {allUsers.filter((p) => p.estado).map((p) => (
+
+            {allUsers.filter((p) => p.estado && !p.admin).map((p) => (
               <tr key={p.id_usuario}>
                 <td>{p.primer_nombre}</td>
                 <td>{p.primer_apellido}</td>
