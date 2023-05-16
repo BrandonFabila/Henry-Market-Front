@@ -1,8 +1,8 @@
 import "react-modern-drawer/dist/index.css";
- import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useState } from "react";
 import styles from './sidebar.module.css'
-import {getProductFilteredDescuento,getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
+import { getProductFilteredDescuento, getProductFiltered, orderedByNameASC, orderedByNameDESC, orderedByHighestPrice, orderedByLowestPrice, orderedByRecientes } from "../../store/actions";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
@@ -11,9 +11,9 @@ export default function SideBar() {
     const [showOrdenar, setShowOrdenar] = useState(false);
     const [showPrecio, setShowPrecio] = useState(false);
     const dispatch = useDispatch();
-    const {id_categoria_producto} = useParams()
-    console.log("Esteeeeeeeee",id_categoria_producto)
-    
+    const { id_categoria_producto } = useParams()
+    console.log("Esteeeeeeeee", id_categoria_producto)
+
 
     const handleClick = () => {
         setShowCategories(!showCategories);
@@ -30,7 +30,7 @@ export default function SideBar() {
         <div className={styles.nav_contenedor}>
             <nav className={styles.nav}>
                 <ul className={styles.list}>
-                    <li className={styles.list_item}>
+                    {/* <li className={styles.list_item}>
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" alt="ver-todo" />
                             <span
@@ -41,9 +41,10 @@ export default function SideBar() {
                                 Ver Todo
                             </span>
                         </div>
-                    </li>
+                    </li> */}
+
                     <li className={styles.list_item}>
-                    <div className={styles.nav_link_container}>
+                        <div className={styles.nav_link_container}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEu1lY1NwzAQhV8noWwCk1AmASaBTgKbAJOAvsgvul58iUuppaqtcrl378f2Tldeuyv31wjAnaRXSUdJb22gg6QHSY+SPtaGHAF4lwQI60vSPjTk/+25ADRgwpvWzM2rPmbF85c2xFzbY4AcAPxlAfAcXzwXwPU/BTps8GWVQdTchRjJdDYUhk/JD2p5fl8BOC3RROt6Qrs1oO6zwwTjAeH7JKYVbVJCsb3ht+PZY+u0TemKHlTmZoAR82cvIkBFOSeDOj5Iig+95aEWO7knE5KwizEw71rMhnlcpQej+Z/Mazu4Yt2ViETkBLkRTUkSkpiRk1WxXphMc1KRQRabJ+hh0CzRfAjmnUxzpMrnDyD2gWZV3epG8xRrXvzLUdGjPZJ9aobOonhc89LWyYosGP/dAJyyaaitCydrnS+cheaZ6haADSVdmIx8ZkhkOdQuvjJH9e/WjTC4COAXAcVVGWZcFaYAAAAASUVORK5CYII=" alt="precio" />
                             <span
                                 tabindex="0"
@@ -82,7 +83,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(1));
                                         navigate('/products/categoria/1');
-                                      }}
+                                    }}
                                 >
                                     Indumentaria
                                 </li>
@@ -92,7 +93,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(2));
                                         navigate('/products/categoria/2');
-                                      }}
+                                    }}
                                 >
                                     Electrodomesticos
                                 </li>
@@ -102,7 +103,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(3));
                                         navigate('/products/categoria/3');
-                                      }}
+                                    }}
                                 >
                                     Informatica
                                 </li>
@@ -112,7 +113,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(4));
                                         navigate('/products/categoria/4');
-                                      }}
+                                    }}
                                 >
                                     Cosmética
                                 </li>
@@ -122,7 +123,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(5));
                                         navigate('/products/categoria/5');
-                                      }}
+                                    }}
                                 >
                                     Alimentos
                                 </li>
@@ -132,7 +133,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(6));
                                         navigate('/products/categoria/6');
-                                      }}
+                                    }}
                                 >
                                     Juguetes
                                 </li>
@@ -142,7 +143,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(7));
                                         navigate('/products/categoria/7');
-                                      }}
+                                    }}
                                 >
                                     Muebles
                                 </li>
@@ -152,7 +153,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(8));
                                         navigate('/products/categoria/8');
-                                      }}
+                                    }}
                                 >
                                     Jardinería
                                 </li>
@@ -162,7 +163,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(9));
                                         navigate('/products/categoria/9');
-                                      }}
+                                    }}
                                 >
                                     Deportes
                                 </li>
@@ -172,7 +173,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(10));
                                         navigate('/products/categoria/10');
-                                      }}
+                                    }}
                                 >
                                     Joyería
                                 </li>
@@ -182,7 +183,7 @@ export default function SideBar() {
                                     onClick={() => {
                                         dispatch(getProductFiltered(11));
                                         navigate('/products/categoria/11');
-                                      }}
+                                    }}
                                 >
                                     Herramientas
                                 </li>
@@ -201,14 +202,14 @@ export default function SideBar() {
                                 <li
                                     tabIndex="0"
                                     className={styles.list}
-                                onClick={() => dispatch(orderedByNameASC())}
+                                    onClick={() => dispatch(orderedByNameASC())}
                                 >
                                     Por nombre a-z
                                 </li>
                                 <li
                                     tabIndex="0"
                                     className={styles.list}
-                                 onClick={() => dispatch(orderedByNameDESC())}
+                                    onClick={() => dispatch(orderedByNameDESC())}
                                 >
                                     Por nombre z-a
                                 </li>
@@ -231,36 +232,36 @@ export default function SideBar() {
                                 <li
                                     tabIndex="0"
                                     className={styles.list}
-                                 onClick={() => dispatch(orderedByHighestPrice())}
+                                    onClick={() => dispatch(orderedByHighestPrice())}
                                 >
                                     Mayor precio
                                 </li>
                                 <li
                                     tabIndex="0"
                                     className={styles.list}
-                              onClick={() => dispatch(orderedByLowestPrice())}
+                                    onClick={() => dispatch(orderedByLowestPrice())}
                                 >
                                     Menor precio
                                 </li>
                             </ul>
                         )}
                     </li>
-               
-                    <li className={styles.list_item}>
+
+                    {/* <li className={styles.list_item}>
                         <div className={styles.list_button}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANhJREFUSEvtldENgzAMRI9N2k3KJmWSqpO0m5RNyiZUR+MoorbjCPFRCT7D5Z4526LDzk+3sz8OQDXhMqIXgEv1RkwwAThTWgLm2N2wavHeAngCuDq4TYAewAjg4UDCAJox03eqlsY84+P17QfAC6dUVdnsIQFolptnmBMu+qUCbdEIkWrXEUs0LIBA630+tzZZmygx9wrgaPIrTYAWEcVa7uveiM6MyNoDK/eyN9q0hqeI804zK3drFcIAGtwB3MI7/BU2ARq9dYC3la2APBTHD6ca3f9H9AET9TAZjvnCQgAAAABJRU5ErkJggg==" alt="más recientes" />
                             <span
                                 tabIndex="0"
                                 className={styles.nav_link}
-                             onClick={() => dispatch(orderedByRecientes())}
+                                onClick={() => dispatch(orderedByRecientes())}
                             >
                                 Más recientes
                             </span>
                         </div>
-                    </li>
-                    
+                    </li> */}
+
                 </ul>
-                
+
             </nav>
         </div>
     )
