@@ -9,11 +9,11 @@ export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME"
 export const LOADING = "LOADING"
 export const READY = "READY"
 export const GET_PRODUCT_FILTERED = "GET_PRODUCT_FILTERED"
-export const ORDERED_BY_NAME_ASC ="ORDERED_BY_NAME_ASC"
-export const ORDERED_BY_NAME_DESC ="ORDERED_BY_NAME_DESC"
-export const ORDERED_BY_LOWEST_PRICE ="ORDERED_BY_LOWEST_PRICE"
+export const ORDERED_BY_NAME_ASC = "ORDERED_BY_NAME_ASC"
+export const ORDERED_BY_NAME_DESC = "ORDERED_BY_NAME_DESC"
+export const ORDERED_BY_LOWEST_PRICE = "ORDERED_BY_LOWEST_PRICE"
 export const ORDERED_BY_HIGHEST_PRICE = "ORDERED_BY_HIGHEST_PRICE"
-export const  ORDERED_BY_RECIENTES =  "ORDERED_BY_RECIENTES"
+export const ORDERED_BY_RECIENTES = "ORDERED_BY_RECIENTES"
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL"
 export const GET_USER_BY_ID = "GET_USER_BY_ID"
 export const COUNT_DELETE = "COUNT_DELETE"
@@ -25,7 +25,7 @@ export const COUNT_SUMAR = "COUNT_SUMAR"
 export const AGREGAR_AL_CARRITO = "AGREGAR_AL_CARRITO"
 export const CLEAN_PRODUCT = "CLEAN_PRODUCT"
 export const COUNT_AGREGAR = "COUNT_AGREGAR"
-export const  REVIEWS = "REVIEWS"
+export const REVIEWS = "REVIEWS"
 export const CLEAN_REVIEWS = "CLEAN_REVIEWS"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
@@ -36,7 +36,7 @@ export const VACIAR_CARRITO = "VACIAR_CARRITO"
 export const SET_COUNT_CARRITO = "SET_COUNT_CARRITO"
 export const SET_CARRITO = "SET_CARRITO"
 
-  // const api_host= "http://localhost:3001/";
+// const api_host= "http://localhost:3001/";
 const api_host = 'https://henry-market-back-production.up.railway.app/'
 
 
@@ -69,19 +69,19 @@ export function getAllProducts() {
         type: GET_ALL_PRODUCTS,
         payload: products.data,
       });
-    }).catch(err => console.log(err)) 
+    }).catch(err => console.log(err))
   };
 };
 
 export const getProductById = (id_producto) => {
-  return async function (dispatch){
-      const {data} = await axios.get(`${api_host}products/${id_producto}`);
-      dispatch({type: GET_PRODUCT_BY_ID, payload: data});
+  return async function (dispatch) {
+    const { data } = await axios.get(`${api_host}products/${id_producto}`);
+    dispatch({ type: GET_PRODUCT_BY_ID, payload: data });
   };
 }
 
 export function updateProduct(producto) {
-  return async (dispatch) =>{
+  return async (dispatch) => {
     try {
       const response = await axios.put(`${api_host}products/${producto.id_producto}/editProduct`, producto)
       dispatch({
@@ -125,7 +125,7 @@ export const getProductByName = (name) => async (dispatch) => {
     const res = await axios.get(`${api_host}products?name=${name}`);
     const result = res.data;
     console.log(result);
-     dispatch({
+    dispatch({
       type: GET_PRODUCT_BY_NAME,
       payload: result,
     });
@@ -148,9 +148,9 @@ export function ready() {
 }
 
 export const getProductFiltered = (id_categoria_producto) => {
-  return async function (dispatch){
-      const {data} = await axios.get(`${api_host}products/categoria/${id_categoria_producto}`);
-      dispatch({type: GET_PRODUCT_FILTERED, payload: data});
+  return async function (dispatch) {
+    const { data } = await axios.get(`${api_host}products/categoria/${id_categoria_producto}`);
+    dispatch({ type: GET_PRODUCT_FILTERED, payload: data });
   };
 }
 
@@ -175,11 +175,11 @@ export const orderedByRecientes = () => {
 };
 
 export const getProductFilteredDescuento = (id_categoria_producto) => {
-  return async function (dispatch){
-      const {data} = await axios.get(`${api_host}products/filter/descuento/${id_categoria_producto}`);
-      dispatch({type: GET_PRODUCT_FILTERED, payload: data});
+  return async function (dispatch) {
+    const { data } = await axios.get(`${api_host}products/filter/descuento/${id_categoria_producto}`);
+    dispatch({ type: GET_PRODUCT_FILTERED, payload: data });
 
-      console.log("estteee", data)
+    console.log("estteee", data)
   };
 }
 
@@ -203,24 +203,24 @@ export function getUsuarioByEmail(email) {
 };
 
 export function getShopping() {
-    return async (dispatch) => {
-      try {
-        const response = await axios.get(`${api_host}venta`);
-        // console.log(response);
-        dispatch({
-          type: GET_SHOPPING,
-          payload: response.data,
-        });
-      } catch (error) {
-        dispatch({
-          type: GET_SHOPPING,
-          payload: error,
-        });
-      }
-    };
-  }
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${api_host}venta`);
+      // console.log(response);
+      dispatch({
+        type: GET_SHOPPING,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_SHOPPING,
+        payload: error,
+      });
+    }
+  };
+}
 
- export const getUserById = (id) => async (dispatch) => {
+export const getUserById = (id) => async (dispatch) => {
   try {
     dispatch(loading());
     const res = await axios.get(`${api_host}usuario/${id}`);
@@ -283,9 +283,9 @@ export function sumarCount() {
 export function agregarAlCarrito(id, quantity) {
   console.log(id);
   return {
-      type: AGREGAR_AL_CARRITO,
-      payload: { id, quantity },
-    };
+    type: AGREGAR_AL_CARRITO,
+    payload: { id, quantity },
+  };
 }
 
 export function cleanProduct() {
@@ -318,7 +318,7 @@ export function cleanReviews() {
     type: CLEAN_REVIEWS,
   };
 }
- 
+
 
 export const getAllUsers = () => {
   return async (dispatch) => {
@@ -330,7 +330,7 @@ export const getAllUsers = () => {
 
     } catch (error) {
       console.log(error);
-      dispatch({ type:GET_ALL_USERS, payload: error });
+      dispatch({ type: GET_ALL_USERS, payload: error });
 
     }
   };
@@ -347,12 +347,12 @@ export function getAllCalificaciones() {
     }
   };
 }
-export function deleteCalificacion(idCalificacion){
-  return async(dispatch)=>{
-    try{
+export function deleteCalificacion(idCalificacion) {
+  return async (dispatch) => {
+    try {
       const response = await axios.put(`${api_host}products/calificaciones/${idCalificacion}`)
       dispatch({ DELETE_CALIFICACION, payload: response.data });
-    }catch(error){
+    } catch (error) {
       dispatch({ type: DELETE_CALIFICACION, payload: error });
 
     }

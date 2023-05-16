@@ -20,6 +20,7 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const estaLogueado = window.localStorage.getItem("estaLogueado");
 
+
   const [isAdmin, setIsAdmin] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [userData, setUserData] = useState({});
@@ -34,15 +35,26 @@ export default function NavBar() {
         const userSession = JSON.parse(user);
         setUserData(() => userSession);
       }
-    } else if (estaLogueado && estaLogueado === "database") {
-      const userSession = JSON.parse(Cookies.get("user_session"));
-      setUserData(() => userSession.dataValues);
-      if (userSession && userSession.dataValues) {
-        const { admin } = userSession.dataValues;
-        setIsAdmin(admin);
-      } else {
-        setIsAdmin(false);
+    } if (estaLogueado && estaLogueado === "database") {
+      const usuario = Cookies.get('user_session')
+      if (usuario) {
+        const userSession = JSON.parse(usuario);
+        setUserData(() => userSession.dataValues);
+        if (userSession && userSession.dataValues) {
+          const { admin } = userSession.dataValues;
+          setIsAdmin(admin);
+        } else {
+          setIsAdmin(false);
+        }
+        if (userSession && userSession.dataValues) {
+          const { admin } = userSession.dataValues;
+          setIsAdmin(admin);
+        } else {
+          setIsAdmin(false);
+        }
       }
+    } else {
+      setIsAdmin(false);
     }
   }, [location, dispatch, estaLogueado]);
 
@@ -67,7 +79,7 @@ export default function NavBar() {
     });
   };
 
-  
+
 
   return (
     <div className={s.container}>
