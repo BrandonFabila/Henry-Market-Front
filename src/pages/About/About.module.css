@@ -123,6 +123,13 @@
     margin-right: 5px;
    
   }
+  img.webLogo {
+    border-radius: 80%;
+    width: 45px; 
+    height: 45px; 
+    margin-right: 5px;
+   
+  }
   .nombres{
     margin-top: 50px;
     height: 200px; 
