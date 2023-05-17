@@ -58,12 +58,17 @@
     align-self: flex-start;
 }
 .button{
-    width: 100px;
+    width: 200px;
     border: none;
-    border-radius: 10px;
-    height: 25px;
+    border-radius: 0.25rem;
     color: black;
     font-size: large;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
 }
 
 button:hover{
