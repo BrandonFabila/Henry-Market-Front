@@ -2,7 +2,7 @@ import "react-modern-drawer/dist/index.css";
 import { useDispatch } from 'react-redux'
 import { useState } from "react";
 import styles from './sidebar.module.css'
-import { getProductFilteredDescuento, getProductFiltered, orderedByNameASC, orderedByNameDESC, orderedByHighestPrice, orderedByLowestPrice, orderedByRecientes } from "../../store/actions";
+import { getProductFilteredDescuento, getProductFiltered, orderedByNameASC, orderedByNameDESC, orderedByHighestPrice, orderedByLowestPrice } from "../../store/actions";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 

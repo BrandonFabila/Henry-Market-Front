@@ -132,7 +132,12 @@ export default function FormLogin() {
           sameSite: "strict",
         });
         localStorage.setItem("estaLogueado", "database");
-        navigateTo("/");
+        if ( api.data.session.dataValues.telefono === "5500000000" && api.data.session.dataValues.direccion === "Aun no ha sido asiganada" ) {
+          navigateTo("/account");
+        } else {
+          navigateTo("/");
+        }
+        console.log(api.data)
       } else {
         swal({
           text: "Usuario o contraseña incorrectos",
