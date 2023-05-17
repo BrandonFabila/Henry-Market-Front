@@ -215,7 +215,6 @@ export default function FormCreateProduct() {
                     name="descripcion_producto"
                     value={form.descripcion_producto}
                     onChange={handleInputChange}
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolor deserunt inventore sit tempora, quia dolore magnam corporis atque beatae at ipsum quisquam quidem eaque ad deleniti, libero vitae reprehenderit."
                     className={style.descripcion}
                   />
                   {errors.descripcion_producto && (

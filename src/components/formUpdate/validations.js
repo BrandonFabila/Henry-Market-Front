@@ -1,6 +1,6 @@
 const blankSpace = /^\s+$/ // Espacio en blanco
 const regexAddress = /^\d+\s[A-z]+\s[A-z]+/; // valida la dirección
-// const regexTelefono = /^[0-9]+$/;
+const regexTelefono = /^[0-9]+$/;
 
 export default function validations(values) {
     const errors = {}
@@ -12,6 +12,7 @@ export default function validations(values) {
 
     if (blankSpace.test(values.telefono)) errors.telefono = 'El número de teléfono no puede ser un espacio en blanco'
     if (values.telefono && values.telefono.length < 9) errors.telefono = 'Minimo 10 digitos'
+    if(values.telefono && !regexTelefono.test(values.telefono)) errors.telefono = "Debe contener solo números"
     if (values.telefono && values.telefono.length > 25) errors.telefono = 'El telefono no debería sumar más de 25 caracteres'
 
     return errors
