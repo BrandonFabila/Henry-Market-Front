@@ -24,6 +24,7 @@
 }
 
 
+
 .paginadoAbj {
   width: 100%;
   margin-top: 35px;
@@ -32,23 +33,25 @@
 
 .paginadoAbj button {
   padding: 10px 15px;
-  width: 50px;
+  width: 40px;
   margin: 5px;
-  border-radius: 1rem;
+  border-radius: 10%;
 }
 
 .activePage {
-  background-color: yellow;
+  background-color: rgb(0, 0, 0);
+  color: white;
 }
 
 .paginadoAbj button:active {
-  background-color: yellow;
+  background-color: rgb(0, 0, 0);
+  color: white;
 }
 
-.paginadoAbj button:focus {
-  background-color: yellow;
+.paginadoAbj button:hover {
+background-color: beige;
 }
-  
+
  
 
  
