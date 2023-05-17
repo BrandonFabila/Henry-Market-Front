@@ -68,10 +68,6 @@ const About = () => {
                         <div className={styles.puesto}>Desarrollador web</div>
                         <a className={styles.linkedinButton} href="https://www.linkedin.com/in/BrandonFabila/" target="_blank" rel="noreferrer">
                         <img src={linkedin} alt="LinkedIn" className={styles.linkedinLogo} />
-
-                        </a>
-                        <a href="https://developercdmx.online/">
-                          <img className={styles.webLogo} src="https://developercdmx.online/static/media/me-about.eb3b47abc79a0ddda259.gif" alt="DeveloperCDMX" />
                         </a>
                     </div>
                     <div>
