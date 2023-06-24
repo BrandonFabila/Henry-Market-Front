@@ -12,17 +12,11 @@
 }
 
 .account {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    /* width: 280px; */
-    padding: 5px;
-    margin: 0px 10px;    
-    width: 300px;
+    display: none;
 }
 
 .name {
-    margin: 0;
+    display: none;
 }
 
 .account:hover {
@@ -132,6 +126,15 @@
 
 
 @media (min-width: 820px) {
+    .account {
+        display: flex;
+        
+    align-items: center;
+    width: 280px;
+    padding: 5px;
+    margin: 0px 10px;    
+    }
+   
     .menu {
         display: none;
     }
@@ -175,6 +178,11 @@
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.712);
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+    }
+
+    .name {
+        margin: 0;
+        display:grid;
     }
     
 }

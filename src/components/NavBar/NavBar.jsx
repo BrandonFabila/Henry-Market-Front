@@ -84,13 +84,16 @@ export default function NavBar() {
   return (
     <div className={s.container}>
       <div className={s.menu}>
-        <DrawerMenu />
+        <DrawerMenu estaLogueado={estaLogueado} userData={userData} />
       </div>
 
+      <Link to="/">
       <div
         className={s.logo}
         style={{ backgroundImage: `url(${logotipo})` }}
       ></div>
+      </Link>
+
       <Link to="/">
         <div
           className={s.logocompleto}

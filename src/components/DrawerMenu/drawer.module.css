@@ -62,8 +62,21 @@ li {
 
 }
 
+.list_buttonS {
+    align-items: center;
+    gap: 6px;
+    padding-top: 5px;
+    padding-top: 5px;
+    margin-left: -20px;
+    background-color: var(--yellow-color);
+    width: 100%;
+    /* font-weight: bold; */
+    color: white;
+
+}
+
 .list_button img {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 

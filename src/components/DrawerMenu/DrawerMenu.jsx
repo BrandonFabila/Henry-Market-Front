@@ -2,21 +2,47 @@ import { MdMenu } from "react-icons/md";
 import Drawer from 'react-modern-drawer';
 import "react-modern-drawer/dist/index.css";
 import { useDispatch } from 'react-redux';
-import {getProductFilteredDescuento,getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
-import { Link , useParams, useNavigate} from "react-router-dom";
+import {getAllProducts, getProductFiltered,orderedByNameASC,orderedByNameDESC,orderedByHighestPrice,orderedByLowestPrice,orderedByRecientes } from "../../store/actions";
+// getProductFilteredDescuento,
+import { Link , useNavigate} from "react-router-dom";
+// useParams,
+import swal from "sweetalert";
 import { useState } from "react";
 import styles from './drawer.module.css'
+import { vaciarCarrito } from "../../store/actions";
 
 
 
-export default function DrawerMenu() {
+
+
+
+export default function DrawerMenu({estaLogueado, userData}) {
     const [showCategories, setShowCategories] = useState(false);
+    const [showUser, setShowUser] = useState(false);
     const [showOrdenar, setShowOrdenar] = useState(false);
     const [showPrecio, setShowPrecio] = useState(false);
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch();
-    const {id_categoria_producto} = useParams();
+    // const {id_categoria_producto} = useParams();
     const navigate = useNavigate();
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+    const handleLogOut = () => {
+        setIsAdmin(false);
+        setShowProfileMenu(!showProfileMenu);
+        window.localStorage.removeItem("estaLogueado");
+        window.localStorage.removeItem("carrito");
+        window.localStorage.removeItem("count");
+        // dispatch(userLoggedIn(logOut));
+        dispatch(vaciarCarrito());
+        setIsAdmin(false);
+        swal({
+          title: "Sesión cerrada con éxito",
+          icon: "info",
+          timer: "2000",
+        });
+      };
 
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
@@ -34,6 +60,10 @@ export default function DrawerMenu() {
         setShowPrecio(!showPrecio);
     };
 
+    const handleClick4 = () => {
+        setShowUser(!showUser);
+    };
+
     return (
         <>
             <div onClick={toggleDrawer} style={{ cursor: 'pointer' }}><MdMenu size={40} /></div>
@@ -42,21 +72,6 @@ export default function DrawerMenu() {
                 <div className={styles.nav_contenedor}>
                     <nav className={styles.nav}>
                         <ul className={styles.list}>
-                            <li className={styles.list_item}>
-                                <div className={styles.list_button}>
-                                    <img src="" alt="Pagina-principal" />
-                                    <Link to='/'>
-                                        <span
-                                            tabIndex="0"
-                                            className={styles.nav_link}
-                                        >
-                                            Página Principal
-                                        </span>
-                                    </Link>
-                                </div>
-                            </li>
-                            
-                            
                             <li className={styles.list_item}>
                                 <div className={styles.list_button}>
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASBJREFUSEvllIENwkAMA80msAlsApMAk8AmsAlsAjqpfrnPA20lkBCR0NN8aidO0pk+bLMP4+sZwUHSeiT5XtJR0jXfaxHsJG1HgjscEt4vVhPMJV2625Wks6SlpFP3Hx/GM/5Nl7VjuFtkFTWBpQHYYK4os3PcO1+vB5lFEjtbV0SW9AeSTITqieUsVSQQ0nBZ63jrZMnYlDL9rrYQtwhSwwQa42eSiO9JlPrTPMCZJqTDyGqon3EltkeQ2dZTSkbcD/UXZeopst4GdCaAUyEnP/z0Cku/E3hLMPUT8jAQzyr4KgFNzmZbBpqOTJy2SRV4Pxo97i0a95MIWovWBPsPgld6t3rQ8pXPRL3JPDMxXpyhgBn3MFlT530w+e8T3AEGdlkZEzbOHwAAAABJRU5ErkJggg==" alt="ver-todo"/>
@@ -69,7 +84,7 @@ export default function DrawerMenu() {
                                     </span>
                                 </div>
                             </li>
-                            <li className={styles.list_item}>
+                            {/* <li className={styles.list_item}>
                                 <div>
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWBJREFUSEu1lY1NwzAQhV8noWwCk1AmASaBTgKbAJOAvsgvul58iUuppaqtcrl378f2Tldeuyv31wjAnaRXSUdJb22gg6QHSY+SPtaGHAF4lwQI60vSPjTk/+25ADRgwpvWzM2rPmbF85c2xFzbY4AcAPxlAfAcXzwXwPU/BTps8GWVQdTchRjJdDYUhk/JD2p5fl8BOC3RROt6Qrs1oO6zwwTjAeH7JKYVbVJCsb3ht+PZY+u0TemKHlTmZoAR82cvIkBFOSeDOj5Iig+95aEWO7knE5KwizEw71rMhnlcpQej+Z/Mazu4Yt2ViETkBLkRTUkSkpiRk1WxXphMc1KRQRabJ+hh0CzRfAjmnUxzpMrnDyD2gWZV3epG8xRrXvzLUdGjPZJ9aobOonhc89LWyYosGP/dAJyyaaitCydrnS+cheaZ6haADSVdmIx8ZkhkOdQuvjJH9e/WjTC4COAXAcVVGWZcFaYAAAAASUVORK5CYII=" alt="precio" />
                                     <span
@@ -80,7 +95,7 @@ export default function DrawerMenu() {
                                     Descuentos
                                     </span>
                                 </div>
-                            </li>
+                            </li> */}
                             <li className={`${styles.list_item} ${styles.list_item_click}`}>
                         <div className={`${styles.list_button} `}>
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANBJREFUSEvtlckNAjEQBGszgUwgE4gEiAQRCWQCmYBaspHv2QOLz/pjyWNP9bSvgc5t6JyfsYAdcALUv4AHcHN9U+MYwAG4VrJcgHOLYAGk+O4S+GQbQFBVpLZvVWIBpFzJSkp9ZbJLkGKzAE9AirfO+zCJxhXXnig+C/B2q2pCrHh2iuS3fF/SoopSZV7REoDWfvPWAH7csiCNZ/P/Dphq1eQKVkB2D6xTY1m27oHlEKZFv3iLouc7vcnh12jKLUzQQ3cMPyDrP5gDidZ0B3wAmnU0GbcMQx8AAAAASUVORK5CYII=" alt="categorias" />
@@ -272,6 +287,81 @@ export default function DrawerMenu() {
                             </span>
                         </div>
                     </li>
+                    {estaLogueado ? (
+                        <li className={styles.list_item}>
+                        <div className={styles.list_button}>
+                            <img style={{width: '45px', borderRadius: '50%'}} src={userData.imagen} alt="user" />
+                            <span
+                                tabIndex="0"
+                                className={styles.nav_link}
+                                onClick={handleClick4}
+                            >
+                                ¡Hola {userData.primer_nombre}!
+                            </span>
+                        </div>
+                        {isAdmin ? null : null}
+                        {showUser && (
+                            <ul className={styles.list_show}>
+                                <li
+                                    tabIndex="0"
+                                    className={styles.list}
+                                    onClick={() => {
+                                        navigate('/account');
+                                        }}
+                                >
+                                    Ver mi Perfil
+                                </li>
+                                <li
+                                    tabIndex="0"
+                                    className={styles.list}
+                                    onClick={() => {
+                                        navigate('/historial-de-compra');
+                                        }}
+                                >
+                                    Historial de compras
+                                </li>
+                                <Link
+                                    to='/'
+                                    className={styles.list}
+                                    onClick={() => {
+                                        handleLogOut()
+                                        }}
+                                >
+                                    Cerrar sesión
+                                </Link>
+                            </ul>
+                        )}
+                    </li>
+                    ) : (
+                        <>
+                        <li className={styles.list_item}>
+                        <div className={styles.list_buttonS}>
+                            <Link to='/login'>
+                                <span
+                                    tabIndex="0"
+                                    className={styles.nav_link}
+                                >
+                                    Iniciar sesión
+                                </span>
+                            </Link>
+                        </div>
+                    </li>
+                    <li className={styles.list_item}>
+                        <div className={styles.list_buttonS}>
+                            <Link to='/register'>
+                                <span
+                                    tabIndex="0"
+                                    className={styles.nav_link}
+                                >
+                                    Registrarse
+                                </span>
+                            </Link>
+                        </div>
+                    </li>
+                    </>
+                    
+                    )}
+                    
                     
                 </ul>
 
